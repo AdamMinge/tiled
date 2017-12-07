@@ -1,0 +1,670 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{B12702AD-ABFB-343A-A199-8E24837244A3}</ProjectGuid>
+    <Keyword>Qt4VSv1.0</Keyword>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings" />
+  <ImportGroup Label="Shared" />
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <OutDir>$(SolutionDir)$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>QT_QTPROPERTYBROWSER_IMPORT;UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_LOCATION_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;TILEDQTUTILITY_BUILD_STATIC;TILEDOBJECTS_BUILD_STATIC;QTSINGLEAPPLICATION_BUILD_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility;C:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects;C:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src;C:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication;.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtLocation;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>Disabled</Optimization>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+      <LanguageStandard>stdcpplatest</LanguageStandard>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>C:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>QtSolutions_PropertyBrowser-headd.lib;qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Locationd.lib;Qt5Widgetsd.lib;Qt5Networkd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_NO_DEBUG;NDEBUG;QT_CORE_LIB;QT_GUI_LIB;QT_LOCATION_LIB;QT_WIDGETS_LIB;QT_NETWORK_LIB;TILEDQTUTILITY_BUILD_STATIC;TILEDOBJECTS_BUILD_STATIC;QTSINGLEAPPLICATION_BUILD_STATIC;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility;C:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects;C:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src;C:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication;$(QTDIR)\include;.\GeneratedFiles;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtLocation;$(QTDIR)\include\QtWidgets;$(QTDIR)\include\QtNetwork;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <DebugInformationFormat />
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <TreatWChar_tAsBuiltInType>true</TreatWChar_tAsBuiltInType>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
+      <AdditionalLibraryDirectories>C:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\lib;$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+      <AdditionalDependencies>QtSolutions_PropertyBrowser-head.lib;qtmain.lib;Qt5Core.lib;Qt5Gui.lib;Qt5Location.lib;Qt5Widgets.lib;Qt5Network.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="actionmanager.cpp" />
+    <ClCompile Include="addpropertydialog.cpp" />
+    <ClCompile Include="addremovelayer.cpp" />
+    <ClCompile Include="addremovetileset.cpp" />
+    <ClCompile Include="animationcreatordialog.cpp" />
+    <ClCompile Include="changelayerproperty.cpp" />
+    <ClCompile Include="changemapproperty.cpp" />
+    <ClCompile Include="changeproperties.cpp" />
+    <ClCompile Include="changetileproperty.cpp" />
+    <ClCompile Include="changetilesetproperty.cpp" />
+    <ClCompile Include="command.cpp" />
+    <ClCompile Include="document.cpp" />
+    <ClCompile Include="documentmanager.cpp" />
+    <ClCompile Include="editor.cpp" />
+    <ClCompile Include="framelistmodel.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_addpropertydialog.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_animationcreatordialog.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_document.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_documentmanager.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_editor.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_framelistmodel.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_imagecolorpickerwidget.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_languagemanager.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_layerdock.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_layertreemodel.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_layerview.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_mainwindow.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_mapdocument.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_mapdocumentactionhandler.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_mapeditor.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_newmapdialog.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_newtilesetdialog.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_noeditorwidget.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_preferencesdialog.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_preferencesmanager.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_propertiesdock.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_propertybrowser.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_resetedit.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_stylemanager.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_tilepreview.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetdock.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetlistmodel.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetsdock.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetsview.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_tilesettablemodel.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetview.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_undodock.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_varianteditorfactory.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_variantpropertymanager.cpp" />
+    <ClCompile Include="GeneratedFiles\Debug\moc_zoomable.cpp" />
+    <ClCompile Include="GeneratedFiles\qrc_Tiled.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+      </PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+      </PrecompiledHeader>
+    </ClCompile>
+    <ClCompile Include="groupcommand.cpp" />
+    <ClCompile Include="imagecolorpickerwidget.cpp" />
+    <ClCompile Include="languagemanager.cpp" />
+    <ClCompile Include="layerdock.cpp" />
+    <ClCompile Include="layertreemodel.cpp" />
+    <ClCompile Include="layerview.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="mainwindow.cpp" />
+    <ClCompile Include="mapditorproxystyle.cpp" />
+    <ClCompile Include="mapdocument.cpp" />
+    <ClCompile Include="mapdocumentactionhandler.cpp" />
+    <ClCompile Include="mapeditor.cpp" />
+    <ClCompile Include="movelayer.cpp" />
+    <ClCompile Include="newmapdialog.cpp" />
+    <ClCompile Include="newtilesetdialog.cpp" />
+    <ClCompile Include="noeditorwidget.cpp" />
+    <ClCompile Include="preferencesdialog.cpp" />
+    <ClCompile Include="preferencesmanager.cpp" />
+    <ClCompile Include="propertiesdock.cpp" />
+    <ClCompile Include="propertybrowser.cpp" />
+    <ClCompile Include="reparentlayer.cpp" />
+    <ClCompile Include="resetedit.cpp" />
+    <ClCompile Include="stylemanager.cpp" />
+    <ClCompile Include="tilepreview.cpp" />
+    <ClCompile Include="tilesetdock.cpp" />
+    <ClCompile Include="tilesetlistmodel.cpp" />
+    <ClCompile Include="tilesetsdock.cpp" />
+    <ClCompile Include="tilesetsview.cpp" />
+    <ClCompile Include="tilesettablemodel.cpp" />
+    <ClCompile Include="tilesetview.cpp" />
+    <ClCompile Include="tilesetviewdelegate.cpp" />
+    <ClCompile Include="undodock.cpp" />
+    <ClCompile Include="utils.cpp" />
+    <ClCompile Include="varianteditorfactory.cpp" />
+    <ClCompile Include="variantpropertymanager.cpp" />
+    <ClCompile Include="zoomable.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="Tiled.qrc">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Rcc%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\GeneratedFiles\qrc_%(Filename).cpp</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">%(FullPath);%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Rcc%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\qrc_%(Filename).cpp;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\rcc.exe" -name "%(Filename)" -no-compress "%(FullPath)" -o .\GeneratedFiles\qrc_%(Filename).cpp</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="actionmanager.h" />
+    <ClInclude Include="GeneratedFiles\ui_addpropertydialog.h" />
+    <ClInclude Include="GeneratedFiles\ui_animationcreator.h" />
+    <ClInclude Include="GeneratedFiles\ui_imagecolorpickerwidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_mainwindow.h" />
+    <ClInclude Include="GeneratedFiles\ui_newmapdialog.h" />
+    <ClInclude Include="GeneratedFiles\ui_newtilesetdialog.h" />
+    <ClInclude Include="GeneratedFiles\ui_noeditorwidget.h" />
+    <ClInclude Include="GeneratedFiles\ui_preferencesdialog.h" />
+    <ClInclude Include="groupcommand.h" />
+    <CustomBuild Include="imagecolorpickerwidget.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing imagecolorpickerwidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing imagecolorpickerwidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <ClInclude Include="mapditorproxystyle.h" />
+    <ClInclude Include="movelayer.h" />
+    <ClInclude Include="reparentlayer.h" />
+    <CustomBuild Include="resetedit.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing resetedit.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing resetedit.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <ClInclude Include="tilesetviewdelegate.h" />
+    <ClInclude Include="utils.h" />
+    <CustomBuild Include="zoomable.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing zoomable.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing zoomable.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="variantpropertymanager.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing variantpropertymanager.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing variantpropertymanager.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="varianteditorfactory.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing varianteditorfactory.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing varianteditorfactory.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="undodock.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing undodock.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing undodock.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="tilesetview.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing tilesetview.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing tilesetview.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="tilesettablemodel.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing tilesettablemodel.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing tilesettablemodel.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="tilesetsview.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing tilesetsview.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing tilesetsview.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="tilesetsdock.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing tilesetsdock.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing tilesetsdock.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="tilesetlistmodel.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing tilesetlistmodel.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing tilesetlistmodel.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="tilesetdock.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing tilesetdock.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing tilesetdock.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="tilepreview.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing tilepreview.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing tilepreview.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="stylemanager.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing stylemanager.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing stylemanager.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="propertybrowser.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing propertybrowser.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing propertybrowser.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="propertiesdock.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing propertiesdock.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing propertiesdock.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="preferencesmanager.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing preferencesmanager.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing preferencesmanager.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="preferencesdialog.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing preferencesdialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing preferencesdialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="noeditorwidget.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing noeditorwidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing noeditorwidget.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="newtilesetdialog.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing newtilesetdialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing newtilesetdialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="newmapdialog.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing newmapdialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing newmapdialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="mapeditor.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing mapeditor.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing mapeditor.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="mapdocumentactionhandler.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing mapdocumentactionhandler.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing mapdocumentactionhandler.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="mapdocument.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing mapdocument.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing mapdocument.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="mainwindow.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing mainwindow.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing mainwindow.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="layerview.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing layerview.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing layerview.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="layertreemodel.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing layertreemodel.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing layertreemodel.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="layerdock.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing layerdock.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing layerdock.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="languagemanager.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing languagemanager.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing languagemanager.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="addpropertydialog.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing addpropertydialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing addpropertydialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <ClInclude Include="addremovelayer.h" />
+    <ClInclude Include="addremovetileset.h" />
+    <CustomBuild Include="animationcreatordialog.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing animationcreatordialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing animationcreatordialog.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <ClInclude Include="changelayerproperty.h" />
+    <ClInclude Include="changemapproperty.h" />
+    <ClInclude Include="changeproperties.h" />
+    <ClInclude Include="changetileproperty.h" />
+    <ClInclude Include="changetilesetproperty.h" />
+    <ClInclude Include="command.h" />
+    <CustomBuild Include="document.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing document.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing document.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="documentmanager.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing documentmanager.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing documentmanager.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="editor.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing editor.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing editor.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+    <CustomBuild Include="framelistmodel.h">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing framelistmodel.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DQT_QTPROPERTYBROWSER_IMPORT -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Moc%27ing framelistmodel.h...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_NO_DEBUG -DNDEBUG -DQT_CORE_LIB -DQT_GUI_LIB -DQT_LOCATION_LIB -DQT_WIDGETS_LIB -DQT_NETWORK_LIB -DTILEDQTUTILITY_BUILD_STATIC -DTILEDOBJECTS_BUILD_STATIC -DQTSINGLEAPPLICATION_BUILD_STATIC  "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledQtUtility" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\TiledObjects" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\Dependencies\QtPropertyBrowser\src" "-IC:\Users\adamin\Documents\Visual Studio 2017\Projects\Tiled\QtSingleApplication" "-I$(QTDIR)\include" "-I.\GeneratedFiles" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtLocation" "-I$(QTDIR)\include\QtWidgets" "-I$(QTDIR)\include\QtNetwork"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\QtSingleApplication\QtSingleApplication.vcxproj">
+      <Project>{aa1dccbb-4d9b-45d1-a422-361d99b73c06}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\TiledObjects\TiledObjects.vcxproj">
+      <Project>{b0578602-2953-4ec2-b10d-15bc595f35c9}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\TiledQtUtility\TiledQtUtility.vcxproj">
+      <Project>{19ffebcb-d43e-468c-b30b-b1f821a7a8dd}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="addpropertydialog.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="animationcreator.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="mainwindow.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="newmapdialog.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="newtilesetdialog.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="noeditorwidget.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="preferencesdialog.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="imagecolorpickerwidget.ui">
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+      <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\uic.exe;%(AdditionalInputs)</AdditionalInputs>
+      <Message Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Uic%27ing %(Identity)...</Message>
+      <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\GeneratedFiles\ui_%(Filename).h;%(Outputs)</Outputs>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Release|x64'">"$(QTDIR)\bin\uic.exe" -o ".\GeneratedFiles\ui_%(Filename).h" "%(FullPath)"</Command>
+    </CustomBuild>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties MocDir=".\GeneratedFiles\$(ConfigurationName)" UicDir=".\GeneratedFiles" RccDir=".\GeneratedFiles" lupdateOptions="" lupdateOnBuild="0" lreleaseOptions="" Qt5Version_x0020_x64="msvc2017_64" MocOptions="" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

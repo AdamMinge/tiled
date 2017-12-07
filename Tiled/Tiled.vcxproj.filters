@@ -33,9 +33,6 @@
     <ClCompile Include="GeneratedFiles\qrc_Tiled.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="actionmanager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="addpropertydialog.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -63,9 +60,6 @@
     <ClCompile Include="changetilesetproperty.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="command.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="document.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -76,12 +70,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="framelistmodel.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="groupcommand.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="languagemanager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="layerdock.cpp">
@@ -138,9 +126,6 @@
     <ClCompile Include="reparentlayer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="stylemanager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="tilepreview.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -168,22 +153,10 @@
     <ClCompile Include="undodock.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="utils.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="varianteditorfactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="variantpropertymanager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="zoomable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="resetedit.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="imagecolorpickerwidget.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_addpropertydialog.cpp">
@@ -202,12 +175,6 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_framelistmodel.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_imagecolorpickerwidget.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_languagemanager.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_layerdock.cpp">
@@ -252,12 +219,6 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_propertybrowser.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_resetedit.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_stylemanager.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_tilepreview.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
@@ -286,9 +247,6 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_variantpropertymanager.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_zoomable.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -335,9 +293,6 @@
     <CustomBuild Include="framelistmodel.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="languagemanager.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="layerdock.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -380,9 +335,6 @@
     <CustomBuild Include="propertybrowser.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="stylemanager.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="tilepreview.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -413,23 +365,8 @@
     <CustomBuild Include="variantpropertymanager.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="zoomable.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="resetedit.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="imagecolorpickerwidget.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="imagecolorpickerwidget.ui">
-      <Filter>Form Files</Filter>
-    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="actionmanager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="addremovelayer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -451,12 +388,6 @@
     <ClInclude Include="changetilesetproperty.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="command.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="groupcommand.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="mapditorproxystyle.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -468,12 +399,6 @@
     </ClInclude>
     <ClInclude Include="tilesetviewdelegate.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="utils.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GeneratedFiles\ui_imagecolorpickerwidget.h">
-      <Filter>Generated Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_addpropertydialog.h">
       <Filter>Generated Files</Filter>

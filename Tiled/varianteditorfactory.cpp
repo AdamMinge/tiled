@@ -1,5 +1,6 @@
 ﻿/*-----------------------------------------------------------------------------------------------------------*/
 #include <QUrl>
+#include <QtGlobal>
 #include "varianteditorfactory.h"
 #include "resetedit.h"
 #include "fileedit.h"
@@ -7,6 +8,7 @@
 VariantEditorFactory::VariantEditorFactory(QObject* parent) :
 	QtVariantEditorFactory(parent)
 {
+
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 VariantEditorFactory::~VariantEditorFactory()
@@ -47,10 +49,9 @@ QWidget* VariantEditorFactory::createEditor(QtVariantPropertyManager* manager,
 	}
 	else if(type == QVariant::Color)
 	{
-		auto editor = new ResetEdit(property,
-			QtVariantEditorFactory::createEditor(manager, property, parent), parent);
-
-		connect(editor, &ResetEdit::resetProperty, this, &VariantEditorFactory::resetProperty);
+		auto editor = new ResetEdit(QtVariantEditorFactory::createEditor(manager, property, parent), parent);
+		connect(editor, &ResetEdit::reseted, this, [this, resetedProperty = property]()
+		{ this->resetProperty(resetedProperty); });
 
 		return editor;
 	}

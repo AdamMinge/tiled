@@ -4,9 +4,8 @@
 #include "resetedit.h"
 #include "utils.h"
 /*-----------------------------------------------------------------------------------------------------------*/
-ResetEdit::ResetEdit(QtProperty *property, QWidget *editor, QWidget *parent) :
-	QWidget(parent),
-	mProperty(property)
+ResetEdit::ResetEdit(QWidget *editor, QWidget *parent) :
+	QWidget(parent)
 {
 	auto layout = new QHBoxLayout(this);
 	
@@ -25,6 +24,6 @@ ResetEdit::ResetEdit(QtProperty *property, QWidget *editor, QWidget *parent) :
 /*-----------------------------------------------------------------------------------------------------------*/
 void ResetEdit::buttonClicked()
 {
-	emit resetProperty(mProperty);
+	emit reseted();
 }
 /*-----------------------------------------------------------------------------------------------------------*/

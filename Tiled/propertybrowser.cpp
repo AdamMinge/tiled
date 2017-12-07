@@ -24,13 +24,13 @@ static QString nameToId(const QString& name, bool isCustom)
 /*-----------------------------------------------------------------------------------------------------------*/
 PropertyBrowser::PropertyBrowser(QWidget* parent) :
 	QtTreePropertyBrowser(parent),
+	mDocument(nullptr),
+	mMapDocument(nullptr),
 	mObject(nullptr),
 	mVariantManager(new VariantPropertyManager(this)),
 	mGroupManager(new QtGroupPropertyManager(this)),
 	mCustomPropertiesGroup(nullptr),
-	mUpdating(false),
-	mDocument(nullptr),
-	mMapDocument(nullptr)
+	mUpdating(false)
 {
 	auto variantEditorFactory = new VariantEditorFactory(this);
 
@@ -49,7 +49,7 @@ void PropertyBrowser::setDocument(Document* document)
 {
 	if (mDocument == document) return;
 
-	if(mDocument)
+	if (mDocument)
 	{
 		mDocument->disconnect(this);
 	}
@@ -57,7 +57,7 @@ void PropertyBrowser::setDocument(Document* document)
 	mDocument = document;
 	mMapDocument = qobject_cast<MapDocument*>(document);
 
-	if(mMapDocument)
+	if (mMapDocument)
 	{
 		connect(mMapDocument, &MapDocument::mapChanged, this, &PropertyBrowser::objectChanged);
 		connect(mMapDocument, &MapDocument::tileChanged, this, &PropertyBrowser::objectChanged);
@@ -65,7 +65,7 @@ void PropertyBrowser::setDocument(Document* document)
 		connect(mMapDocument, &MapDocument::layerChanged, this, &PropertyBrowser::objectChanged);
 	}
 
-	if(mDocument)
+	if (mDocument)
 	{
 		connect(mDocument, &Document::propertyAdded, this, &PropertyBrowser::propertyAdded);
 		connect(mDocument, &Document::propertyRemoved, this, &PropertyBrowser::propertyRemoved);
@@ -95,7 +95,7 @@ bool PropertyBrowser::isCustomPropertyItem(const QtBrowserItem* item) const
 /*-----------------------------------------------------------------------------------------------------------*/
 bool PropertyBrowser::allCustomPropertyItem(const QList<QtBrowserItem*>& items) const
 {
-	for(decltype(auto) item : items)
+	for (decltype(auto) item : items)
 		if (!isCustomPropertyItem(item)) return false;
 
 	return true;
@@ -122,7 +122,7 @@ void PropertyBrowser::propertyAdded(Object* object, const QString& name)
 	mUpdating = true;
 
 	auto id = nameToId(name, true);
-	if(mIdToProperty.contains(id))
+	if (mIdToProperty.contains(id))
 	{
 		mIdToProperty[id]->setValue(mObject->property(name));
 	}
@@ -157,7 +157,7 @@ void PropertyBrowser::propertyChanged(Object* object, const QString& name)
 
 	mUpdating = true;
 
-	if(value.userType() != property->valueType())
+	if (value.userType() != property->valueType())
 	{
 		auto propertyName = property->propertyName();
 		auto wasCurrent = currentItem() && currentItem()->property() == property;
@@ -179,17 +179,15 @@ void PropertyBrowser::propertyChanged(Object* object, const QString& name)
 void PropertyBrowser::valueChanged(QtProperty* property, const QVariant& val)
 {
 	if (mUpdating) return;
-
-	auto propertyName = property->propertyName();
-
 	if (!mDocument || !mObject) return;
 
+	auto propertyName = property->propertyName();
 	auto isProperty = mIdToProperty.contains(nameToId(propertyName, false));
 	auto isCustomProperty = mIdToProperty.contains(nameToId(propertyName, true));
-	
-	Q_ASSERT(isProperty || isCustomProperty);
 
-	if(isCustomProperty)
+	if (!isProperty && !isCustomProperty) return;
+
+	if (isCustomProperty)
 	{
 		auto undoStack = mDocument->undoStack();
 		undoStack->push(new SetProperty(mDocument, mObject,
@@ -197,7 +195,7 @@ void PropertyBrowser::valueChanged(QtProperty* property, const QVariant& val)
 	}
 	else
 	{
-		switch(mObject->type())
+		switch (mObject->type())
 		{
 		case Object::MapType:
 			applyMapValue(nameToId(propertyName, false), val);
@@ -227,7 +225,7 @@ void PropertyBrowser::addProperties()
 {
 	if (!mObject) return;
 
-	switch(mObject->type())
+	switch (mObject->type())
 	{
 	case Object::MapType:
 		addMapProperties();
@@ -253,7 +251,7 @@ void PropertyBrowser::updateProperties()
 {
 	Q_ASSERT(mObject);
 
-	switch(mObject->type())
+	switch (mObject->type())
 	{
 	case Object::MapType:
 		updateMapProperties();
@@ -277,7 +275,7 @@ void PropertyBrowser::updateCustomProperties()
 	decltype(auto) properties = mObject->properties();
 	QMapIterator<QString, QVariant> iter(properties);
 
-	while(iter.hasNext())
+	while (iter.hasNext())
 	{
 		iter.next();
 		mIdToProperty[nameToId(iter.key(), true)]->setValue(iter.value());
@@ -314,7 +312,7 @@ void PropertyBrowser::addMapProperties()
 	heightProperty->setEnabled(false);
 	tileWidthProperty->setEnabled(true);
 	tileHeightProperty->setEnabled(true);
-	
+
 	QtTreePropertyBrowser::addProperty(groupProperty);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -399,15 +397,15 @@ void PropertyBrowser::addLayerProperties()
 void PropertyBrowser::addCustomProperties()
 {
 	mCustomPropertiesGroup = mGroupManager->addProperty(tr("Custom Properties"));
-	
+
 	decltype(auto) properties = mObject->properties();
 	QMapIterator<QString, QVariant> iter(properties);
 
 	while (iter.hasNext())
 	{
 		iter.next();
-		
-		addProperty(nameToId(iter.key(), true), 
+
+		addProperty(nameToId(iter.key(), true),
 			iter.value().type(), iter.key(), mCustomPropertiesGroup);
 	}
 
@@ -466,7 +464,7 @@ void PropertyBrowser::updateLayerProperties()
 /*-----------------------------------------------------------------------------------------------------------*/
 void PropertyBrowser::applyMapValue(const QString& id, const QVariant& value)
 {
-	if(id == nameToId(tr("Map Orientation"), false))
+	if (id == nameToId(tr("Map Orientation"), false))
 	{
 		auto undoStack = mDocument->undoStack();
 		auto map = dynamic_cast<Map*>(mObject);
@@ -474,10 +472,10 @@ void PropertyBrowser::applyMapValue(const QString& id, const QVariant& value)
 		Q_ASSERT(mMapDocument);
 		Q_ASSERT(map);
 
-		undoStack->push(new ChangeMapProperty(mMapDocument, 
+		undoStack->push(new ChangeMapProperty(mMapDocument,
 			static_cast<Map::Orientation>(value.toInt())));
 	}
-	else if(id == nameToId(tr("Tile Render Order"), false))
+	else if (id == nameToId(tr("Tile Render Order"), false))
 	{
 		auto undoStack = mDocument->undoStack();
 		auto map = dynamic_cast<Map*>(mObject);
@@ -485,10 +483,10 @@ void PropertyBrowser::applyMapValue(const QString& id, const QVariant& value)
 		Q_ASSERT(mMapDocument);
 		Q_ASSERT(map);
 
-		undoStack->push(new ChangeMapProperty(mMapDocument, 
+		undoStack->push(new ChangeMapProperty(mMapDocument,
 			static_cast<Map::RenderOrder>(value.toInt())));
 	}
-	else if(id == nameToId(tr("Tile Width"), false) ||
+	else if (id == nameToId(tr("Tile Width"), false) ||
 		id == nameToId(tr("Tile Height"), false))
 	{
 		auto undoStack = mDocument->undoStack();
@@ -508,7 +506,7 @@ void PropertyBrowser::applyMapValue(const QString& id, const QVariant& value)
 /*-----------------------------------------------------------------------------------------------------------*/
 void PropertyBrowser::applyTilesetValue(const QString& id, const QVariant& value)
 {
-	if(id == nameToId(tr("Name"), false))
+	if (id == nameToId(tr("Name"), false))
 	{
 		auto undoStack = mDocument->undoStack();
 		auto tileset = dynamic_cast<Tileset*>(mObject);
@@ -538,16 +536,16 @@ void PropertyBrowser::applyLayerValue(const QString& id, const QVariant& value)
 		Q_ASSERT(layer);
 
 		if (id == nameToId(tr("Name"), false))
-			undoStack->push(new ChangeLayerProperty(mMapDocument, layer, 
+			undoStack->push(new ChangeLayerProperty(mMapDocument, layer,
 				value.toString()));
 		else if (id == nameToId(tr("Opacity"), false))
-			undoStack->push(new ChangeLayerProperty(mMapDocument, layer, 
+			undoStack->push(new ChangeLayerProperty(mMapDocument, layer,
 				value.toFloat()));
 		else if (id == nameToId(tr("Is Visible"), false))
 			undoStack->push(new ChangeLayerProperty(mMapDocument, layer,
 				value.toBool(), ChangeLayerProperty::BoolProperty::Visible));
 		else if (id == nameToId(tr("Is Locked"), false))
-			undoStack->push(new ChangeLayerProperty(mMapDocument, layer, 
+			undoStack->push(new ChangeLayerProperty(mMapDocument, layer,
 				value.toBool(), ChangeLayerProperty::BoolProperty::Locked));
 	}
 }
@@ -590,11 +588,11 @@ QtVariantProperty* PropertyBrowser::createProperty(const QString& id, int type, 
 	auto property = mVariantManager->addProperty(type, name);
 	Q_ASSERT(property);
 
-	if (type == QVariant::Bool) 
+	if (type == QVariant::Bool)
 		property->setAttribute(QLatin1String("textVisible"), false);
-	else if(type == QVariant::String) 
+	else if (type == QVariant::String)
 		property->setAttribute(QLatin1String("multiline"), true);
-	else if(type == QVariant::Double) 
+	else if (type == QVariant::Double)
 		property->setAttribute(QLatin1String("decimals"), 9);
 
 	mIdToProperty.insert(id, property);
@@ -617,7 +615,7 @@ QtVariantProperty* PropertyBrowser::createCustomProperty(const QString& id, int 
 	auto property = createProperty(id, type, name);
 
 	mCustomPropertiesGroup->insertSubProperty(property, precedingProperty);
-	
+
 	return property;
 }
 /*-----------------------------------------------------------------------------------------------------------*/

@@ -35,7 +35,7 @@
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>
-  <include location="tiledmapeditor.qrc"/>
+  <include location="Tiled.qrc"/>
  </resources>
  <connections/>
 </ui>

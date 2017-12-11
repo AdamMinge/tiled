@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'newmapdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.10.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -147,6 +147,9 @@ public:
         gridLayout_4 = new QGridLayout(groupBox);
         gridLayout_4->setObjectName(QStringLiteral("gridLayout_4"));
         orientation = new QComboBox(groupBox);
+        orientation->addItem(QString());
+        orientation->addItem(QString());
+        orientation->addItem(QString());
         orientation->setObjectName(QStringLiteral("orientation"));
         QSizePolicy sizePolicy1(QSizePolicy::Preferred, QSizePolicy::Fixed);
         sizePolicy1.setHorizontalStretch(1);
@@ -162,6 +165,10 @@ public:
         gridLayout_4->addWidget(renderOrderLabel, 1, 0, 1, 1);
 
         renderOrder = new QComboBox(groupBox);
+        renderOrder->addItem(QString());
+        renderOrder->addItem(QString());
+        renderOrder->addItem(QString());
+        renderOrder->addItem(QString());
         renderOrder->setObjectName(QStringLiteral("renderOrder"));
 
         gridLayout_4->addWidget(renderOrder, 1, 1, 1, 1);
@@ -204,33 +211,29 @@ public:
 
     void retranslateUi(QDialog *NewMapDialogClass)
     {
-        NewMapDialogClass->setWindowTitle(QApplication::translate("NewMapDialogClass", "New Map", Q_NULLPTR));
-        groupBox_3->setTitle(QApplication::translate("NewMapDialogClass", "Map size", Q_NULLPTR));
-        mapWidth->setSuffix(QApplication::translate("NewMapDialogClass", " tiles", Q_NULLPTR));
-        label_2->setText(QApplication::translate("NewMapDialogClass", "Height:", Q_NULLPTR));
-        mapHeight->setSuffix(QApplication::translate("NewMapDialogClass", " tiles", Q_NULLPTR));
-        label->setText(QApplication::translate("NewMapDialogClass", "Width:", Q_NULLPTR));
-        groupBox_2->setTitle(QApplication::translate("NewMapDialogClass", "Tile size", Q_NULLPTR));
-        label_3->setText(QApplication::translate("NewMapDialogClass", "Width:", Q_NULLPTR));
-        tileWidth->setSuffix(QApplication::translate("NewMapDialogClass", " px", Q_NULLPTR));
-        label_4->setText(QApplication::translate("NewMapDialogClass", "Height:", Q_NULLPTR));
-        tileHeight->setSuffix(QApplication::translate("NewMapDialogClass", " px", Q_NULLPTR));
-        groupBox->setTitle(QApplication::translate("NewMapDialogClass", "Map", Q_NULLPTR));
-        orientation->clear();
-        orientation->insertItems(0, QStringList()
-         << QApplication::translate("NewMapDialogClass", "Orthogonal", Q_NULLPTR)
-         << QApplication::translate("NewMapDialogClass", "Isometric", Q_NULLPTR)
-         << QApplication::translate("NewMapDialogClass", "Hexagonal", Q_NULLPTR)
-        );
-        renderOrderLabel->setText(QApplication::translate("NewMapDialogClass", "Tile render order:", Q_NULLPTR));
-        renderOrder->clear();
-        renderOrder->insertItems(0, QStringList()
-         << QApplication::translate("NewMapDialogClass", "Right Down", Q_NULLPTR)
-         << QApplication::translate("NewMapDialogClass", "Right Up", Q_NULLPTR)
-         << QApplication::translate("NewMapDialogClass", "Left Down", Q_NULLPTR)
-         << QApplication::translate("NewMapDialogClass", "Left Up", Q_NULLPTR)
-        );
-        label_5->setText(QApplication::translate("NewMapDialogClass", "Orientation:", Q_NULLPTR));
+        NewMapDialogClass->setWindowTitle(QApplication::translate("NewMapDialogClass", "New Map", nullptr));
+        groupBox_3->setTitle(QApplication::translate("NewMapDialogClass", "Map size", nullptr));
+        mapWidth->setSuffix(QApplication::translate("NewMapDialogClass", " tiles", nullptr));
+        label_2->setText(QApplication::translate("NewMapDialogClass", "Height:", nullptr));
+        mapHeight->setSuffix(QApplication::translate("NewMapDialogClass", " tiles", nullptr));
+        label->setText(QApplication::translate("NewMapDialogClass", "Width:", nullptr));
+        groupBox_2->setTitle(QApplication::translate("NewMapDialogClass", "Tile size", nullptr));
+        label_3->setText(QApplication::translate("NewMapDialogClass", "Width:", nullptr));
+        tileWidth->setSuffix(QApplication::translate("NewMapDialogClass", " px", nullptr));
+        label_4->setText(QApplication::translate("NewMapDialogClass", "Height:", nullptr));
+        tileHeight->setSuffix(QApplication::translate("NewMapDialogClass", " px", nullptr));
+        groupBox->setTitle(QApplication::translate("NewMapDialogClass", "Map", nullptr));
+        orientation->setItemText(0, QApplication::translate("NewMapDialogClass", "Orthogonal", nullptr));
+        orientation->setItemText(1, QApplication::translate("NewMapDialogClass", "Isometric", nullptr));
+        orientation->setItemText(2, QApplication::translate("NewMapDialogClass", "Hexagonal", nullptr));
+
+        renderOrderLabel->setText(QApplication::translate("NewMapDialogClass", "Tile render order:", nullptr));
+        renderOrder->setItemText(0, QApplication::translate("NewMapDialogClass", "Right Down", nullptr));
+        renderOrder->setItemText(1, QApplication::translate("NewMapDialogClass", "Right Up", nullptr));
+        renderOrder->setItemText(2, QApplication::translate("NewMapDialogClass", "Left Down", nullptr));
+        renderOrder->setItemText(3, QApplication::translate("NewMapDialogClass", "Left Up", nullptr));
+
+        label_5->setText(QApplication::translate("NewMapDialogClass", "Orientation:", nullptr));
     } // retranslateUi
 
 };

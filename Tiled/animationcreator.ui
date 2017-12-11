@@ -160,7 +160,7 @@
   </customwidget>
  </customwidgets>
  <resources>
-  <include location="mapeditor.qrc"/>
+  <include location="Tiled.qrc"/>
  </resources>
  <connections>
   <connection>

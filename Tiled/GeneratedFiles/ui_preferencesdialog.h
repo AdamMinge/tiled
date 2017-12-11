@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'preferencesdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.10.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -121,12 +121,12 @@ public:
 
     void retranslateUi(QDialog *PreferencesDialog)
     {
-        PreferencesDialog->setWindowTitle(QApplication::translate("PreferencesDialog", "Dialog", Q_NULLPTR));
-        interfaceBox->setTitle(QApplication::translate("PreferencesDialog", "Interface", Q_NULLPTR));
-        label->setText(QApplication::translate("PreferencesDialog", "Language:", Q_NULLPTR));
-        label_2->setText(QApplication::translate("PreferencesDialog", "Styles:", Q_NULLPTR));
-        preferencesTab->setTabText(preferencesTab->indexOf(generalTab), QApplication::translate("PreferencesDialog", "General", Q_NULLPTR));
-        closeButton->setText(QApplication::translate("PreferencesDialog", "Close", Q_NULLPTR));
+        PreferencesDialog->setWindowTitle(QApplication::translate("PreferencesDialog", "Dialog", nullptr));
+        interfaceBox->setTitle(QApplication::translate("PreferencesDialog", "Interface", nullptr));
+        label->setText(QApplication::translate("PreferencesDialog", "Language:", nullptr));
+        label_2->setText(QApplication::translate("PreferencesDialog", "Styles:", nullptr));
+        preferencesTab->setTabText(preferencesTab->indexOf(generalTab), QApplication::translate("PreferencesDialog", "General", nullptr));
+        closeButton->setText(QApplication::translate("PreferencesDialog", "Close", nullptr));
     } // retranslateUi
 
 };

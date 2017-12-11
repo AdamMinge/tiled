@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'newtilesetdialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.10.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -253,31 +253,31 @@ public:
 
     void retranslateUi(QDialog *NewTilesetDialogClass)
     {
-        NewTilesetDialogClass->setWindowTitle(QApplication::translate("NewTilesetDialogClass", "New Tileset", Q_NULLPTR));
-        tilesetGroupBox->setTitle(QApplication::translate("NewTilesetDialogClass", "Tileset", Q_NULLPTR));
-        nameLabel->setText(QApplication::translate("NewTilesetDialogClass", "&Name:", Q_NULLPTR));
-        imageGroupBox->setTitle(QApplication::translate("NewTilesetDialogClass", "Image", Q_NULLPTR));
-        spacing->setSuffix(QApplication::translate("NewTilesetDialogClass", " px", Q_NULLPTR));
+        NewTilesetDialogClass->setWindowTitle(QApplication::translate("NewTilesetDialogClass", "New Tileset", nullptr));
+        tilesetGroupBox->setTitle(QApplication::translate("NewTilesetDialogClass", "Tileset", nullptr));
+        nameLabel->setText(QApplication::translate("NewTilesetDialogClass", "&Name:", nullptr));
+        imageGroupBox->setTitle(QApplication::translate("NewTilesetDialogClass", "Image", nullptr));
+        spacing->setSuffix(QApplication::translate("NewTilesetDialogClass", " px", nullptr));
 #ifndef QT_NO_TOOLTIP
         marginLabel->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-        marginLabel->setText(QApplication::translate("NewTilesetDialogClass", "Margin:", Q_NULLPTR));
-        tileWidthLabel->setText(QApplication::translate("NewTilesetDialogClass", "Tile width:", Q_NULLPTR));
-        margin->setSuffix(QApplication::translate("NewTilesetDialogClass", " px", Q_NULLPTR));
+        marginLabel->setText(QApplication::translate("NewTilesetDialogClass", "Margin:", nullptr));
+        tileWidthLabel->setText(QApplication::translate("NewTilesetDialogClass", "Tile width:", nullptr));
+        margin->setSuffix(QApplication::translate("NewTilesetDialogClass", " px", nullptr));
 #ifndef QT_NO_TOOLTIP
         spacingLabel->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
-        spacingLabel->setText(QApplication::translate("NewTilesetDialogClass", "Spacing:", Q_NULLPTR));
-        tileHeightLabel->setText(QApplication::translate("NewTilesetDialogClass", "Tile height:", Q_NULLPTR));
-        tileWidth->setSuffix(QApplication::translate("NewTilesetDialogClass", " px", Q_NULLPTR));
-        tileHeight->setSuffix(QApplication::translate("NewTilesetDialogClass", " px", Q_NULLPTR));
-        useTransparentColor->setText(QApplication::translate("NewTilesetDialogClass", "Use transparent color:", Q_NULLPTR));
-        sourceLabel->setText(QApplication::translate("NewTilesetDialogClass", "Source:", Q_NULLPTR));
+        spacingLabel->setText(QApplication::translate("NewTilesetDialogClass", "Spacing:", nullptr));
+        tileHeightLabel->setText(QApplication::translate("NewTilesetDialogClass", "Tile height:", nullptr));
+        tileWidth->setSuffix(QApplication::translate("NewTilesetDialogClass", " px", nullptr));
+        tileHeight->setSuffix(QApplication::translate("NewTilesetDialogClass", " px", nullptr));
+        useTransparentColor->setText(QApplication::translate("NewTilesetDialogClass", "Use transparent color:", nullptr));
+        sourceLabel->setText(QApplication::translate("NewTilesetDialogClass", "Source:", nullptr));
 #ifndef QT_NO_TOOLTIP
         dropperButton->setToolTip(QString());
 #endif // QT_NO_TOOLTIP
         dropperButton->setText(QString());
-        browseButton->setText(QApplication::translate("NewTilesetDialogClass", "&Browse...", Q_NULLPTR));
+        browseButton->setText(QApplication::translate("NewTilesetDialogClass", "&Browse...", nullptr));
     } // retranslateUi
 
 };

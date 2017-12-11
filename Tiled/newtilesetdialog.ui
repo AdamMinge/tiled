@@ -291,7 +291,7 @@
          <string/>
         </property>
         <property name="icon">
-         <iconset resource="mapeditor.qrc">
+         <iconset>
           <normaloff>:/MapEditor/images/16x16/stock-tool-color-picker-16.png</normaloff>:/MapEditor/images/16x16/stock-tool-color-picker-16.png</iconset>
         </property>
        </widget>
@@ -337,7 +337,7 @@
   <tabstop>spacing</tabstop>
  </tabstops>
  <resources>
-  <include location="mapeditor.qrc"/>
+  <include location="Tiled.qrc"/>
  </resources>
  <connections>
   <connection>

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'addpropertydialog.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.10.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -68,8 +68,8 @@ public:
 
     void retranslateUi(QDialog *AddPropertyDialogClass)
     {
-        AddPropertyDialogClass->setWindowTitle(QApplication::translate("AddPropertyDialogClass", "Add Property", Q_NULLPTR));
-        name->setPlaceholderText(QApplication::translate("AddPropertyDialogClass", "Property name", Q_NULLPTR));
+        AddPropertyDialogClass->setWindowTitle(QApplication::translate("AddPropertyDialogClass", "Add Property", nullptr));
+        name->setPlaceholderText(QApplication::translate("AddPropertyDialogClass", "Property name", nullptr));
     } // retranslateUi
 
 };

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'animationcreator.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.10.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -128,9 +128,9 @@ public:
 
     void retranslateUi(QDialog *AnimationCreatorClass)
     {
-        AnimationCreatorClass->setWindowTitle(QApplication::translate("AnimationCreatorClass", "Dialog", Q_NULLPTR));
+        AnimationCreatorClass->setWindowTitle(QApplication::translate("AnimationCreatorClass", "Dialog", nullptr));
         preview->setText(QString());
-        cancelButton->setText(QApplication::translate("AnimationCreatorClass", "Cancel", Q_NULLPTR));
+        cancelButton->setText(QApplication::translate("AnimationCreatorClass", "Cancel", nullptr));
     } // retranslateUi
 
 };

@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'noeditorwidget.ui'
 **
-** Created by: Qt User Interface Compiler version 5.9.1
+** Created by: Qt User Interface Compiler version 5.10.0
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -92,9 +92,9 @@ public:
 
     void retranslateUi(QWidget *NoEditorWidgetClass)
     {
-        NoEditorWidgetClass->setWindowTitle(QApplication::translate("NoEditorWidgetClass", "Form", Q_NULLPTR));
-        label->setText(QApplication::translate("NoEditorWidgetClass", "No Open Documents", Q_NULLPTR));
-        newMapButton->setText(QApplication::translate("NoEditorWidgetClass", "New Map...", Q_NULLPTR));
+        NoEditorWidgetClass->setWindowTitle(QApplication::translate("NoEditorWidgetClass", "Form", nullptr));
+        label->setText(QApplication::translate("NoEditorWidgetClass", "No Open Documents", nullptr));
+        newMapButton->setText(QApplication::translate("NoEditorWidgetClass", "New Map...", nullptr));
     } // retranslateUi
 
 };

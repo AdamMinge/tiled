@@ -8,7 +8,7 @@
 class Tileset;
 class Frame;
 /*-----------------------------------------------------------------------------------------------------------*/
-class TILEDOBJECTS_EXPORT Tile final : public Object
+class TILEDOBJECTS_EXPORT Tile : public Object
 {
 public:
 	explicit Tile(Tileset* tileset, const QPixmap &image, int id);

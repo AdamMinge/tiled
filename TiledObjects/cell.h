@@ -6,7 +6,7 @@
 class Tileset;
 class Tile;
 /*-----------------------------------------------------------------------------------------------------------*/
-class TILEDOBJECTS_EXPORT Cell final
+class TILEDOBJECTS_EXPORT Cell
 {
 public:
 	explicit Cell(Tile* tile = nullptr);

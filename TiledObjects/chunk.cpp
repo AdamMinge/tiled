@@ -2,20 +2,23 @@
 #include "chunk.h"
 #include "tiledutils.h"
 /*-----------------------------------------------------------------------------------------------------------*/
-Chunk::Chunk() :
+template<typename CELL>
+Chunk<CELL>::Chunk() :
 	mGrid(chunkSize() * chunkSize())
 {
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-bool Chunk::contains(const QPoint& point) const
+template<typename CELL>
+bool Chunk<CELL>::contains(const QPoint& point) const
 {
-	auto index = (point.x() + point.y() * chunkSize());
+	const auto index = (point.x() + point.y() * chunkSize());
 	
 	if (index < 0 || index >= mGrid.count()) return false;
 	else return true;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-const Cell& Chunk::cell(const QPoint& point) const
+template<typename CELL>
+const CELL& Chunk<CELL>::cell(const QPoint& point) const
 {
 	auto cell = findCell(point);
 	Q_ASSERT(cell);
@@ -23,23 +26,27 @@ const Cell& Chunk::cell(const QPoint& point) const
 	return *cell;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-const Cell* Chunk::findCell(const QPoint& point) const
+template<typename CELL>
+const CELL* Chunk<CELL>::findCell(const QPoint& point) const
 {
 	if (contains(point)) return &mGrid[(point.x() + point.y() * chunkSize())];
 	else return nullptr;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void Chunk::setCell(const QPoint& point, const Cell& cell)
+template<typename CELL>
+void Chunk<CELL>::setCell(const QPoint& point, const CELL& cell)
 {
 	mGrid[point.x() + point.y() * chunkSize()] = cell;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void Chunk::setCell(const QPoint& point, Cell&& cell)
+template<typename CELL>
+void Chunk<CELL>::setCell(const QPoint& point, CELL&& cell)
 {
 	mGrid[point.x() + point.y() * chunkSize()] = std::move(cell);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-bool Chunk::isEmpty() const
+template<typename CELL>
+bool Chunk<CELL>::isEmpty() const
 {
 	for(auto y = 0; y < chunkSize(); y++)
 		for(auto x = 0; x < chunkSize(); x++)
@@ -48,22 +55,38 @@ bool Chunk::isEmpty() const
 	return true;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-QVector<Cell>::const_iterator Chunk::begin() const
+template <typename CELL>
+bool Chunk<CELL>::operator==(const Chunk& chunk) const
+{
+	return mGrid == chunk.mGrid;
+}
+/*-----------------------------------------------------------------------------------------------------------*/
+template <typename CELL>
+bool Chunk<CELL>::operator!=(const Chunk& chunk) const
+{
+	return mGrid != chunk.mGrid;
+}
+/*-----------------------------------------------------------------------------------------------------------*/
+template<typename CELL>
+typename QVector<CELL>::const_iterator Chunk<CELL>::begin() const
 {
 	return mGrid.begin();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-QVector<Cell>::iterator Chunk::begin()
+template<typename CELL>
+typename QVector<CELL>::iterator Chunk<CELL>::begin()
 {
 	return mGrid.begin();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-QVector<Cell>::const_iterator Chunk::end() const
+template<typename CELL>
+typename QVector<CELL>::const_iterator Chunk<CELL>::end() const
 {
 	return mGrid.end();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-QVector<Cell>::iterator Chunk::end()
+template<typename CELL>
+typename QVector<CELL>::iterator Chunk<CELL>::end()
 {
 	return mGrid.end();
 }

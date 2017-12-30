@@ -2,9 +2,9 @@
 #pragma once
 /*-----------------------------------------------------------------------------------------------------------*/
 #include <QVector>
-#include "cell.h"
 #include "tiledobjects_global.h"
 /*-----------------------------------------------------------------------------------------------------------*/
+template<typename CELL>
 class TILEDOBJECTS_EXPORT Chunk final
 {
 public:
@@ -19,21 +19,24 @@ public:
 
 	bool contains(const QPoint& point) const;
 
-	const Cell& cell(const QPoint& point) const;
-	const Cell* findCell(const QPoint& point) const;
+	const CELL& cell(const QPoint& point) const;
+	const CELL* findCell(const QPoint& point) const;
 
-	void setCell(const QPoint& point, const Cell& cell);
-	void setCell(const QPoint& point, Cell&& cell);
+	void setCell(const QPoint& point, const CELL& cell);
+	void setCell(const QPoint& point, CELL&& cell);
 
 	bool isEmpty() const;
 
-	QVector<Cell>::const_iterator begin() const;
-	QVector<Cell>::iterator begin();
+	bool operator==(const Chunk& chunk) const;
+	bool operator!=(const Chunk& chunk) const;
 
-	QVector<Cell>::const_iterator end() const;
-	QVector<Cell>::iterator end();
+	typename QVector<CELL>::const_iterator begin() const;
+	typename QVector<CELL>::iterator begin();
+
+	typename QVector<CELL>::const_iterator end() const;
+	typename QVector<CELL>::iterator end();
 
 private:
-	QVector<Cell> mGrid;
+	QVector<CELL> mGrid;
 };
 /*-----------------------------------------------------------------------------------------------------------*/

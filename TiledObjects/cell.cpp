@@ -1,16 +1,16 @@
 ﻿/*-----------------------------------------------------------------------------------------------------------*/
 #include "cell.h"
-#include "tileset.h"
-#include "tile.h"
 /*-----------------------------------------------------------------------------------------------------------*/
-Cell::Cell(Tile* tile) :
+template<typename TILESET, typename TILE>
+Cell<TILESET,TILE>::Cell(TILE* tile) :
 	mTileset((tile) ? tile->tileset() : nullptr),
 	mId((tile) ? tile->id() : -1)
 {
 
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-Cell::Cell(Cell&& other) noexcept
+template<typename TILESET, typename TILE>
+Cell<TILESET, TILE>::Cell(Cell<TILESET, TILE>&& other) noexcept
 {
 	mTileset = other.mTileset;
 	mId = other.mId;
@@ -19,7 +19,8 @@ Cell::Cell(Cell&& other) noexcept
 	other.mId = -1;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-Cell& Cell::operator=(Cell&& other) noexcept
+template<typename TILESET, typename TILE>
+Cell<TILESET, TILE>& Cell<TILESET, TILE>::operator=(Cell<TILESET, TILE>&& other) noexcept
 {
 	mTileset = other.mTileset;
 	mId = other.mId;
@@ -30,34 +31,40 @@ Cell& Cell::operator=(Cell&& other) noexcept
 	return *this;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-bool Cell::operator==(const Cell& other) const
+template<typename TILESET, typename TILE>
+bool Cell<TILESET, TILE>::operator==(const Cell<TILESET, TILE>& other) const
 {
 	if (mTileset != other.mTileset || mId != other.mId) return false;
 	else return true;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-bool Cell::operator!=(const Cell& other) const
+template<typename TILESET, typename TILE>
+bool Cell<TILESET, TILE>::operator!=(const Cell<TILESET, TILE>& other) const
 {
 	return !(*this == other);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-bool Cell::isEmpty() const
+template<typename TILESET, typename TILE>
+bool Cell<TILESET, TILE>::isEmpty() const
 {
 	return !mTileset;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-Tileset* Cell::tileset() const
+template<typename TILESET, typename TILE>
+TILESET* Cell<TILESET, TILE>::tileset() const
 {
 	return mTileset;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-Tile* Cell::tile() const
+template<typename TILESET, typename TILE>
+TILE* Cell<TILESET, TILE>::tile() const
 {
 	if(mTileset) return mTileset->tile(mId);
 	else return nullptr;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void Cell::setTile(Tile* tile)
+template<typename TILESET, typename TILE>
+void Cell<TILESET, TILE>::setTile(TILE* tile)
 {
 	if(tile)
 	{
@@ -71,7 +78,8 @@ void Cell::setTile(Tile* tile)
 	}
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-int Cell::tileId() const
+template<typename TILESET, typename TILE>
+int Cell<TILESET, TILE>::tileId() const
 {
 	return mId;
 }

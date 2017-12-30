@@ -7,7 +7,7 @@
 /*-----------------------------------------------------------------------------------------------------------*/
 class Tile;
 /*-----------------------------------------------------------------------------------------------------------*/
-class TILEDOBJECTS_EXPORT Tileset : public Object
+class TILEDOBJECTS_EXPORT Tileset final : public Object
 {
 public:
 	explicit Tileset(const QString& name, const ImageReference& imageReference,

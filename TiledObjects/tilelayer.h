@@ -4,7 +4,11 @@
 #include <QRect>
 #include "layer.h"
 #include "chunk.h"
+#include "cell.h"
 #include "tiledobjects_global.h"
+/*-----------------------------------------------------------------------------------------------------------*/
+class Tileset;
+class Tile;
 /*-----------------------------------------------------------------------------------------------------------*/
 inline uint TILEDOBJECTS_EXPORT qHash(const QPoint &key, const uint seed = 0) Q_DECL_NOTHROW
 {
@@ -15,6 +19,10 @@ inline uint TILEDOBJECTS_EXPORT qHash(const QPoint &key, const uint seed = 0) Q_
 /*-----------------------------------------------------------------------------------------------------------*/
 class TILEDOBJECTS_EXPORT TileLayer final : public Layer
 {
+private:
+	using UCell = Cell<Tileset, Tile>;
+	using UChunk = Chunk<UCell>;
+
 public:
 	class Iterator;
 	class ConstIterator;
@@ -31,14 +39,14 @@ public:
 
 	bool contains(const QPoint& point) const;
 
-	const Chunk& chunk(const QPoint& point) const;
-	const Chunk* findChunk(const QPoint& point) const;
+	const UChunk& chunk(const QPoint& point) const;
+	const UChunk* findChunk(const QPoint& point) const;
 
-	const Cell &cell(const QPoint& point) const;
-	const Cell* findCell(const QPoint& point) const;
+	const UCell &cell(const QPoint& point) const;
+	const UCell* findCell(const QPoint& point) const;
 
-	void setCell(const QPoint& point, const Cell& cell);
-	void setCell(const QPoint& point, Cell&& cell);
+	void setCell(const QPoint& point, const UCell& cell);
+	void setCell(const QPoint& point, UCell&& cell);
 
 	bool isEmpty() const override;
 	QList<Tileset*> usedTilesets() const override;
@@ -58,20 +66,20 @@ public:
 
 private:
 	TileLayer* initializeClone(TileLayer* clone) const;
-	Chunk* findChunk(const QPoint& point);
+	UChunk* findChunk(const QPoint& point);
 
 private:
 	QSize mSize;
 	QRect mBounds;
-	Cell mEmptyCell;
-	QHash<QPoint, Chunk> mChunks;
+	UCell mEmptyCell;
+	QHash<QPoint, UChunk> mChunks;
 	QMap<const Tileset*, unsigned> mUsedTileset;
 };
 /*-----------------------------------------------------------------------------------------------------------*/
 class TILEDOBJECTS_EXPORT TileLayer::Iterator
 {
 public:
-	explicit Iterator(QHash<QPoint, Chunk>::Iterator start, QHash<QPoint, Chunk>::Iterator end);
+	explicit Iterator(QHash<QPoint, UChunk>::Iterator start, QHash<QPoint, UChunk>::Iterator end);
 
 	Iterator(const Iterator&) = default;
 	Iterator(Iterator&&) = default;
@@ -85,10 +93,10 @@ public:
 	bool operator==(const Iterator& other) const;
 	bool operator!=(const Iterator& other) const;
 
-	Cell& operator*() const;
-	Cell* operator->() const;
+	UCell& operator*() const;
+	UCell* operator->() const;
 
-	Cell& value() const;
+	UCell& value() const;
 	QPoint key() const;
 
 	bool hasNext() const;
@@ -97,15 +105,15 @@ private:
 	void advance();
 
 private:
-	QHash<QPoint, Chunk>::Iterator mChunkIter;
-	QHash<QPoint, Chunk>::Iterator mChunkEndIter;
-	QVector<Cell>::Iterator mCellIter;
+	QHash<QPoint, UChunk>::Iterator mChunkIter;
+	QHash<QPoint, UChunk>::Iterator mChunkEndIter;
+	QVector<UCell>::Iterator mCellIter;
 };
 /*-----------------------------------------------------------------------------------------------------------*/
 class TILEDOBJECTS_EXPORT TileLayer::ConstIterator
 {
 public:
-	explicit ConstIterator(QHash<QPoint, Chunk>::ConstIterator start, QHash<QPoint, Chunk>::ConstIterator end);
+	explicit ConstIterator(QHash<QPoint, UChunk>::ConstIterator start, QHash<QPoint, UChunk>::ConstIterator end);
 
 	ConstIterator(const ConstIterator&) = default;
 	ConstIterator(ConstIterator&&) = default;
@@ -119,10 +127,10 @@ public:
 	bool operator==(const ConstIterator& other) const;
 	bool operator!=(const ConstIterator& other) const;
 
-	const Cell& operator*() const;
-	const Cell* operator->() const;
+	const UCell& operator*() const;
+	const UCell* operator->() const;
 
-	const Cell& value() const;
+	const UCell& value() const;
 	QPoint key() const;
 
 	bool hasNext() const;
@@ -131,8 +139,8 @@ private:
 	void advance();
 
 private:
-	QHash<QPoint, Chunk>::ConstIterator mChunkIter;
-	QHash<QPoint, Chunk>::ConstIterator mChunkEndIter;
-	QVector<Cell>::ConstIterator mCellIter;
+	QHash<QPoint, UChunk>::ConstIterator mChunkIter;
+	QHash<QPoint, UChunk>::ConstIterator mChunkEndIter;
+	QVector<UCell>::ConstIterator mCellIter;
 };
 /*-----------------------------------------------------------------------------------------------------------*/

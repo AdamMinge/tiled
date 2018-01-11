@@ -38,7 +38,7 @@ QVariant TilesetTableModel::data(const QModelIndex& index, int role) const
 {
 	if(role == Qt::DecorationRole)
 	{
-		if (auto tileAtIndex = tile(index))
+		if (const auto tileAtIndex = tile(index))
 			return tileAtIndex->image();
 	}
 
@@ -56,7 +56,7 @@ QVariant TilesetTableModel::headerData(int section, Qt::Orientation orientation,
 /*-----------------------------------------------------------------------------------------------------------*/
 Qt::ItemFlags TilesetTableModel::flags(const QModelIndex& index) const 
 {
-	auto defaultFlags = QAbstractListModel::flags(index);
+	const auto defaultFlags = QAbstractListModel::flags(index);
 
 	if (index.isValid()) return defaultFlags | Qt::ItemIsDragEnabled;
 	else return defaultFlags;
@@ -109,9 +109,9 @@ QModelIndex TilesetTableModel::index(Tile* tile) const
 
 	if(mTileset->contains(tile))
 	{
-		auto id = tile->id();
-		auto column = id % columnCount();
-		auto row = id / columnCount();
+		const auto id = tile->id();
+		const auto column = id % columnCount();
+		const auto row = id / columnCount();
 
 		return createIndex(row, column);;
 	}

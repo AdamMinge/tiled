@@ -31,7 +31,7 @@ void MoveLayer::moveLayer()
 {
 	auto parent = mLayer->parent();
 	auto siblings = mLayer->siblings();
-	auto index = mLayer->siblingIndex();
+	const auto index = mLayer->siblingIndex();
 
 	auto insertionParent = parent;
 	auto insertionIndex = mMove == Move::Lower ? index - 1 : index + 1;

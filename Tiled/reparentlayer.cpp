@@ -44,7 +44,7 @@ int ReparentLayer::id() const
 /*-----------------------------------------------------------------------------------------------------------*/
 bool ReparentLayer::canMergeWith(const Command* other) const
 {
-	auto changeLayerProperty = static_cast<const ReparentLayer*>(other);
+	const auto changeLayerProperty = static_cast<const ReparentLayer*>(other);
 
 	if (mMapDocument != changeLayerProperty->mMapDocument ||
 		mLayer != changeLayerProperty->mLayer) return false;
@@ -54,7 +54,7 @@ bool ReparentLayer::canMergeWith(const Command* other) const
 /*-----------------------------------------------------------------------------------------------------------*/
 void ReparentLayer::mergeWith(const Command* other) 
 {
-	auto changeLayerProperty = static_cast<const ReparentLayer*>(other);
+	const auto changeLayerProperty = static_cast<const ReparentLayer*>(other);
 
 	mNewParent = changeLayerProperty->mNewParent;
 	mNewIndex = changeLayerProperty->mNewIndex;

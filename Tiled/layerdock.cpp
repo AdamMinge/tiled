@@ -1,7 +1,6 @@
 ﻿/*-----------------------------------------------------------------------------------------------------------*/
 #include <QEvent>
 #include <QMenu>
-#include <QAction>
 #include <QToolBar>
 #include <QVBoxLayout>
 #include <QToolButton>

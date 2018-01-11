@@ -250,12 +250,12 @@ void MapDocumentActionHandler::newTileset()
 {
 	Q_ASSERT(mMapDocument);
 
-	auto startLocation = PreferencesManager::instance()->recentImageDirectory();
+	const auto startLocation = PreferencesManager::instance()->recentImageDirectory();
 
 	NewTilesetDialog newTilesetDialog;
 	newTilesetDialog.setImagePath(startLocation);
 
-	auto tileset = newTilesetDialog.createTileset();
+	const auto tileset = newTilesetDialog.createTileset();
 	if (!tileset) return;
 
 	PreferencesManager::instance()->setRecentImageDirectory(QFileInfo(tileset->imageReference().source()).absolutePath());
@@ -282,8 +282,8 @@ void MapDocumentActionHandler::tilesetProperties()
 void MapDocumentActionHandler::selectNextTileset()
 {
 	Q_ASSERT(mMapDocument);
-	auto index = mMapDocument->map()->tilesets().indexOf(mMapDocument->currentTileset());
-	auto nextTileset = mMapDocument->map()->tilesets().at(index + 1);
+	const auto index = mMapDocument->map()->tilesets().indexOf(mMapDocument->currentTileset());
+	const auto nextTileset = mMapDocument->map()->tilesets().at(index + 1);
 
 	mMapDocument->setCurrentTileset(nextTileset);
 }
@@ -291,8 +291,8 @@ void MapDocumentActionHandler::selectNextTileset()
 void MapDocumentActionHandler::selectPreviousTileset()
 {
 	Q_ASSERT(mMapDocument);
-	auto index = mMapDocument->map()->tilesets().indexOf(mMapDocument->currentTileset());
-	auto previousTileset = mMapDocument->map()->tilesets().at(index - 1);
+	const auto index = mMapDocument->map()->tilesets().indexOf(mMapDocument->currentTileset());
+	const auto previousTileset = mMapDocument->map()->tilesets().at(index - 1);
 
 	mMapDocument->setCurrentTileset(previousTileset);
 }
@@ -352,7 +352,7 @@ void MapDocumentActionHandler::newTileLayer()
 	Q_ASSERT(!name.isEmpty());
 	Q_ASSERT(!size.isEmpty());
 
-	auto newLayer = new TileLayer(name, size);
+	const auto newLayer = new TileLayer(name, size);
 
 	auto undoStack = mMapDocument->undoStack();
 	undoStack->push(new AddLayer(mMapDocument, newLayer, parentLayer));
@@ -373,7 +373,7 @@ void MapDocumentActionHandler::newGroupLayer()
 	Q_ASSERT(parentLayer);
 	Q_ASSERT(!name.isEmpty());
 
-	auto newLayer = new GroupLayer(name);
+	const auto newLayer = new GroupLayer(name);
 
 	auto undoStack = mMapDocument->undoStack();
 	undoStack->push(new AddLayer(mMapDocument, newLayer, parentLayer));
@@ -383,12 +383,12 @@ void MapDocumentActionHandler::groupLayer()
 {
 	Q_ASSERT(mMapDocument);
 	auto currentLayer = mMapDocument->currentLayer();
-	auto newGroupLayer = new GroupLayer("groupLayer");
+	const auto newGroupLayer = new GroupLayer("groupLayer");
 	auto commands = QList<Command*>{};
 	
 	Q_ASSERT(currentLayer);
 	auto parentLayer = currentLayer->parent();
-	auto index = currentLayer->siblingIndex() + 1;
+	const auto index = currentLayer->siblingIndex() + 1;
 
 	Q_ASSERT(parentLayer);
 	commands.append(new AddLayer(mMapDocument, index, newGroupLayer, parentLayer));
@@ -408,7 +408,7 @@ void MapDocumentActionHandler::ungroupLayer()
 	GroupLayer* groupLayer = nullptr;
 
 	Q_ASSERT(currentLayer);
-	if(auto layer = dynamic_cast<GroupLayer*>(currentLayer))
+	if(const auto layer = dynamic_cast<GroupLayer*>(currentLayer))
 	{
 		layers = layer->layers();
 		groupLayer = layer;
@@ -422,7 +422,7 @@ void MapDocumentActionHandler::ungroupLayer()
 
 	Q_ASSERT(groupLayer);
 	auto parent = groupLayer->parent();
-	auto index = groupLayer->siblingIndex();
+	const auto index = groupLayer->siblingIndex();
 	Q_ASSERT(parent);
 
 	for(auto iter = layers.rbegin(); iter != layers.rend(); ++iter)
@@ -441,9 +441,9 @@ void MapDocumentActionHandler::duplicateLayer()
 	auto currentLayer = mMapDocument->currentLayer();
 
 	Q_ASSERT(currentLayer);
-	auto parent = currentLayer->parent();
-	auto index = currentLayer->siblingIndex();
-	auto newLayer = currentLayer->clone();
+	const auto parent = currentLayer->parent();
+	const auto index = currentLayer->siblingIndex();
+	const auto newLayer = currentLayer->clone();
 
 	auto undoStack = mMapDocument->undoStack();
 	auto command = new AddLayer(mMapDocument, index, newLayer, parent);
@@ -636,22 +636,22 @@ void MapDocumentActionHandler::updateActions()
 
 	if(mMapDocument)
 	{
-		auto currentTileset = mMapDocument->currentTileset();
-		auto lastTileset = currentTileset ? mMapDocument->map()->tilesets().last() : nullptr;
-		auto firstTileset = currentTileset ? mMapDocument->map()->tilesets().first() : nullptr;
+		const auto currentTileset = mMapDocument->currentTileset();
+		const auto lastTileset = currentTileset ? mMapDocument->map()->tilesets().last() : nullptr;
+		const auto firstTileset = currentTileset ? mMapDocument->map()->tilesets().first() : nullptr;
 
 		isCurrentTileset = static_cast<bool>(currentTileset);
 		canSelectNextTileset = lastTileset != currentTileset;
 		canSelectPreviousTileset = firstTileset != currentTileset;
 
-		auto currentLayer = mMapDocument->currentLayer();
-		auto currentGroupLayer = dynamic_cast<GroupLayer*>(currentLayer);
-		auto currentLayerParent = currentLayer->parent();
-		auto rootLayer = mMapDocument->map()->rootLayer();
+		const auto currentLayer = mMapDocument->currentLayer();
+		const auto currentGroupLayer = dynamic_cast<GroupLayer*>(currentLayer);
+		const auto currentLayerParent = currentLayer->parent();
+		const auto rootLayer = mMapDocument->map()->rootLayer();
 		auto currentLayerIter = LayerIterator<PostOrderLayerIteration>(rootLayer, currentLayer);
-		auto mergeLayerDown = (currentLayer->siblingIndex() > 0) ? 
+		const auto mergeLayerDown = (currentLayer->siblingIndex() > 0) ?
 			currentLayer->siblings().at(currentLayer->siblingIndex() - 1) : nullptr;
-		auto mergeLayerUp = (currentLayer->siblingIndex() + 1 < currentLayer->siblings().count()) ?
+		const auto mergeLayerUp = (currentLayer->siblingIndex() + 1 < currentLayer->siblings().count()) ?
 			currentLayer->siblings().at(currentLayer->siblingIndex() + 1) : nullptr;
 		
 		isLayer = static_cast<bool>(currentLayer);

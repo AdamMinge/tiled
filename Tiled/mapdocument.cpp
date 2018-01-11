@@ -93,8 +93,8 @@ void MapDocument::onLayerRemoved(Layer* layer)
 {
 	emit layerRemoved(layer);
 
-	auto objectAsLayer = dynamic_cast<Layer*>(currentObject());
-	auto cLayer = currentLayer();
+	const auto objectAsLayer = dynamic_cast<Layer*>(currentObject());
+	const auto cLayer = currentLayer();
 
 	if (objectAsLayer && objectAsLayer == layer)
 		setCurrentObject(nullptr);
@@ -113,11 +113,11 @@ void MapDocument::onTilesetRemoved(Tileset* tileset)
 {
 	emit tilesetRemoved(tileset);
 
-	auto objectAsTileset = dynamic_cast<Tileset*>(currentObject());
-	auto objectAsTile = dynamic_cast<Tile*>(currentObject());
+	const auto objectAsTileset = dynamic_cast<Tileset*>(currentObject());
+	const auto objectAsTile = dynamic_cast<Tile*>(currentObject());
 
-	auto cTile = currentTile();
-	auto cTileset = currentTileset();
+	const auto cTile = currentTile();
+	const auto cTileset = currentTileset();
 
 	if ((objectAsTileset && objectAsTileset == tileset) || (objectAsTile && objectAsTile->tileset() == tileset))
 		setCurrentObject(nullptr);

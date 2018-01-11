@@ -33,7 +33,7 @@ void ChangeTileProperty::redo()
 /*-----------------------------------------------------------------------------------------------------------*/
 bool ChangeTileProperty::canMergeWith(const Command* other) const
 {
-	auto changeTileProperty = static_cast<const ChangeTileProperty*>(other);
+	const auto changeTileProperty = static_cast<const ChangeTileProperty*>(other);
 
 	if (changeTileProperty->mMapDocument == mMapDocument &&
 		changeTileProperty->mTile == mTile) return true;
@@ -43,7 +43,7 @@ bool ChangeTileProperty::canMergeWith(const Command* other) const
 /*-----------------------------------------------------------------------------------------------------------*/
 void ChangeTileProperty::mergeWith(const Command* other)
 {
-	auto changeTileProperty = static_cast<const ChangeTileProperty*>(other);
+	const auto changeTileProperty = static_cast<const ChangeTileProperty*>(other);
 	mNewValue = changeTileProperty->mNewValue;
 }
 /*-----------------------------------------------------------------------------------------------------------*/

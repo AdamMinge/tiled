@@ -69,7 +69,7 @@ void PropertiesDock::setDocument(Document* document)
 /*-----------------------------------------------------------------------------------------------------------*/
 void PropertiesDock::contextMenuEvent(QContextMenuEvent* event)
 {
-	auto object = mDocument->currentObject();
+	const auto object = mDocument->currentObject();
 	if (!object) return;
 
 	QMenu contextMenu;
@@ -83,7 +83,7 @@ void PropertiesDock::contextMenuEvent(QContextMenuEvent* event)
 	remove->setIcon(QIcon(QLatin1String(":/MapEditor/images/16x16/remove.png")));
 
 	auto items = mPropertyBrowser->selectedItems();
-	auto allCustomProperties = !items.isEmpty() && mPropertyBrowser->allCustomPropertyItem(items);
+	const auto allCustomProperties = !items.isEmpty() && mPropertyBrowser->allCustomPropertyItem(items);
 
 	convertTo->menuAction()->setEnabled(allCustomProperties);
 	rename->setEnabled(allCustomProperties && items.count() == 1);
@@ -124,7 +124,7 @@ void PropertiesDock::contextMenuEvent(QContextMenuEvent* event)
 
 			if(someDifferentType && allCanConvert)
 			{
-				auto action = convertTo->addAction(typeToName(type));
+				const auto action = convertTo->addAction(typeToName(type));
 
 				connect(action, &QAction::triggered, &signalMapper,
 					static_cast<void(QSignalMapper::*)()>(&QSignalMapper::map));
@@ -166,7 +166,7 @@ void PropertiesDock::currentObjectChanged(Object* object)
 void PropertiesDock::updateActions()
 {
 	auto items = mPropertyBrowser->selectedItems();
-	auto allCustomProperties = !items.isEmpty() && mPropertyBrowser->allCustomPropertyItem(items);
+	const auto allCustomProperties = !items.isEmpty() && mPropertyBrowser->allCustomPropertyItem(items);
 
 	mActionRemoveProperty->setEnabled(allCustomProperties);
 	mActionRenameProperty->setEnabled(allCustomProperties && items.size() == 1);
@@ -177,7 +177,7 @@ void PropertiesDock::addProperty()
 	AddPropertyDialog dialog(mPropertyBrowser);
 	if (dialog.exec() != AddPropertyDialog::Accepted) return;
 
-	auto object = mDocument->currentObject();
+	const auto object = mDocument->currentObject();
 	if (!object) return;
 		
 	if(!object->hasProperty(dialog.propertyName()))
@@ -190,7 +190,7 @@ void PropertiesDock::addProperty()
 /*-----------------------------------------------------------------------------------------------------------*/
 void PropertiesDock::removeProperties()
 {
-	auto object = mDocument->currentObject();
+	const auto object = mDocument->currentObject();
 	if (!object) return;
 
 	auto items = mPropertyBrowser->selectedItems();
@@ -216,7 +216,7 @@ void PropertiesDock::renameProperty()
 	auto items = mPropertyBrowser->selectedItems();
 	if (items.count() != 1) return;
 
-	auto item = items.first();
+	const auto item = items.first();
 	if (!mPropertyBrowser->isCustomPropertyItem(item)) return;
 
 	bool ok;
@@ -236,13 +236,13 @@ void PropertiesDock::renameProperty()
 void PropertiesDock::convertProperty(int type)
 {
 	auto undoStack = mDocument->undoStack();
-	auto object = mDocument->currentObject();
+	const auto object = mDocument->currentObject();
 	auto items = mPropertyBrowser->selectedItems();
 	
 	QList<Command*> commands;
 	for (decltype(auto) item : items)
 	{
-		auto propertyName = item->property()->propertyName();
+		const auto propertyName = item->property()->propertyName();
 		auto propertyValue = object->property(propertyName);
 
 		propertyValue.convert(type);

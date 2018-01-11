@@ -33,8 +33,8 @@ QWidget* VariantEditorFactory::createEditor(QtVariantPropertyManager* manager,
 	if(type == QVariant::Url)
 	{
 		auto editor = new FileEdit(parent);
-		auto filePath = manager->value(property).toUrl();
-		auto fileFilter = manager->attributeValue(property, QLatin1String("filter")).toString();
+		const auto filePath = manager->value(property).toUrl();
+		const auto fileFilter = manager->attributeValue(property, QLatin1String("filter")).toString();
 
 		editor->setFileUrl(filePath);
 		editor->setFilter(fileFilter);
@@ -72,7 +72,7 @@ void VariantEditorFactory::propertyChanged(QtProperty* property, const QVariant&
 {
 	if(mCreatedFileEdits.contains(property))
 	{
-		auto filePath = value.toUrl();
+		const auto filePath = value.toUrl();
 		for(auto edit : mCreatedFileEdits[property]) edit->setFileUrl(filePath);
 	}
 }
@@ -84,7 +84,7 @@ void VariantEditorFactory::propertyAttributeChanged(QtProperty* property,
 	{
 		if(attribute == QLatin1String("filter"))
 		{
-			auto fileFilter = value.toString();
+			const auto fileFilter = value.toString();
 			for (auto edit : mCreatedFileEdits[property]) edit->setFilter(fileFilter);
 		}
 	}
@@ -92,9 +92,9 @@ void VariantEditorFactory::propertyAttributeChanged(QtProperty* property,
 /*-----------------------------------------------------------------------------------------------------------*/
 void VariantEditorFactory::slotEditorDestroyed(QObject* object)
 {
-	auto fileEdit = static_cast<FileEdit*>(object);
+	const auto fileEdit = static_cast<FileEdit*>(object);
 
-	if(auto property = mFileEditToProperty.value(fileEdit))
+	if(const auto property = mFileEditToProperty.value(fileEdit))
 	{
 		mFileEditToProperty.remove(fileEdit);
 		mCreatedFileEdits[property].removeAll(fileEdit);
@@ -108,7 +108,7 @@ void VariantEditorFactory::fileEditFileUrlChanged(const QUrl& value)
 	auto fileEdit = qobject_cast<FileEdit*>(sender());
 	Q_ASSERT(fileEdit);
 
-	if(auto property = mFileEditToProperty.value(fileEdit))
+	if(const auto property = mFileEditToProperty.value(fileEdit))
 	{
 		auto manager = propertyManager(property);
 		Q_ASSERT(manager);
@@ -122,11 +122,7 @@ void VariantEditorFactory::resetProperty(QtProperty* property)
 	auto manager = propertyManager(property);
 	Q_ASSERT(manager);
 
-	switch(manager->propertyType(property))
-	{
-	case QVariant::Color:
+	if(manager->propertyType(property) == QVariant::Color)
 		manager->setValue(property, QColor());
-		break;
-	}	
 }
 /*-----------------------------------------------------------------------------------------------------------*/

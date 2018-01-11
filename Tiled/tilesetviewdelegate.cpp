@@ -39,7 +39,7 @@ void TilesetViewDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 	{
 		painter->save();
 
-		auto scale = qMin(tileImage.width() / 32.0, tileImage.height() / 32.0);
+		const auto scale = qMin(tileImage.width() / 32.0, tileImage.height() / 32.0);
 
 		painter->setClipRect(targetRect);
 		painter->translate(targetRect.right(),
@@ -57,8 +57,8 @@ void TilesetViewDelegate::paint(QPainter* painter, const QStyleOptionViewItem& o
 		painter->setPen(Qt::NoPen);
 
 		QRectF hole(0, 0, strip.height() * 0.6, strip.height() * 0.6);
-		auto step = (strip.height() - hole.height()) + hole.width();
-		auto margin = (strip.height() - hole.height()) / 2;
+		const auto step = (strip.height() - hole.height()) + hole.width();
+		const auto margin = (strip.height() - hole.height()) / 2;
 
 		for (auto x = (step - hole.width()) / 2; x < strip.right(); x += step) {
 			hole.moveTo(x, margin);

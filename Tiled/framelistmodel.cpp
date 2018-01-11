@@ -61,6 +61,8 @@ QVariant FrameListModel::headerData(int section, Qt::Orientation orientation, in
 			return tr("Frame");
 		case 1:
 			return tr("Time");
+		default:
+			return QVariant();
 		}
 	}
 
@@ -76,8 +78,10 @@ QVariant FrameListModel::data(const QModelIndex& index, int role) const
 		switch (role)
 		{
 		case Qt::DecorationRole:
-			if (auto tile = mTile->tileset()->tile(mTile->frames()[index.row()].tileId()))
+			if (const auto tile = mTile->tileset()->tile(mTile->frames()[index.row()].tileId()))
 				return tile->image();
+		default:
+			return QVariant();
 		}
 	}
 	else if (index.column() == 1)
@@ -87,6 +91,8 @@ QVariant FrameListModel::data(const QModelIndex& index, int role) const
 		case Qt::EditRole:
 		case Qt::DisplayRole:
 			return mTile->frames()[index.row()].duration();
+		default:
+			return QVariant();
 		}
 	}
 
@@ -100,7 +106,7 @@ bool FrameListModel::setData(const QModelIndex& index, const QVariant& value, in
 
 	if(index.column() == 1 && role == Qt::EditRole)
 	{
-		auto duration = value.toInt();
+		const auto duration = value.toInt();
 
 		if (duration > 0 && mTile->frames()[index.row()].duration() != duration)
 		{
@@ -309,7 +315,7 @@ bool FrameListModel::dropMimeData(const QMimeData* data, Qt::DropAction action,
 	Q_ASSERT(mTile);
 	Q_ASSERT(mMapDocument);
 
-	auto beginRow = 0;
+	int beginRow;
 	QVector<Frame> frames;
 
 	if (row != -1)

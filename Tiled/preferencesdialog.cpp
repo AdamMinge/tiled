@@ -64,14 +64,14 @@ void PreferencesDialog::selectedLanguageChanged()
 /*-----------------------------------------------------------------------------------------------------------*/
 void PreferencesDialog::selectedStyleChanged()
 {
-	auto style = mUi->stylesComboBox->currentText();
+	const auto style = mUi->stylesComboBox->currentText();
 	StyleManager::instance()->setStyle(style);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void PreferencesDialog::languageChanged()
 {
-	auto languageManager = LanguageManager::instance();
-	auto language = languageManager->language();
+	const auto languageManager = LanguageManager::instance();
+	const auto language = languageManager->language();
 
 	auto index = mUi->languageComboBox->findData(language);
 	if (index == -1) index = 0;
@@ -82,8 +82,8 @@ void PreferencesDialog::languageChanged()
 /*-----------------------------------------------------------------------------------------------------------*/
 void PreferencesDialog::styleChanged()
 {
-	auto styleManager = StyleManager::instance();
-	auto style = styleManager->style();
+	const auto styleManager = StyleManager::instance();
+	const auto style = styleManager->style();
 
 	auto index = mUi->stylesComboBox->findText(style);
 	Q_ASSERT(index >= 0 && index <= mUi->stylesComboBox->count());
@@ -93,9 +93,9 @@ void PreferencesDialog::styleChanged()
 /*-----------------------------------------------------------------------------------------------------------*/
 void PreferencesDialog::updateLanguagesList()
 {
-	auto languageManager = LanguageManager::instance();
-	auto languages = languageManager->availableLanguages();
-	auto language = languageManager->language();
+	const auto languageManager = LanguageManager::instance();
+	const auto languages = languageManager->availableLanguages();
+	const auto language = languageManager->language();
 	
 	mUi->languageComboBox->blockSignals(true);
 	mUi->languageComboBox->clear();
@@ -103,7 +103,7 @@ void PreferencesDialog::updateLanguagesList()
 	for(decltype(auto) name : languages)
 	{
 		QLocale locale(name);
-		auto string = QString(QLatin1String("%1 (%2)"))
+		const auto string = QString(QLatin1String("%1 (%2)"))
 			.arg(QLocale::languageToString(locale.language()))
 			.arg(QLocale::countryToString(locale.country()));
 		mUi->languageComboBox->addItem(string, name);
@@ -120,9 +120,9 @@ void PreferencesDialog::updateLanguagesList()
 /*-----------------------------------------------------------------------------------------------------------*/
 void PreferencesDialog::updateStylesList()
 {
-	auto styleManager = StyleManager::instance();
-	auto styles = styleManager->availableStyles();
-	auto style = styleManager->style();
+	const auto styleManager = StyleManager::instance();
+	const auto styles = styleManager->availableStyles();
+	const auto style = styleManager->style();
 
 	mUi->stylesComboBox->blockSignals(true);
 	mUi->stylesComboBox->clear();

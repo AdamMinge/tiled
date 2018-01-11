@@ -44,7 +44,7 @@ Editor* DocumentManager::editor(Document::DocumentType documentType) const
 void DocumentManager::removeEditor(Document::DocumentType documentType)
 {
 	Q_ASSERT(mEditorForType.contains(documentType));
-	auto editor = mEditorForType.take(documentType);
+	const auto editor = mEditorForType.take(documentType);
 	delete editor;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -56,7 +56,7 @@ void DocumentManager::removeAllEditors()
 /*-----------------------------------------------------------------------------------------------------------*/
 Editor* DocumentManager::currentEditor() const
 {
-	if (auto document = currentDocument()) return editor(document->type());
+	if (const auto document = currentDocument()) return editor(document->type());
 	else return nullptr;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -68,7 +68,7 @@ void DocumentManager::addDocument(Document* document)
 	mDocuments.append(document);
 	mUndoGroup->addStack(document->undoStack());
 
-	auto documentIndex = mTabBar->addTab(document->displayName());
+	const auto documentIndex = mTabBar->addTab(document->displayName());
 	mTabBar->setTabToolTip(documentIndex, document->fileName());
 
 	switchToDocument(documentIndex);
@@ -100,7 +100,7 @@ Document* DocumentManager::document(int index) const
 /*-----------------------------------------------------------------------------------------------------------*/
 Document* DocumentManager::currentDocument() const
 {
-	auto index = mTabBar->currentIndex();
+	const auto index = mTabBar->currentIndex();
 	return document(index);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -174,7 +174,7 @@ DocumentManager::~DocumentManager()
 /*-----------------------------------------------------------------------------------------------------------*/
 void DocumentManager::currentIndexChanged()
 {
-	auto document = currentDocument();
+	const auto document = currentDocument();
 	auto editor = currentEditor();
 
 	for(decltype(auto) iter : mEditorForType)

@@ -53,7 +53,7 @@ void ChangeMapProperty::redo()
 /*-----------------------------------------------------------------------------------------------------------*/
 bool ChangeMapProperty::canMergeWith(const Command* other) const
 {
-	auto changeTilesetProperty = static_cast<const ChangeMapProperty*>(other);
+	const auto changeTilesetProperty = static_cast<const ChangeMapProperty*>(other);
 
 	if (mMapDocument != changeTilesetProperty->mMapDocument ||
 		mMap != changeTilesetProperty->mMap ||
@@ -64,7 +64,7 @@ bool ChangeMapProperty::canMergeWith(const Command* other) const
 /*-----------------------------------------------------------------------------------------------------------*/
 void ChangeMapProperty::mergeWith(const Command* other)
 {
-	auto changeTilesetProperty = static_cast<const ChangeMapProperty*>(other);
+	const auto changeTilesetProperty = static_cast<const ChangeMapProperty*>(other);
 	mNewValue = changeTilesetProperty->mNewValue;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -85,6 +85,8 @@ void ChangeMapProperty::setValue(const QVariant& value)
 		break;
 	case MapDocument::ChangedPropertyId::TileSizeChangedId:
 		mMap->setTileSize(value.toSize());
+		break;
+	default:
 		break;
 	}
 }

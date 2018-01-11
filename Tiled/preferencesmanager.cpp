@@ -483,7 +483,7 @@ QSize PreferencesManager::sizeValue(const char* key, const QSize& defaultValue) 
 /*-----------------------------------------------------------------------------------------------------------*/
 QColor PreferencesManager::colorValue(const char* key, const QColor& defaultValue) const
 {
-	auto name = mSettings.value(QLatin1String(key), defaultValue.name()).toString();
+	const auto name = mSettings.value(QLatin1String(key), defaultValue.name()).toString();
 
 	if (!QColor::isValidColor(name)) return QColor();
 	else return QColor(name);

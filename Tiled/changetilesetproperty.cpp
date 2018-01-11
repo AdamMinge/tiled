@@ -30,7 +30,7 @@ void ChangedTilesetProperty::redo()
 /*-----------------------------------------------------------------------------------------------------------*/
 bool ChangedTilesetProperty::canMergeWith(const Command* other) const
 {
-	auto changeTilesetProperty = static_cast<const ChangedTilesetProperty*>(other);
+	const auto changeTilesetProperty = static_cast<const ChangedTilesetProperty*>(other);
 
 	if (mMapDocument != changeTilesetProperty->mMapDocument ||
 		mTileset != changeTilesetProperty->mTileset ||
@@ -41,7 +41,7 @@ bool ChangedTilesetProperty::canMergeWith(const Command* other) const
 /*-----------------------------------------------------------------------------------------------------------*/
 void ChangedTilesetProperty::mergeWith(const Command* other)
 {
-	auto changeTilesetProperty = static_cast<const ChangedTilesetProperty*>(other);
+	const auto changeTilesetProperty = static_cast<const ChangedTilesetProperty*>(other);
 	mNewValue = changeTilesetProperty->mNewValue;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -56,6 +56,8 @@ void ChangedTilesetProperty::setValue(const QVariant& value)
 	{
 	case MapDocument::ChangedPropertyId::NameChangedId:
 		mTileset->setName(value.toString());
+		break;
+	default:
 		break;
 	}
 }

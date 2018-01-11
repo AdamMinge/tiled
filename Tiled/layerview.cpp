@@ -17,13 +17,13 @@ LayerView::LayerView(QWidget* parent) :
 	mProxyModel(new ReversingProxyModel(this)),
 	mMapDocument(nullptr)
 {
-	QList<QSize> sizes = { { QSize(14,14), QSize(16,16), QSize(24,24) } };
+	const QList<QSize> sizes = { { QSize(14,14), QSize(16,16), QSize(24,24) } };
 
-	auto lockedIcon = makeIcon(QLatin1String(":/Tiled/images/%1/locked.png"), sizes);
-	auto unLockedIcon = makeIcon(QLatin1String(":/Tiled/images/%1/unlocked.png"), sizes);
+	const auto lockedIcon = makeIcon(QLatin1String(":/Tiled/images/%1/locked.png"), sizes);
+	const auto unLockedIcon = makeIcon(QLatin1String(":/Tiled/images/%1/unlocked.png"), sizes);
 
-	auto visibleIcon = makeIcon(QLatin1String(":/Tiled/images/%1/visible.png"), sizes);
-	auto hiddenIcon = makeIcon(QLatin1String(":/Tiled/images/%1/hidden.png"), sizes);
+	const auto visibleIcon = makeIcon(QLatin1String(":/Tiled/images/%1/visible.png"), sizes);
+	const auto hiddenIcon = makeIcon(QLatin1String(":/Tiled/images/%1/hidden.png"), sizes);
 
 	setItemDelegateForColumn(0, new CommitOnChangedDelegate(this));
 	setItemDelegateForColumn(1, new IconCheckDelegate(visibleIcon, hiddenIcon, this));
@@ -111,17 +111,17 @@ void LayerView::currentLayerChanged(Layer* layer)
 {
 	Q_ASSERT(mMapDocument);
 
-	auto sourceIndex = mMapDocument->layerModel()->index(layer);
-	auto index = mProxyModel->mapFromSource(sourceIndex);
+	const auto sourceIndex = mMapDocument->layerModel()->index(layer);
+	const auto index = mProxyModel->mapFromSource(sourceIndex);
 
 	selectionModel()->setCurrentIndex(index, QItemSelectionModel::ClearAndSelect);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void LayerView::indexPressed(const QModelIndex& index)
 {
-	auto sourceIndex = mProxyModel->mapToSource(index);
+	const auto sourceIndex = mProxyModel->mapToSource(index);
 
-	if (auto layer = mMapDocument->layerModel()->layer(sourceIndex))
+	if (const auto layer = mMapDocument->layerModel()->layer(sourceIndex))
 		mMapDocument->setCurrentObject(layer);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -129,9 +129,9 @@ void LayerView::currentChanged()
 {
 	Q_ASSERT(mMapDocument);
 
-	auto index = selectionModel()->currentIndex();
-	auto sourceIndex = mProxyModel->mapToSource(index);
-	auto layer = mMapDocument->layerModel()->layer(sourceIndex);
+	const auto index = selectionModel()->currentIndex();
+	const auto sourceIndex = mProxyModel->mapToSource(index);
+	const auto layer = mMapDocument->layerModel()->layer(sourceIndex);
 
 	mMapDocument->setCurrentLayer(layer);
 }

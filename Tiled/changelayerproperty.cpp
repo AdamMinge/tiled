@@ -70,7 +70,7 @@ int ChangeLayerProperty::id() const
 /*-----------------------------------------------------------------------------------------------------------*/
 bool ChangeLayerProperty::canMergeWith(const Command* other) const
 {
-	auto changeLayerProperty = static_cast<const ChangeLayerProperty*>(other);
+	const auto changeLayerProperty = static_cast<const ChangeLayerProperty*>(other);
 
 	if (mMapDocument != changeLayerProperty->mMapDocument ||
 		mLayer != changeLayerProperty->mLayer ||
@@ -81,7 +81,7 @@ bool ChangeLayerProperty::canMergeWith(const Command* other) const
 /*-----------------------------------------------------------------------------------------------------------*/
 void ChangeLayerProperty::mergeWith(const Command* other)
 {
-	auto changeLayerProperty = static_cast<const ChangeLayerProperty*>(other);
+	const auto changeLayerProperty = static_cast<const ChangeLayerProperty*>(other);
 	mNewValue = changeLayerProperty->mNewValue;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -100,6 +100,8 @@ void ChangeLayerProperty::setValue(const QVariant& value)
 		break;
 	case MapDocument::ChangedPropertyId::OpacityChangedId:
 		mLayer->setOpacity(value.toFloat());
+		break;
+	default:
 		break;
 	}
 }

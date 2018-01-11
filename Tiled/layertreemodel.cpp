@@ -30,7 +30,7 @@ static int globalIndex(GroupLayer* root, Layer* layer)
 
 	while(iterator.hasNext())
 	{
-		auto iterLayer = iterator.next();
+		const auto iterLayer = iterator.next();
 		if (iterLayer == layer) return index;
 
 		++index;
@@ -67,7 +67,7 @@ LayerTreeModel::LayerTreeModel(MapDocument* mapDocument, QObject* parent) :
 /*-----------------------------------------------------------------------------------------------------------*/
 QModelIndex LayerTreeModel::index(int row, int column, const QModelIndex& parent) const
 {
-	if (auto layer = dynamic_cast<GroupLayer*>(this->layer(parent)))
+	if (const auto layer = dynamic_cast<GroupLayer*>(this->layer(parent)))
 	{
 		if (row < layer->layerCount())
 			return createIndex(row, column, layer);
@@ -85,7 +85,7 @@ QModelIndex LayerTreeModel::index(int row, int column, const QModelIndex& parent
 /*-----------------------------------------------------------------------------------------------------------*/
 QModelIndex LayerTreeModel::parent(const QModelIndex& index) const
 {
-	if (auto parent = static_cast<GroupLayer*>(index.internalPointer()))
+	if (const auto parent = static_cast<GroupLayer*>(index.internalPointer()))
 		return this->index(parent);
 	else
 		return QModelIndex();
@@ -148,11 +148,11 @@ MapDocument* LayerTreeModel::mapDocument() const
 /*-----------------------------------------------------------------------------------------------------------*/
 int LayerTreeModel::rowCount(const QModelIndex& parent) const
 {
-	auto layer = this->layer(parent);
+	const auto layer = this->layer(parent);
 
 	if (!layer && mMap->rootLayer())
 		return 1;
-	else if (auto groupLayer = dynamic_cast<GroupLayer*>(layer))
+	else if (const auto groupLayer = dynamic_cast<GroupLayer*>(layer))
 		return groupLayer->layerCount();
 	else
 		return 0;
@@ -176,6 +176,8 @@ QVariant LayerTreeModel::headerData(int section, Qt::Orientation orientation, in
 			return tr("Visible");
 		case 2:
 			return tr("Locked");
+		default:
+			return QVariant();
 		}
 	}
 	
@@ -184,7 +186,7 @@ QVariant LayerTreeModel::headerData(int section, Qt::Orientation orientation, in
 /*-----------------------------------------------------------------------------------------------------------*/
 QVariant LayerTreeModel::data(const QModelIndex& index, int role) const
 {
-	auto layer = this->layer(index);
+	const auto layer = this->layer(index);
 	if (!layer) return QVariant();
 
 	switch(role)
@@ -214,6 +216,8 @@ QVariant LayerTreeModel::data(const QModelIndex& index, int role) const
 		else if (index.column() == 2)
 			return layer->isLocked() ? Qt::Checked : Qt::Unchecked;
 		break;
+	default:
+		return QVariant();
 	}
 
 	return QVariant();
@@ -221,7 +225,7 @@ QVariant LayerTreeModel::data(const QModelIndex& index, int role) const
 /*-----------------------------------------------------------------------------------------------------------*/
 bool LayerTreeModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
-	auto layer = this->layer(index);
+	const auto layer = this->layer(index);
 	if (!layer) return false;
 
 	switch(role)
@@ -253,6 +257,8 @@ bool LayerTreeModel::setData(const QModelIndex& index, const QVariant& value, in
 			return true;
 		}
 		break;
+	default:
+		return false;
 	}
 
 	return false;
@@ -260,7 +266,7 @@ bool LayerTreeModel::setData(const QModelIndex& index, const QVariant& value, in
 /*-----------------------------------------------------------------------------------------------------------*/
 void LayerTreeModel::addLayer(GroupLayer* parentLayer, int index, Layer* layer)
 {
-	auto parent = this->index(parentLayer);
+	const auto parent = this->index(parentLayer);
 	beginInsertRows(parent, index, index);
 	parentLayer->addLayer(layer, index);
 	endInsertRows();
@@ -270,9 +276,9 @@ void LayerTreeModel::addLayer(GroupLayer* parentLayer, int index, Layer* layer)
 /*-----------------------------------------------------------------------------------------------------------*/
 Layer* LayerTreeModel::takeLayer(GroupLayer* parentLayer, int index)
 {
-	auto parent = this->index(parentLayer);
+	const auto parent = this->index(parentLayer);
 	beginRemoveRows(parent, index, index);
-	auto layer = parentLayer->takeLayer(index);
+	const auto layer = parentLayer->takeLayer(index);
 	endRemoveRows();
 
 	emit layerRemoved(layer);
@@ -289,7 +295,7 @@ Qt::ItemFlags LayerTreeModel::flags(const QModelIndex& index) const
 	if (index.column() == 0)
 		defaultFlags |= Qt::ItemIsEditable;
 
-	auto layer = this->layer(index);
+	const auto layer = this->layer(index);
 
 	if (layer)
 		defaultFlags |= Qt::ItemIsDragEnabled;
@@ -353,7 +359,7 @@ bool LayerTreeModel::dropMimeData(const QMimeData* data, Qt::DropAction action, 
 	Q_ASSERT(mMapDocument);
 
 	QList<Layer*> layers;
-	auto groupLayer = static_cast<GroupLayer*>(layer(parent));
+	const auto groupLayer = static_cast<GroupLayer*>(layer(parent));
 	if (!groupLayer) return false;
 
 	if (data->hasFormat(mimeType(MimeTypes::Layers)))

@@ -18,7 +18,7 @@ NewTilesetDialog::NewTilesetDialog(QWidget* parent) :
 	setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 	resize(dpiScaled(size()));
 
-	auto preferences = PreferencesManager::instance();
+	const auto preferences = PreferencesManager::instance();
 	mUi->useTransparentColor->setChecked(preferences->newTilesetUseTransparentColor());
 	mUi->colorButton->setColor(preferences->newTilesetTransparentColor());
 	mUi->tileWidth->setValue(preferences->newTilesetTileSize().width());
@@ -76,7 +76,7 @@ void NewTilesetDialog::changeEvent(QEvent* event)
 /*-----------------------------------------------------------------------------------------------------------*/
 void NewTilesetDialog::browse()
 {
-	auto filter = readableImageFormatsFilter();
+	const auto filter = readableImageFormatsFilter();
 	auto path = QFileDialog::getOpenFileName(this, tr("Tileset Image"), mPath, filter);
 
 	if (!path.isEmpty())

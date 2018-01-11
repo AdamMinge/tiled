@@ -75,7 +75,7 @@ void VariantPropertyManager::setAttribute(QtProperty* property, const QString& a
 	{
 		if(attribute == QLatin1String("filter"))
 		{
-			auto filter = value.toString();
+			const auto filter = value.toString();
 			auto data = mFileIdValues[property];
 
 			if (data.filter == filter) return;

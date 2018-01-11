@@ -7,7 +7,7 @@
 static void setProperty(Document* document, Object* object,
 	const QString& name, const QVariant& value)
 {
-	auto hadProperty = object->hasProperty(name);
+	const auto hadProperty = object->hasProperty(name);
 	object->setProperty(name, value);
 
 	if (hadProperty) emit document->propertyChanged(object, name);
@@ -48,7 +48,7 @@ void SetProperty::redo()
 /*-----------------------------------------------------------------------------------------------------------*/
 bool SetProperty::canMergeWith(const Command* other) const
 {
-	auto setProperty = static_cast<const SetProperty*>(other);
+	const auto setProperty = static_cast<const SetProperty*>(other);
 
 	if (mDocument != setProperty->mDocument ||
 		mObject != setProperty->mObject ||
@@ -60,7 +60,7 @@ bool SetProperty::canMergeWith(const Command* other) const
 /*-----------------------------------------------------------------------------------------------------------*/
 void SetProperty::mergeWith(const Command* other)
 {
-	auto setProperty = static_cast<const SetProperty*>(other);
+	const auto setProperty = static_cast<const SetProperty*>(other);
 	mNewValue = setProperty->mNewValue;
 }
 /*-----------------------------------------------------------------------------------------------------------*/

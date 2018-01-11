@@ -57,7 +57,7 @@ void TilePreview::resetPreview()
 
 	if(mTile && mTile->isAnimated())
 	{
-		auto tileId = mTile->frames().first().tileId();
+		const auto tileId = mTile->frames().first().tileId();
 		auto tileset = mTile->tileset();
 		Q_ASSERT(tileset);
 		
@@ -80,7 +80,7 @@ void TilePreview::advancePreviewAnimation(int ms)
 
 	decltype(auto) frames = mTile->frames();
 	auto frame = frames.at(mPreviewFrameIndex);
-	auto previousTileId = frame.tileId();
+	const auto previousTileId = frame.tileId();
 
 	while (frame.duration() > 0 && mPreviewUnusedTime > frame.duration()) 
 	{

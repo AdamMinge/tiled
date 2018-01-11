@@ -130,7 +130,7 @@ void MainWindow::newMap()
 {
 	NewMapDialog newMapDialog(this);
 
-	auto map = newMapDialog.createMap();
+	const auto map = newMapDialog.createMap();
 	if (!map) return;
 
 	mDocumentManager->addDocument(new MapDocument(map));
@@ -185,7 +185,7 @@ void MainWindow::updateViewsAndToolbarsMenu()
 {
 	mViewsAndToolbarsMenu->clear();
 
-	if (auto editor = mDocumentManager->currentEditor()) 
+	if (const auto editor = mDocumentManager->currentEditor())
 	{
 		mViewsAndToolbarsMenu->addSeparator();
 
@@ -245,7 +245,7 @@ void MainWindow::fullScreen()
 /*-----------------------------------------------------------------------------------------------------------*/
 void MainWindow::openRecentDocument()
 {
-	auto action = qobject_cast<QAction*>(sender());
+	const auto action = qobject_cast<QAction*>(sender());
 	if (action)
 	{
 		auto documentFile = action->data().toString();
@@ -256,7 +256,7 @@ void MainWindow::updateRecentDocumentMenu()
 {
 	auto documentNames = mPreferencesManager->recentDocuments();
 	auto countOfVisible = mPreferencesManager->countOfVisibleRecentDocuments();
-	auto numRecentFiles = qMin<int>(documentNames.count(), countOfVisible);
+	const auto numRecentFiles = qMin<int>(documentNames.count(), countOfVisible);
 
 	Q_ASSERT(mRecentDocumentActions.size() == countOfVisible);
 
@@ -276,8 +276,8 @@ void MainWindow::updateRecentDocumentMenu()
 /*-----------------------------------------------------------------------------------------------------------*/
 void MainWindow::updateActions()
 {
-	auto isDocument = static_cast<bool>(mCurrentDocument);
-	auto isMapDocument = static_cast<bool>(qobject_cast<MapDocument*>(mCurrentDocument));
+	const auto isDocument = static_cast<bool>(mCurrentDocument);
+	const auto isMapDocument = static_cast<bool>(qobject_cast<MapDocument*>(mCurrentDocument));
 
 	mSaveDocument->setEnabled(isDocument);
 	mSaveDocumentAs->setEnabled(isDocument);
@@ -337,7 +337,7 @@ QMenu* MainWindow::buildFileMenu()
 	{ QSize(16,16) }));
 
 	auto documentsNames = mPreferencesManager->recentDocuments();
-	auto countOfVisible = mPreferencesManager->countOfVisibleRecentDocuments();
+	const auto countOfVisible = mPreferencesManager->countOfVisibleRecentDocuments();
 
 	for (auto i = 0; i < countOfVisible; i++)
 	{
@@ -389,7 +389,7 @@ QMenu* MainWindow::buildEditMenu()
 	Q_ASSERT(!mEditMenu);
 
 	mEditMenu = new QMenu(this);
-	auto undoGroup = mDocumentManager->undoGroup();
+	const auto undoGroup = mDocumentManager->undoGroup();
 	mUndo = undoGroup->createUndoAction(mEditMenu);
 	mRedo = undoGroup->createRedoAction(mEditMenu);
 	mPreferences = new QAction(mEditMenu);

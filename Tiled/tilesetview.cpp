@@ -32,7 +32,7 @@ TilesetView::TilesetView(QWidget* parent) :
 
 	setLayoutDirection(Qt::LeftToRight);
 
-	auto preferencesManager = PreferencesManager::instance();
+	const auto preferencesManager = PreferencesManager::instance();
 	mDrawGrid = preferencesManager->showTilesetGrid();
 
 	connect(preferencesManager, &PreferencesManager::showTilesetGridChanged, this, &TilesetView::setDrawGrid);
@@ -43,7 +43,7 @@ int TilesetView::sizeHintForColumn(int column) const
 {
 	Q_UNUSED(column);
 
-	auto tilesetModel = qobject_cast<const TilesetTableModel*>(model());
+	const auto tilesetModel = qobject_cast<const TilesetTableModel*>(model());
 	if (!tilesetModel) return -1;
 
 	const auto tileWidth = tilesetModel->tileset()->tileSize().width();
@@ -54,7 +54,7 @@ int TilesetView::sizeHintForRow(int row) const
 {
 	Q_UNUSED(row)
 
-	auto tilesetModel = qobject_cast<TilesetTableModel*>(model());
+	const auto tilesetModel = qobject_cast<TilesetTableModel*>(model());
 	if (!tilesetModel) return -1;
 
 	const auto tileHeight = tilesetModel->tileset()->tileSize().height();
@@ -110,7 +110,7 @@ void TilesetView::wheelEvent(QWheelEvent* event)
 /*-----------------------------------------------------------------------------------------------------------*/
 void TilesetView::contextMenuEvent(QContextMenuEvent* event)
 {
-	auto model = qobject_cast<TilesetTableModel*>(QTableView::model());
+	const auto model = qobject_cast<TilesetTableModel*>(QTableView::model());
 
 	if (!model) return;
 
@@ -131,7 +131,7 @@ void TilesetView::setDrawGrid(bool drawGrid)
 
 	mDrawGrid = drawGrid;
 
-	if(auto model = qobject_cast<TilesetTableModel*>(QTableView::model()))
+	if(const auto model = qobject_cast<TilesetTableModel*>(QTableView::model()))
 		resetModel(model);
 }
 /*-----------------------------------------------------------------------------------------------------------*/

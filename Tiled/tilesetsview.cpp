@@ -74,17 +74,17 @@ void TilesetsView::currentTilesetChanged(Tileset* tileset)
 {
 	Q_ASSERT(mMapDocument);
 
-	auto sourceIndex = mMapDocument->tilesetsModel()->index(tileset);
-	auto index = mProxyModel->mapFromSource(sourceIndex);
+	const auto sourceIndex = mMapDocument->tilesetsModel()->index(tileset);
+	const auto index = mProxyModel->mapFromSource(sourceIndex);
 
 	selectionModel()->setCurrentIndex(index, QItemSelectionModel::ClearAndSelect);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void TilesetsView::indexPressed(const QModelIndex& index)
 {
-	auto sourceIndex = mProxyModel->mapToSource(index);
+	const auto sourceIndex = mProxyModel->mapToSource(index);
 
-	if (auto tileset = mMapDocument->tilesetsModel()->tileset(sourceIndex))
+	if (const auto tileset = mMapDocument->tilesetsModel()->tileset(sourceIndex))
 		mMapDocument->setCurrentObject(tileset);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -92,9 +92,9 @@ void TilesetsView::currentChanged()
 {
 	Q_ASSERT(mMapDocument);
 
-	auto index = selectionModel()->currentIndex();
-	auto sourceIndex = mProxyModel->mapToSource(index);
-	auto tileset = mMapDocument->tilesetsModel()->tileset(sourceIndex);
+	const auto index = selectionModel()->currentIndex();
+	const auto sourceIndex = mProxyModel->mapToSource(index);
+	const auto tileset = mMapDocument->tilesetsModel()->tileset(sourceIndex);
 
 	mMapDocument->setCurrentTileset(tileset);
 }

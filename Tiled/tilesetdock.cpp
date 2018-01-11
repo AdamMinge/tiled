@@ -56,7 +56,7 @@ void TilesetDock::setMapDocument(MapDocument* document)
 
 	if (mMapDocument)
 	{
-		auto tilesetsModel = mMapDocument->tilesetsModel();
+		const auto tilesetsModel = mMapDocument->tilesetsModel();
 		for (auto i = 0; i < tilesetsModel->rowCount(); i++)
 			tilesetRemoved(tilesetsModel->tileset(tilesetsModel->index(i)));
 
@@ -69,7 +69,7 @@ void TilesetDock::setMapDocument(MapDocument* document)
 
 	if (mMapDocument)
 	{
-		auto tilesetsModel = mMapDocument->tilesetsModel();
+		const auto tilesetsModel = mMapDocument->tilesetsModel();
 		for (auto i = 0; i < tilesetsModel->rowCount(); i++)
 			tilesetAdded(tilesetsModel->tileset(tilesetsModel->index(i)));
 
@@ -110,8 +110,8 @@ void TilesetDock::currentTabChanged()
 
 	if (index > -1)
 	{
-		auto view = tilesetView(index);
-		auto tileset = mTilesets.at(index);
+		const auto view = tilesetView(index);
+		const auto tileset = mTilesets.at(index);
 
 		if (view)
 		{
@@ -120,9 +120,9 @@ void TilesetDock::currentTabChanged()
 		}
 	}
 
-	if (auto view = currentTilesetView())
+	if (const auto view = currentTilesetView())
 	{
-		if (auto selectionModel = view->selectionModel())
+		if (const auto selectionModel = view->selectionModel())
 			currentTileChanged(selectionModel->currentIndex());
 
 		mMapDocument->setCurrentTileset(currentTileset());
@@ -153,8 +153,8 @@ void TilesetDock::currentTileChanged(const QModelIndex& index)
 {
 	if (!index.isValid()) return;
 	
-	auto model = static_cast<TilesetTableModel*>(const_cast<QAbstractItemModel*>(index.model()));
-	auto tile = model->tile(index);
+	const auto model = static_cast<TilesetTableModel*>(const_cast<QAbstractItemModel*>(index.model()));
+	const auto tile = model->tile(index);
 
 	mMapDocument->setCurrentObject(tile);
 	mMapDocument->setCurrentTile(tile);
@@ -178,8 +178,8 @@ void TilesetDock::retranslateUi()
 /*-----------------------------------------------------------------------------------------------------------*/
 void TilesetDock::tilesetAdded(Tileset* tileset)
 {
-	auto view = new TilesetView;
-	auto index = mMapDocument->tilesetsModel()->index(tileset).row();
+	const auto view = new TilesetView;
+	const auto index = mMapDocument->tilesetsModel()->index(tileset).row();
 
 	mTilesets.insert(index, tileset);
 
@@ -189,8 +189,8 @@ void TilesetDock::tilesetAdded(Tileset* tileset)
 /*-----------------------------------------------------------------------------------------------------------*/
 void TilesetDock::tilesetRemoved(Tileset* tileset)
 {
-	auto index = mTilesets.indexOf(tileset);
-	auto view = tilesetView(index);
+	const auto index = mTilesets.indexOf(tileset);
+	const auto view = tilesetView(index);
 	
 	mTilesets.remove(index);
 	delete view;
@@ -202,7 +202,7 @@ void TilesetDock::setupTilesetModel(TilesetView* view, Tileset* tileset)
 {
 	view->setModel(new TilesetTableModel(mMapDocument, tileset, view));
 
-	auto selectionModel = view->selectionModel();
+	const auto selectionModel = view->selectionModel();
 
 	connect(selectionModel, &QItemSelectionModel::selectionChanged, this, &TilesetDock::selectionTileChanged);
 	connect(selectionModel, &QItemSelectionModel::currentChanged, this, &TilesetDock::currentTileChanged);

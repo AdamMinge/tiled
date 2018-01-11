@@ -126,7 +126,7 @@ void AnimationCreatorDialog::addFrameForTileAt(const QModelIndex& index)
 /*-----------------------------------------------------------------------------------------------------------*/
 void AnimationCreatorDialog::frameUp()
 {
-	auto selectionModel = mUi->frameList->selectionModel();
+	const auto selectionModel = mUi->frameList->selectionModel();
 	auto currentIndex = selectionModel->currentIndex();
 	Q_ASSERT(currentIndex.isValid());
 
@@ -136,7 +136,7 @@ void AnimationCreatorDialog::frameUp()
 /*-----------------------------------------------------------------------------------------------------------*/
 void AnimationCreatorDialog::frameDown()
 {
-	auto selectionModel = mUi->frameList->selectionModel();
+	const auto selectionModel = mUi->frameList->selectionModel();
 	auto currentIndex = selectionModel->currentIndex();
 	Q_ASSERT(currentIndex.isValid());
 	
@@ -146,7 +146,7 @@ void AnimationCreatorDialog::frameDown()
 /*-----------------------------------------------------------------------------------------------------------*/
 void AnimationCreatorDialog::framesRemove()
 {
-	auto selectionModel = mUi->frameList->selectionModel();
+	const auto selectionModel = mUi->frameList->selectionModel();
 	auto selectionIndexes = selectionModel->selectedIndexes();
 	Q_ASSERT(!selectionIndexes.isEmpty());
 
@@ -162,12 +162,12 @@ void AnimationCreatorDialog::framesRemove()
 /*-----------------------------------------------------------------------------------------------------------*/
 void AnimationCreatorDialog::updateActions()
 {
-	auto selectionModel = mUi->frameList->selectionModel();
+	const auto selectionModel = mUi->frameList->selectionModel();
 	auto selectionIndexes = selectionModel->selectedRows();
 
-	auto oneSelected = selectionIndexes.size() == 1;
-	auto frameUpEnabled = oneSelected && selectionIndexes.first().row() > 0;
-	auto frameDownEnabled = oneSelected && selectionIndexes.first().row() < mFrameListModel->rowCount() - 1;
+	const auto oneSelected = selectionIndexes.size() == 1;
+	const auto frameUpEnabled = oneSelected && selectionIndexes.first().row() > 0;
+	const auto frameDownEnabled = oneSelected && selectionIndexes.first().row() < mFrameListModel->rowCount() - 1;
 
 	mFrameUp->setEnabled(frameUpEnabled);
 	mFrameDown->setEnabled(frameDownEnabled);

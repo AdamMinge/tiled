@@ -62,6 +62,8 @@ QVariant TilesetListModel::headerData(int section, Qt::Orientation orientation, 
 		{
 		case 0:
 			return tr("Name");
+		default:
+			return QVariant();
 		}
 	}
 
@@ -70,7 +72,7 @@ QVariant TilesetListModel::headerData(int section, Qt::Orientation orientation, 
 /*-----------------------------------------------------------------------------------------------------------*/
 QVariant TilesetListModel::data(const QModelIndex& index, int role) const
 {
-	auto tileset = this->tileset(index);
+	const auto tileset = this->tileset(index);
 	if (!tileset) return QVariant();
 
 	switch (role)
@@ -80,7 +82,8 @@ QVariant TilesetListModel::data(const QModelIndex& index, int role) const
 		if (index.column() == 0)
 			return tileset->name();
 		break;
-
+	default:
+		return QVariant();
 	}
 
 	return QVariant();
@@ -88,7 +91,7 @@ QVariant TilesetListModel::data(const QModelIndex& index, int role) const
 /*-----------------------------------------------------------------------------------------------------------*/
 bool TilesetListModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
-	auto tileset = this->tileset(index);
+	const auto tileset = this->tileset(index);
 	if (!tileset) return false;
 
 	switch (role)
@@ -104,6 +107,8 @@ bool TilesetListModel::setData(const QModelIndex& index, const QVariant& value, 
 			return true;
 		}
 		break;
+	default:
+		return false;
 	}
 
 	return false;
@@ -121,7 +126,7 @@ void TilesetListModel::addTileset(int index, Tileset* tileset)
 Tileset* TilesetListModel::takeTileset(int index)
 {
 	beginRemoveRows(QModelIndex(), index, index);
-	auto tileset = mMap->takeTileset(index);
+	const auto tileset = mMap->takeTileset(index);
 	endRemoveRows();
 
 	emit tilesetRemoved(tileset);

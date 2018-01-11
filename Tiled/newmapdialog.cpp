@@ -9,7 +9,7 @@ static Map::Orientation orientationByIndex(int index)
 	Q_ASSERT(index >= static_cast<int>(Map::Orientation::Orthogonal) &&
 		index <= static_cast<int>(Map::Orientation::Hexagonal));
 
-	auto orientation = static_cast<Map::Orientation>(index);
+	const auto orientation = static_cast<Map::Orientation>(index);
 	return orientation;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -18,7 +18,7 @@ static Map::RenderOrder renderOrderByIndex(int index)
 	Q_ASSERT(index >= static_cast<int>(Map::RenderOrder::RightDown) &&
 		index <= static_cast<int>(Map::RenderOrder::LeftUp));
 
-	auto renderOrder = static_cast<Map::RenderOrder>(index);
+	const auto renderOrder = static_cast<Map::RenderOrder>(index);
 	return renderOrder;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -31,7 +31,7 @@ NewMapDialog::NewMapDialog(QWidget* parent) :
 	setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 	resize(dpiScaled(size()));
 
-	auto preferences = PreferencesManager::instance();
+	const auto preferences = PreferencesManager::instance();
 	mUi->orientation->setCurrentIndex(preferences->newMapOrientationIndex());
 	mUi->renderOrder->setCurrentIndex(preferences->newMapRenderOrderIndex());
 	mUi->mapWidth->setValue(preferences->newMapSize().width());
@@ -81,8 +81,8 @@ void NewMapDialog::changeEvent(QEvent* event)
 /*-----------------------------------------------------------------------------------------------------------*/
 void NewMapDialog::tryAccept()
 {
-	auto mapOrientation = orientationByIndex(mUi->orientation->currentIndex());
-	auto mapRenderOrder = renderOrderByIndex(mUi->renderOrder->currentIndex());
+	const auto mapOrientation = orientationByIndex(mUi->orientation->currentIndex());
+	const auto mapRenderOrder = renderOrderByIndex(mUi->renderOrder->currentIndex());
 	auto mapSize = QSize(mUi->mapWidth->value(), mUi->mapHeight->value());
 	auto tileSize = QSize(mUi->tileWidth->value(), mUi->tileHeight->value());
 
@@ -104,7 +104,7 @@ void NewMapDialog::tryAccept()
 /*-----------------------------------------------------------------------------------------------------------*/
 void NewMapDialog::updatePixelSize()
 {
-	auto mapOrientation = orientationByIndex(mUi->orientation->currentIndex());
+	const auto mapOrientation = orientationByIndex(mUi->orientation->currentIndex());
 	QSize size;
 
 	switch(mapOrientation)

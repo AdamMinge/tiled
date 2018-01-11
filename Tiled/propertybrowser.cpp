@@ -32,7 +32,7 @@ PropertyBrowser::PropertyBrowser(QWidget* parent) :
 	mCustomPropertiesGroup(nullptr),
 	mUpdating(false)
 {
-	auto variantEditorFactory = new VariantEditorFactory(this);
+	const auto variantEditorFactory = new VariantEditorFactory(this);
 
 	setFactoryForManager(mVariantManager, variantEditorFactory);
 	setResizeMode(ResizeToContents);
@@ -88,7 +88,7 @@ void PropertyBrowser::setObject(Object* object)
 /*-----------------------------------------------------------------------------------------------------------*/
 bool PropertyBrowser::isCustomPropertyItem(const QtBrowserItem* item) const
 {
-	auto name = nameToId(item->property()->propertyName(), true);
+	const auto name = nameToId(item->property()->propertyName(), true);
 	if (mIdToProperty.contains(name)) return true;
 	else return false;
 }
@@ -121,7 +121,7 @@ void PropertyBrowser::propertyAdded(Object* object, const QString& name)
 
 	mUpdating = true;
 
-	auto id = nameToId(name, true);
+	const auto id = nameToId(name, true);
 	if (mIdToProperty.contains(id))
 	{
 		mIdToProperty[id]->setValue(mObject->property(name));
@@ -142,7 +142,7 @@ void PropertyBrowser::propertyRemoved(Object* object, const QString& name)
 
 	mUpdating = true;
 
-	auto id = nameToId(name, true);
+	const auto id = nameToId(name, true);
 	deleteCustomProperty(mIdToProperty[id]);
 
 	mUpdating = false;
@@ -160,7 +160,7 @@ void PropertyBrowser::propertyChanged(Object* object, const QString& name)
 	if (value.userType() != property->valueType())
 	{
 		auto propertyName = property->propertyName();
-		auto wasCurrent = currentItem() && currentItem()->property() == property;
+		const auto wasCurrent = currentItem() && currentItem()->property() == property;
 
 		deleteCustomProperty(property);
 		property = createCustomProperty(nameToId(name, true), value.type(), name);
@@ -181,9 +181,9 @@ void PropertyBrowser::valueChanged(QtProperty* property, const QVariant& val)
 	if (mUpdating) return;
 	if (!mDocument || !mObject) return;
 
-	auto propertyName = property->propertyName();
-	auto isProperty = mIdToProperty.contains(nameToId(propertyName, false));
-	auto isCustomProperty = mIdToProperty.contains(nameToId(propertyName, true));
+	const auto propertyName = property->propertyName();
+	const auto isProperty = mIdToProperty.contains(nameToId(propertyName, false));
+	const auto isCustomProperty = mIdToProperty.contains(nameToId(propertyName, true));
 
 	if (!isProperty && !isCustomProperty) return;
 
@@ -284,7 +284,7 @@ void PropertyBrowser::updateCustomProperties()
 /*-----------------------------------------------------------------------------------------------------------*/
 void PropertyBrowser::addMapProperties()
 {
-	auto groupProperty = mGroupManager->addProperty(tr("Map"));
+	const auto groupProperty = mGroupManager->addProperty(tr("Map"));
 
 	auto orientationProperty = addProperty(nameToId(tr("Map Orientation"), false),
 		QtVariantPropertyManager::enumTypeId(),
@@ -318,7 +318,7 @@ void PropertyBrowser::addMapProperties()
 /*-----------------------------------------------------------------------------------------------------------*/
 void PropertyBrowser::addTilesetProperties()
 {
-	auto groupProperty = mGroupManager->addProperty(tr("Tileset"));
+	const auto groupProperty = mGroupManager->addProperty(tr("Tileset"));
 
 	auto nameProperty = addProperty(nameToId(tr("Name"), false), QVariant::String, tr("Name"), groupProperty);
 	auto imageSourceProperty = addProperty(nameToId(tr("Source"), false), QVariant::Url, tr("Source"), groupProperty);
@@ -346,7 +346,7 @@ void PropertyBrowser::addTilesetProperties()
 /*-----------------------------------------------------------------------------------------------------------*/
 void PropertyBrowser::addTileProperties()
 {
-	auto groupProperty = mGroupManager->addProperty(tr("Tile"));
+	const auto groupProperty = mGroupManager->addProperty(tr("Tile"));
 
 	auto id = addProperty(nameToId(tr("Id"), false), QVariant::Int, tr("Id"), groupProperty);
 	auto width = addProperty(nameToId(tr("Width"), false), QVariant::Int, tr("Width"), groupProperty);
@@ -367,7 +367,7 @@ void PropertyBrowser::addTileProperties()
 /*-----------------------------------------------------------------------------------------------------------*/
 void PropertyBrowser::addLayerProperties()
 {
-	auto groupProperty = mGroupManager->addProperty(tr("Layer"));
+	const auto groupProperty = mGroupManager->addProperty(tr("Layer"));
 
 	auto name = addProperty(nameToId(tr("Name"), false), QVariant::String, tr("Name"), groupProperty);
 
@@ -578,7 +578,7 @@ void PropertyBrowser::retranslateUi()
 	mLayerTypeNames.append(tr("Tile Layer"));
 	mLayerTypeNames.append(tr("Group Layer"));
 
-	auto object = mObject;
+	const auto object = mObject;
 	setObject(nullptr);
 	setObject(object);
 }
@@ -612,7 +612,7 @@ QtVariantProperty* PropertyBrowser::createCustomProperty(const QString& id, int 
 		else break;
 	}
 
-	auto property = createProperty(id, type, name);
+	const auto property = createProperty(id, type, name);
 
 	mCustomPropertiesGroup->insertSubProperty(property, precedingProperty);
 
@@ -622,7 +622,7 @@ QtVariantProperty* PropertyBrowser::createCustomProperty(const QString& id, int 
 QtVariantProperty* PropertyBrowser::addProperty(const QString& id, int type,
 	const QString& name, QtProperty* parent)
 {
-	auto property = createProperty(id, type, name);
+	const auto property = createProperty(id, type, name);
 	parent->addSubProperty(property);
 
 	return property;

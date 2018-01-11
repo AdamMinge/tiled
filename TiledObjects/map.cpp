@@ -88,7 +88,7 @@ void Map::addTileset(Tileset* tileset, int index)
 /*-----------------------------------------------------------------------------------------------------------*/
 void Map::removeTileset(int index)
 {
-	auto tileset = mTilesets.takeAt(index);
+	const auto tileset = mTilesets.takeAt(index);
 	delete tileset;
 }
 /*-----------------------------------------------------------------------------------------------------------*/

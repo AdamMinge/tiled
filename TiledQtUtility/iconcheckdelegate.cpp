@@ -19,7 +19,7 @@ void IconCheckDelegate::drawCheck(QPainter* painter, const QStyleOptionViewItem&
 	decltype(auto) icon = (state == Qt::Checked) ? mCheckedIcon : mUnCheckedIcon;
 	decltype(auto) pixmap = icon.pixmap(rect.size());
 
-	auto layoutSize = pixmap.size() / pixmap.devicePixelRatio();
+	const auto layoutSize = pixmap.size() / pixmap.devicePixelRatio();
 	QRect targetRect(QPoint(0, 0), layoutSize);
 	targetRect.moveCenter(rect.center());
 

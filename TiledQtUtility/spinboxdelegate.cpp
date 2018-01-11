@@ -28,7 +28,7 @@ QWidget* SpinBoxDelegate::createEditor(QWidget* parent, const QStyleOptionViewIt
 /*-----------------------------------------------------------------------------------------------------------*/
 void SpinBoxDelegate::setEditorData(QWidget* editor, const QModelIndex& index) const
 {
-	auto value = index.model()->data(index, Qt::EditRole).toInt();
+	const auto value = index.model()->data(index, Qt::EditRole).toInt();
 	auto spinBox = static_cast<QSpinBox*>(editor);
 
 	spinBox->setValue(value);
@@ -39,7 +39,7 @@ void SpinBoxDelegate::setModelData(QWidget* editor, QAbstractItemModel* model, c
 	auto spinBox = static_cast<QSpinBox*>(editor);
 	spinBox->interpretText();
 
-	auto value = spinBox->value();
+	const auto value = spinBox->value();
 	model->setData(index, value, Qt::EditRole);
 }
 /*-----------------------------------------------------------------------------------------------------------*/

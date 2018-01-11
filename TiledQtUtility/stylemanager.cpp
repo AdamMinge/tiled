@@ -26,7 +26,7 @@ QStringList StyleManager::availableStyles() const
 	return mNameToStyle.keys();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void StyleManager::registerStyle(styleCreatorFun creator, const QString& name)
+void StyleManager::registerStyle(StyleCreatorFun creator, const QString& name)
 {
 	Q_ASSERT(!mNameToStyle.contains(name));
 	mNameToStyle[name] = creator;

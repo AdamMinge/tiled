@@ -19,7 +19,7 @@ void Command::mergeWith(const Command* other)
 /*-----------------------------------------------------------------------------------------------------------*/
 bool Command::mergeWith(const QUndoCommand* other)
 {
-	auto command = static_cast<const Command*>(other);
+	const auto command = static_cast<const Command*>(other);
 
 	if (!canMergeWith(command)) return false;
 	else

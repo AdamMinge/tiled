@@ -31,11 +31,11 @@ public:
 	bool operator==(const Chunk& chunk) const;
 	bool operator!=(const Chunk& chunk) const;
 
-	typename QVector<Cell>::const_iterator begin() const;
-	typename QVector<Cell>::iterator begin();
+	QVector<Cell>::const_iterator begin() const;
+	QVector<Cell>::iterator begin();
 
-	typename QVector<Cell>::const_iterator end() const;
-	typename QVector<Cell>::iterator end();
+	QVector<Cell>::const_iterator end() const;
+	QVector<Cell>::iterator end();
 
 private:
 	QVector<Cell> mGrid;

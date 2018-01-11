@@ -44,7 +44,7 @@ public:
 	bool contains(Tile* tile) const;
 
 	void loadTileset();
-	bool isValid();
+	bool isValid() const;
 
 	Tileset* clone() const;
 

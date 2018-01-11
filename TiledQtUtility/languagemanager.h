@@ -38,7 +38,7 @@ private:
 	explicit LanguageManager();
 	~LanguageManager() override;
 
-	QStringList loadAvailableLanguages(const QString& dir, const QString& prefix) const;
+	static QStringList loadAvailableLanguages(const QString& dir, const QString& prefix);
 
 private:
 	static LanguageManager* mInstance;

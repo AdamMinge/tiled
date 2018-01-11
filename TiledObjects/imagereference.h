@@ -16,8 +16,8 @@ public:
 	ImageReference& operator=(ImageReference&&) = default;
 	ImageReference& operator=(const ImageReference&) = default;
 
-	bool operator==(const ImageReference& other);
-	bool operator!=(const ImageReference& other);
+	bool operator==(const ImageReference& other) const;
+	bool operator!=(const ImageReference& other) const;
 
 	const QString& source() const;
 	const QColor& transparentColor() const;

@@ -8,7 +8,7 @@
 ColorButton::ColorButton(QWidget *parent)
 	: QToolButton(parent)
 {
-	auto defaultIconSize = style()->pixelMetric(QStyle::PM_ButtonIconSize);
+	const auto defaultIconSize = style()->pixelMetric(QStyle::PM_ButtonIconSize);
 	setIconSize(QSize(defaultIconSize * 2, defaultIconSize));
 	setColor(Qt::white);
 
@@ -38,7 +38,7 @@ void ColorButton::changeEvent(QEvent *event)
 	{
 		case QEvent::StyleChange: 
 		{
-			auto defaultIconSize = style()->pixelMetric(QStyle::PM_ButtonIconSize);
+			const auto defaultIconSize = style()->pixelMetric(QStyle::PM_ButtonIconSize);
 			setIconSize(QSize(defaultIconSize * 2, defaultIconSize));
 			updateIcon();
 			break;

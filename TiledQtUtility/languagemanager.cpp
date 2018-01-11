@@ -112,7 +112,7 @@ LanguageManager::~LanguageManager()
 	if (mAppTranslator) delete mAppTranslator;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-QStringList LanguageManager::loadAvailableLanguages(const QString& dir, const QString& prefix) const
+QStringList LanguageManager::loadAvailableLanguages(const QString& dir, const QString& prefix)
 {
 	QStringList languages;
 

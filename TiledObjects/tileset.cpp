@@ -153,7 +153,7 @@ void Tileset::loadTileset()
 		}
 	}
 
-	auto columnCount = ((image.width() - mMargin + mSpacing) / (mTileSize.width() + mSpacing));
+	const auto columnCount = ((image.width() - mMargin + mSpacing) / (mTileSize.width() + mSpacing));
 
 	mColumnCount = columnCount;
 	Q_ASSERT(mColumnCount > 0);
@@ -165,7 +165,7 @@ void Tileset::loadTileset()
 	mValid = true;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-bool Tileset::isValid()
+bool Tileset::isValid() const
 {
 	return mValid;
 }
@@ -183,7 +183,7 @@ Tileset* Tileset::clone() const
 		iter.next();
 
 		auto id = iter.key();
-		auto tile = iter.value()->clone(cloneTileset);
+		const auto tile = iter.value()->clone(cloneTileset);
 
 		cloneTileset->mTiles[id] = tile;
 	}

@@ -34,7 +34,7 @@ bool ImageColorPickerWidget::selectColor(const QString& image)
 	mScaleY = 1;
 
 	auto rct = QApplication::desktop()->availableGeometry(this);
-	auto maxW = rct.width() * (2.0 / 3.0), maxH = rct.height() * (2.0 / 3.0);
+	const auto maxW = rct.width() * (2.0 / 3.0), maxH = rct.height() * (2.0 / 3.0);
 
 	if (mImage.width() > maxW || mImage.height() > maxH) 
 	{

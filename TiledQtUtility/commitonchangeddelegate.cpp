@@ -13,9 +13,9 @@ CommitOnChangedDelegate::CommitOnChangedDelegate(QObject* parent) :
 QWidget* CommitOnChangedDelegate::createEditor(QWidget* parent, const QStyleOptionViewItem& option,
 	const QModelIndex& index) const
 {
-	auto editor = QStyledItemDelegate::createEditor(parent, option, index);
+	const auto editor = QStyledItemDelegate::createEditor(parent, option, index);
 
-	if(auto lineEdit = qobject_cast<QLineEdit*>(editor))
+	if(const auto lineEdit = qobject_cast<QLineEdit*>(editor))
 	{
 		connect(lineEdit, &QLineEdit::textChanged, 
 			mMapper, QOverload<>::of(&QSignalMapper::map));

@@ -28,7 +28,7 @@ void GroupCommand::redo()
 /*-----------------------------------------------------------------------------------------------------------*/
 bool GroupCommand::canMergeWith(const Command* other) const
 {
-	auto changeTilesetProperty = static_cast<const GroupCommand*>(other);
+	const auto changeTilesetProperty = static_cast<const GroupCommand*>(other);
 	if (text() != other->text()) return false;
 	if (mCommands.count() != changeTilesetProperty->mCommands.count()) return false;
 
@@ -37,8 +37,8 @@ bool GroupCommand::canMergeWith(const Command* other) const
 
 	while (iter.hasNext())
 	{
-		auto iterValue = iter.next();
-		auto iterOtherValue = iterOther.next();
+		const auto iterValue = iter.next();
+		const auto iterOtherValue = iterOther.next();
 
 		if (!iterValue->canMergeWith(iterOtherValue)) return false;
 	}
@@ -48,14 +48,14 @@ bool GroupCommand::canMergeWith(const Command* other) const
 /*-----------------------------------------------------------------------------------------------------------*/
 void GroupCommand::mergeWith(const Command* other)
 {
-	auto changeTilesetProperty = static_cast<const GroupCommand*>(other);
+	const auto changeTilesetProperty = static_cast<const GroupCommand*>(other);
 	QListIterator<Command*> iter(mCommands);
 	QListIterator<Command*> iterOther(changeTilesetProperty->mCommands);
 
 	while (iter.hasNext())
 	{
 		auto iterValue = iter.next();
-		auto iterOtherValue = iterOther.next();
+		const auto iterOtherValue = iterOther.next();
 
 		iterValue->mergeWith(iterOtherValue);
 	}

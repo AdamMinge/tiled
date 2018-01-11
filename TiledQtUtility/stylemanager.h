@@ -12,7 +12,7 @@ class StyleManager final : public QObject
 	Q_OBJECT
 
 public:
-	using styleCreatorFun = std::function<QStyle*()>;
+	using StyleCreatorFun = std::function<QStyle*()>;
 
 public:
 	static StyleManager* instance();
@@ -26,7 +26,7 @@ public:
 
 	QStringList availableStyles() const;
 
-	void registerStyle(styleCreatorFun creator, const QString& name);
+	void registerStyle(StyleCreatorFun creator, const QString& name);
 	void unregisterStyle(const QString& name);
 
 	const QString& style() const;
@@ -47,6 +47,6 @@ private:
 	static StyleManager* mInstance;
 
 	QString mStyleName;
-	QMap<QString, styleCreatorFun> mNameToStyle;
+	QMap<QString, StyleCreatorFun> mNameToStyle;
 };
 /*-----------------------------------------------------------------------------------------------------------*/

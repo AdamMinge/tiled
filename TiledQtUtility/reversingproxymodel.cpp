@@ -114,7 +114,7 @@ void ReversingProxyModel::setSourceModel(QAbstractItemModel* newSourceModel)
 {
 	beginResetModel();
 
-	if (auto source = sourceModel())
+	if (const auto source = sourceModel())
 	{
 		disconnect(source, SIGNAL(rowsAboutToBeInserted(QModelIndex, int, int)),
 			this, SLOT(sourceRowsAboutToBeInserted(QModelIndex, int, int)));

@@ -8,13 +8,13 @@ ImageReference::ImageReference(const QString& source, const QColor& transparentC
 	
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-bool ImageReference::operator==(const ImageReference& other) 
+bool ImageReference::operator==(const ImageReference& other) const
 {
 	if (mSource == other.mSource && mTransparentColor == other.mTransparentColor) return true;
 	else return false;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-bool ImageReference::operator!=(const ImageReference& other) 
+bool ImageReference::operator!=(const ImageReference& other) const
 {
 	return !(*this == other);
 }

@@ -67,7 +67,7 @@ void Zoomable::handleWheelDelta(int delta)
 		auto factor = 1 + 0.3 * qAbs(qreal(delta) / 8 / 15);
 		if (delta < 0) factor = 1 / factor;
 
-		auto scale = qBound(
+		const auto scale = qBound(
 			mZoomFactors.first(),
 			mScale * factor,
 			mZoomFactors.last());

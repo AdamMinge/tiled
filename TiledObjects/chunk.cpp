@@ -36,12 +36,14 @@ const CELL* Chunk<CELL>::findCell(const QPoint& point) const
 template<typename CELL>
 void Chunk<CELL>::setCell(const QPoint& point, const CELL& cell)
 {
+	Q_ASSERT(contains(point));
 	mGrid[point.x() + point.y() * chunkSize()] = cell;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 template<typename CELL>
 void Chunk<CELL>::setCell(const QPoint& point, CELL&& cell)
 {
+	Q_ASSERT(contains(point));
 	mGrid[point.x() + point.y() * chunkSize()] = std::move(cell);
 }
 /*-----------------------------------------------------------------------------------------------------------*/

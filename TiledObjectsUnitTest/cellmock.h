@@ -6,21 +6,20 @@
 class CellMock
 {
 public:
-	CellMock() = default;
+	explicit CellMock() = default;
 
-	CellMock(const CellMock&) {}
-	CellMock(CellMock&&) noexcept {}
+	CellMock(const CellMock&) { }
+	CellMock(CellMock&&) noexcept { }
 
 	CellMock& operator=(const CellMock&) { return *this; }
 	CellMock& operator=(CellMock&&) noexcept { return *this; }
 
-	MOCK_CONST_METHOD1(equals, bool(const CellMock&));
-	MOCK_CONST_METHOD1(notEquals, bool(const CellMock&));
+	bool operator==(const CellMock& cell) const { return isEq(cell); }
+	bool operator!=(const CellMock& cell) const { return isNotEq(cell); }
 
 	MOCK_CONST_METHOD0(isEmpty, bool());
 
-	bool operator==(const CellMock& cell) const { return equals(cell); }
-	bool operator!=(const CellMock& cell) const { return notEquals(cell); }
-
+	MOCK_CONST_METHOD1(isEq, bool(const CellMock&));
+	MOCK_CONST_METHOD1(isNotEq, bool(const CellMock&));
 };
 /*-----------------------------------------------------------------------------------------------------------*/

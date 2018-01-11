@@ -130,7 +130,6 @@
     <ClCompile Include="cellshould.cpp" />
     <ClCompile Include="chunkshould.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="templatesimp.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TiledObjects\TiledObjects.vcxproj">
@@ -138,11 +137,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="cellmock.h" />
     <ClInclude Include="cellshould.h" />
     <ClInclude Include="chunkshould.h" />
-    <ClInclude Include="tilemock.h" />
-    <ClInclude Include="tilesetmock.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

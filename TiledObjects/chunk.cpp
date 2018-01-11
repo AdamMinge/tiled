@@ -1,15 +1,14 @@
 ﻿/*-----------------------------------------------------------------------------------------------------------*/
 #include "chunk.h"
+#include "cell.h"
 #include "tiledutils.h"
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename CELL>
-Chunk<CELL>::Chunk() :
+Chunk::Chunk() :
 	mGrid(chunkSize() * chunkSize())
 {
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename CELL>
-bool Chunk<CELL>::contains(const QPoint& point) const
+bool Chunk::contains(const QPoint& point) const
 {
 	const auto index = (point.x() + point.y() * chunkSize());
 	
@@ -17,8 +16,7 @@ bool Chunk<CELL>::contains(const QPoint& point) const
 	else return true;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename CELL>
-const CELL& Chunk<CELL>::cell(const QPoint& point) const
+const Cell& Chunk::cell(const QPoint& point) const
 {
 	auto cell = findCell(point);
 	Q_ASSERT(cell);
@@ -26,29 +24,25 @@ const CELL& Chunk<CELL>::cell(const QPoint& point) const
 	return *cell;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename CELL>
-const CELL* Chunk<CELL>::findCell(const QPoint& point) const
+const Cell* Chunk::findCell(const QPoint& point) const
 {
 	if (contains(point)) return &mGrid[(point.x() + point.y() * chunkSize())];
 	else return nullptr;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename CELL>
-void Chunk<CELL>::setCell(const QPoint& point, const CELL& cell)
+void Chunk::setCell(const QPoint& point, const Cell& cell)
 {
 	Q_ASSERT(contains(point));
 	mGrid[point.x() + point.y() * chunkSize()] = cell;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename CELL>
-void Chunk<CELL>::setCell(const QPoint& point, CELL&& cell)
+void Chunk::setCell(const QPoint& point, Cell&& cell)
 {
 	Q_ASSERT(contains(point));
 	mGrid[point.x() + point.y() * chunkSize()] = std::move(cell);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename CELL>
-bool Chunk<CELL>::isEmpty() const
+bool Chunk::isEmpty() const
 {
 	for(auto y = 0; y < chunkSize(); y++)
 		for(auto x = 0; x < chunkSize(); x++)
@@ -57,38 +51,32 @@ bool Chunk<CELL>::isEmpty() const
 	return true;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template <typename CELL>
-bool Chunk<CELL>::operator==(const Chunk& chunk) const
+bool Chunk::operator==(const Chunk& chunk) const
 {
 	return mGrid == chunk.mGrid;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template <typename CELL>
-bool Chunk<CELL>::operator!=(const Chunk& chunk) const
+bool Chunk::operator!=(const Chunk& chunk) const
 {
 	return mGrid != chunk.mGrid;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename CELL>
-typename QVector<CELL>::const_iterator Chunk<CELL>::begin() const
+QVector<Cell>::const_iterator Chunk::begin() const
 {
 	return mGrid.begin();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename CELL>
-typename QVector<CELL>::iterator Chunk<CELL>::begin()
+QVector<Cell>::iterator Chunk::begin()
 {
 	return mGrid.begin();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename CELL>
-typename QVector<CELL>::const_iterator Chunk<CELL>::end() const
+QVector<Cell>::const_iterator Chunk::end() const
 {
 	return mGrid.end();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename CELL>
-typename QVector<CELL>::iterator Chunk<CELL>::end()
+QVector<Cell>::iterator Chunk::end()
 {
 	return mGrid.end();
 }

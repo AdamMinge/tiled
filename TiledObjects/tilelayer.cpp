@@ -38,7 +38,7 @@ bool TileLayer::contains(const QPoint& point) const
 		return true;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-const TileLayer::UChunk& TileLayer::chunk(const QPoint& point) const
+const Chunk& TileLayer::chunk(const QPoint& point) const
 {
 	const auto chunkCoordinates = point / chunkSize();
 	auto chunk = findChunk(chunkCoordinates);
@@ -47,12 +47,12 @@ const TileLayer::UChunk& TileLayer::chunk(const QPoint& point) const
 	return *chunk;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-const TileLayer::UChunk* TileLayer::findChunk(const QPoint& point) const
+const Chunk* TileLayer::findChunk(const QPoint& point) const
 {
 	return const_cast<TileLayer*>(this)->findChunk(point);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-const TileLayer::UCell& TileLayer::cell(const QPoint& point) const
+const Cell& TileLayer::cell(const QPoint& point) const
 {
 	auto cellPtr = findCell(point);
 	if (!cellPtr) cellPtr = &mEmptyCell;
@@ -60,7 +60,7 @@ const TileLayer::UCell& TileLayer::cell(const QPoint& point) const
 	return *cellPtr;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-const TileLayer::UCell* TileLayer::findCell(const QPoint& point) const
+const Cell* TileLayer::findCell(const QPoint& point) const
 {
 	if (const auto chunk = findChunk(point))
 		return &chunk->cell(point & chunkMask());
@@ -68,7 +68,7 @@ const TileLayer::UCell* TileLayer::findCell(const QPoint& point) const
 		return nullptr;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TileLayer::setCell(const QPoint& point, const TileLayer::UCell& cell)
+void TileLayer::setCell(const QPoint& point, const Cell& cell)
 {
 	auto chunk = findChunk(point);
 
@@ -107,7 +107,7 @@ void TileLayer::setCell(const QPoint& point, const TileLayer::UCell& cell)
 	chunk->setCell(point & chunkMask(), cell);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TileLayer::setCell(const QPoint& point, TileLayer::UCell&& cell)
+void TileLayer::setCell(const QPoint& point, Cell&& cell)
 {
 	auto chunk = findChunk(point);
 
@@ -238,7 +238,7 @@ TileLayer* TileLayer::initializeClone(TileLayer* clone) const
 	return clone;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-TileLayer::UChunk* TileLayer::findChunk(const QPoint& point)
+Chunk* TileLayer::findChunk(const QPoint& point)
 {
 	const auto chunkCoordinates = point / chunkSize();
 	auto iter = mChunks.find(chunkCoordinates);
@@ -247,11 +247,11 @@ TileLayer::UChunk* TileLayer::findChunk(const QPoint& point)
 	else return nullptr;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-TileLayer::Iterator::Iterator(QHash<QPoint, TileLayer::UChunk>::Iterator start,
-	QHash<QPoint, TileLayer::UChunk>::Iterator end) :
+TileLayer::Iterator::Iterator(QHash<QPoint, Chunk>::Iterator start,
+	QHash<QPoint, Chunk>::Iterator end) :
 	mChunkIter(start),
 	mChunkEndIter(end),
-	mCellIter((mChunkIter != mChunkEndIter) ? start.value().begin() : QVector<TileLayer::UCell>::Iterator())
+	mCellIter((mChunkIter != mChunkEndIter) ? start.value().begin() : QVector<Cell>::Iterator())
 {
 
 }
@@ -282,17 +282,17 @@ bool TileLayer::Iterator::operator!=(const Iterator& other) const
 	return !(*this == other);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-TileLayer::UCell& TileLayer::Iterator::operator*() const
+Cell& TileLayer::Iterator::operator*() const
 {
 	return *mCellIter;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-TileLayer::UCell* TileLayer::Iterator::operator->() const
+Cell* TileLayer::Iterator::operator->() const
 {
 	return mCellIter;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-TileLayer::UCell& TileLayer::Iterator::value() const
+Cell& TileLayer::Iterator::value() const
 {
 	return *mCellIter;
 }
@@ -322,11 +322,11 @@ void TileLayer::Iterator::advance()
 	}
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-TileLayer::ConstIterator::ConstIterator(QHash<QPoint, TileLayer::UChunk>::ConstIterator start,
-	QHash<QPoint, TileLayer::UChunk>::ConstIterator end) :
+TileLayer::ConstIterator::ConstIterator(QHash<QPoint, Chunk>::ConstIterator start,
+	QHash<QPoint, Chunk>::ConstIterator end) :
 	mChunkIter(start),
 	mChunkEndIter(end),
-	mCellIter((mChunkIter != mChunkEndIter) ? start.value().begin() : QVector<TileLayer::UCell>::ConstIterator())
+	mCellIter((mChunkIter != mChunkEndIter) ? start.value().begin() : QVector<Cell>::ConstIterator())
 {
 
 }
@@ -357,17 +357,17 @@ bool TileLayer::ConstIterator::operator!=(const ConstIterator& other) const
 	return !(*this == other);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-const TileLayer::UCell& TileLayer::ConstIterator::operator*() const
+const Cell& TileLayer::ConstIterator::operator*() const
 {
 	return *mCellIter;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-const TileLayer::UCell* TileLayer::ConstIterator::operator->() const
+const Cell* TileLayer::ConstIterator::operator->() const
 {
 	return mCellIter;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-const TileLayer::UCell& TileLayer::ConstIterator::value() const
+const Cell& TileLayer::ConstIterator::value() const
 {
 	return *mCellIter;
 }

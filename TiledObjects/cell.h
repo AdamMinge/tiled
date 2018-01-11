@@ -3,11 +3,13 @@
 /*-----------------------------------------------------------------------------------------------------------*/
 #include "tiledobjects_global.h"
 /*-----------------------------------------------------------------------------------------------------------*/
-template<typename TILESET, typename TILE>
+class Tileset;
+class Tile;
+/*-----------------------------------------------------------------------------------------------------------*/
 class TILEDOBJECTS_EXPORT Cell final
 {
 public:
-	explicit Cell(TILE* tile = nullptr);
+	explicit Cell(Tile* tile = nullptr);
 	~Cell() = default;
 
 	Cell(const Cell&) = default;
@@ -21,15 +23,15 @@ public:
 
 	bool isEmpty() const;
 
-	TILESET* tileset() const;
+	Tileset* tileset() const;
 
-	TILE* tile() const;
-	void setTile(TILE* tile);
+	Tile* tile() const;
+	void setTile(Tile* tile);
 
 	int tileId() const;
 
 private:
-	TILESET* mTileset;
+	Tileset* mTileset;
 	int mId;
 };
 /*-----------------------------------------------------------------------------------------------------------*/

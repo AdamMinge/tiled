@@ -3,43 +3,29 @@
 #include "cell.h"
 /*-----------------------------------------------------------------------------------------------------------*/
 CellShould::CellShould() :
-	mTilesetMock1(nullptr),
-	mTilesetMock2(nullptr),
-	mTileMock1Tileset1(nullptr),
-	mTileMock2Tileset1(nullptr),
-	mTileMock3Tileset2(nullptr),
-	mTileMock4Tileset2(nullptr)
+	mTileset1(nullptr),
+	mTileset2(nullptr)
 {
 
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void CellShould::SetUp()
 {
-	mTilesetMock1 = new TilesetMock();
-	mTilesetMock2 = new TilesetMock();
-
-	mTileMock1Tileset1 = new TileMock();
-	mTileMock2Tileset1 = new TileMock();
-	mTileMock3Tileset2 = new TileMock();
-	mTileMock4Tileset2 = new TileMock();
+	mTileset1 = new Tileset();
+	mTileset2 = new Tileset();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void CellShould::TearDown()
 {
-	delete mTilesetMock1;
-	delete mTilesetMock2;
-
-	delete mTileMock1Tileset1;
-	delete mTileMock2Tileset1;
-	delete mTileMock3Tileset2;
-	delete mTileMock4Tileset2;
+	delete mTileset1;
+	delete mTileset2;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 TEST_F(CellShould, ReturnTrueWhenComperedWithSelf)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
@@ -55,7 +41,7 @@ TEST_F(CellShould, ReturnTrueWhenComperedWithCellWithTheSameTile)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(2)
-		.WillRepeatedly(testing::Return(mTilesetMock1));
+		.WillRepeatedly(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(2)
 		.WillRepeatedly(testing::Return(1));
@@ -71,14 +57,14 @@ TEST_F(CellShould, ReturnFalseWhenComperedWithCellWithOtherTile)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 		EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
 
 	EXPECT_CALL(*mTileMock2Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock2Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(2));
@@ -94,7 +80,7 @@ TEST_F(CellShould, BeSameAsOrginalWhenWasCopied)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
@@ -123,7 +109,7 @@ TEST_F(CellShould, BeNoEmptyWhenUsedConstructorWithParametr)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
@@ -137,7 +123,7 @@ TEST_F(CellShould, BeNoEmptyWhenCopiedNoEmptyCell)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
@@ -181,7 +167,7 @@ TEST_F(CellShould, ReturnNoNullPtrTilesetForNoEmptyCell)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
@@ -197,7 +183,7 @@ TEST_F(CellShould, ReturnSameTilesetForEqualCell)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(2)
-		.WillRepeatedly(testing::Return(mTilesetMock1));
+		.WillRepeatedly(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(2)
 		.WillRepeatedly(testing::Return(1));
@@ -221,14 +207,14 @@ TEST_F(CellShould, ReturnSameTilesetForCellWithTileWithSameTileset)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
 
 	EXPECT_CALL(*mTileMock2Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock2Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(2));
@@ -246,14 +232,14 @@ TEST_F(CellShould, ReturnOtherTilesetForCellWithTileWithOtherTileset)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
 
 	EXPECT_CALL(*mTileMock3Tileset2, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock2));
+		.WillOnce(testing::Return(mTileset2));
 	EXPECT_CALL(*mTileMock3Tileset2, id())
 		.Times(1)
 		.WillOnce(testing::Return(3));
@@ -284,11 +270,11 @@ TEST_F(CellShould, ReturnNoNullptrTileForNoEmptyCell)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
-	EXPECT_CALL(*mTilesetMock1, tile(testing::Eq(1)))
+	EXPECT_CALL(*mTileset1, tile(testing::Eq(1)))
 		.Times(1)
 		.WillOnce(testing::Return(mTileMock1Tileset1));
 
@@ -303,11 +289,11 @@ TEST_F(CellShould, ReturnSameTileForEqualCell)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(2)
-		.WillRepeatedly(testing::Return(mTilesetMock1));
+		.WillRepeatedly(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(2)
 		.WillRepeatedly(testing::Return(1));
-	EXPECT_CALL(*mTilesetMock1, tile(testing::Eq(1)))
+	EXPECT_CALL(*mTileset1, tile(testing::Eq(1)))
 		.Times(2)
 		.WillRepeatedly(testing::Return(mTileMock1Tileset1));
 
@@ -330,19 +316,19 @@ TEST_F(CellShould, ReturnOtherTileForNoEqualCell)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
 
 	EXPECT_CALL(*mTileMock2Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock2Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(2));
 
-	EXPECT_CALL(*mTilesetMock1, tile(testing::AnyOf(testing::Eq(1), testing::Eq(2))))
+	EXPECT_CALL(*mTileset1, tile(testing::AnyOf(testing::Eq(1), testing::Eq(2))))
 		.Times(2)
 		.WillOnce(testing::Return(mTileMock1Tileset1))
 		.WillOnce(testing::Return(mTileMock2Tileset1));
@@ -364,7 +350,7 @@ TEST_F(CellShould, BeEmptyWhenSetNullptrTile)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
@@ -383,14 +369,14 @@ TEST_F(CellShould, BeNoEmptyWhenSetNoNullptrTile)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
 
 	EXPECT_CALL(*mTileMock2Tileset1, tileset())
 		.Times(2)
-		.WillRepeatedly(testing::Return(mTilesetMock1));
+		.WillRepeatedly(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock2Tileset1, id())
 		.Times(2)
 		.WillRepeatedly(testing::Return(2));
@@ -409,7 +395,7 @@ TEST_F(CellShould, BeStillEmptyWhenHisCopySetNewNoNullptrTile)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(2)
-		.WillRepeatedly(testing::Return(mTilesetMock1));
+		.WillRepeatedly(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(2)
 		.WillRepeatedly(testing::Return(1));
@@ -434,7 +420,7 @@ TEST_F(CellShould, BeStillNoEmptyWhenHisCopySetNewNullptrTile)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
@@ -466,7 +452,7 @@ TEST_F(CellShould, NoReturnMinusOneIdWhenIsNoEmpty)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
@@ -480,7 +466,7 @@ TEST_F(CellShould, ReturnSameIdAsHisCopy)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
@@ -501,7 +487,7 @@ TEST_F(CellShould, ReturnSameIdAsOtherCellWhenCellsAreEqual)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(2)
-		.WillRepeatedly(testing::Return(mTilesetMock1));
+		.WillRepeatedly(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(2)
 		.WillRepeatedly(testing::Return(1));
@@ -516,14 +502,14 @@ TEST_F(CellShould, ReturnOtherIdForTwoCellFromSameTilesetWhenCellsAreNotEqual)
 {
 	EXPECT_CALL(*mTileMock1Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock1Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(1));
 
 	EXPECT_CALL(*mTileMock2Tileset1, tileset())
 		.Times(1)
-		.WillOnce(testing::Return(mTilesetMock1));
+		.WillOnce(testing::Return(mTileset1));
 	EXPECT_CALL(*mTileMock2Tileset1, id())
 		.Times(1)
 		.WillOnce(testing::Return(2));

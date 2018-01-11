@@ -24,18 +24,12 @@
       <Extensions>moc;h;cpp</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="Header Files\Mocks">
-      <UniqueIdentifier>{94336d4b-cdd9-471b-b531-6b5ebd3d90ba}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="cellshould.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="templatesimp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="chunkshould.cpp">
@@ -48,15 +42,6 @@
     </ClInclude>
     <ClInclude Include="chunkshould.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="cellmock.h">
-      <Filter>Header Files\Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="tilemock.h">
-      <Filter>Header Files\Mocks</Filter>
-    </ClInclude>
-    <ClInclude Include="tilesetmock.h">
-      <Filter>Header Files\Mocks</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

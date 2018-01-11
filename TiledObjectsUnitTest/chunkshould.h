@@ -2,7 +2,7 @@
 #pragma once
 /*-----------------------------------------------------------------------------------------------------------*/
 #include <gtest/gtest.h>
-#include "cellmock.h"
+#include "cell.h"
 /*-----------------------------------------------------------------------------------------------------------*/
 class ChunkShould : public testing::Test
 {
@@ -14,9 +14,9 @@ protected:
 	void TearDown() override;
 	
 protected:
-	CellMock* mCellMock1;
-	CellMock* mCellMock2;
-	CellMock* mCellMock3;
-	CellMock* mCellMock4;
+	Cell* mCell1;
+	Cell* mCell2;
+	Cell* mCell3;
+	Cell* mCell4;
 };
 /*-----------------------------------------------------------------------------------------------------------*/

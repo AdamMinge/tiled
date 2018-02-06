@@ -15,6 +15,18 @@ public:
 	enum DocumentType
 	{
 		MapDocumentType,
+		TilesetDocumentType,
+	};
+	enum ChangedPropertyId
+	{
+		OrientationChangedId = 1 << 0,
+		RenderOrderChangedId = 1 << 1,
+		TileSizeChangedId = 1 << 2,
+		AnimationChangedId = 1 << 3,
+		NameChangedId = 1 << 4,
+		VisibleChangedId = 1 << 5,
+		LockedChangedId = 1 << 6,
+		OpacityChangedId = 1 << 7
 	};
 
 public:

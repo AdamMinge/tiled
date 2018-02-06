@@ -148,6 +148,16 @@ const QSize& PreferencesManager::mapEditorSize() const
 	return mMapEditorSize;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
+const QByteArray& PreferencesManager::tilesetEditorState() const
+{
+	return mTilesetEditorState;
+}
+/*-----------------------------------------------------------------------------------------------------------*/
+const QSize& PreferencesManager::tilesetEditorSize() const
+{
+	return mTilesetEditorSize;
+}
+/*-----------------------------------------------------------------------------------------------------------*/
 const QString& PreferencesManager::newPropertyType() const
 {
 	return mNewpropertyType;
@@ -403,6 +413,26 @@ void PreferencesManager::setMapEditorSize(const QSize& size)
 	emit mapEditorSizeChanged(mMapEditorSize);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
+void PreferencesManager::setTilesetEditorState(const QByteArray& state)
+{
+	if (mTilesetEditorState == state) return;
+
+	mTilesetEditorState = state;
+	mSettings.setValue(QLatin1String("TilesetEditor/State"), mTilesetEditorState);
+
+	emit tilesetEditorStateChanged(mTilesetEditorState);
+}
+/*-----------------------------------------------------------------------------------------------------------*/
+void PreferencesManager::setTilesetEditorSize(const QSize& size)
+{
+	if (mTilesetEditorSize == size) return;
+
+	mTilesetEditorSize = size;
+	mSettings.setValue(QLatin1String("TilesetEditor/Size"), mTilesetEditorSize);
+
+	emit tilesetEditorSizeChanged(mTilesetEditorSize);
+}
+/*-----------------------------------------------------------------------------------------------------------*/
 void PreferencesManager::setNewpropertyType(const QString& type)
 {
 	if (mNewpropertyType == type) return;
@@ -459,6 +489,11 @@ PreferencesManager::PreferencesManager()
 	mSettings.beginGroup(QLatin1String("MapEditor"));
 	mMapEditorState = byteArrayValue("State", QByteArray());
 	mMapEditorSize = sizeValue("Size", QSize());
+	mSettings.endGroup();
+
+	mSettings.beginGroup(QLatin1String("TilesetEditor"));
+	mTilesetEditorState = byteArrayValue("State", QByteArray());
+	mTilesetEditorSize = sizeValue("Size", QSize());
 	mSettings.endGroup();
 
 	mSettings.beginGroup(QLatin1String("AddPropertyDialog"));

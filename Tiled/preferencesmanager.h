@@ -52,6 +52,9 @@ public:
 	const QByteArray& mapEditorState() const;
 	const QSize& mapEditorSize() const;
 
+	const QByteArray& tilesetEditorState() const;
+	const QSize& tilesetEditorSize() const;
+
 	const QString& newPropertyType() const;
 
 public slots:
@@ -79,13 +82,16 @@ public slots:
 	void setNewTilesetSpacing(int spacing);
 	void setNewTilesetMargin(int margin);
 
-	void setNewMapOrientationIndex(int OrientationIndex);
-	void setNewMapRenderOrderIndex(int RenderOrderIndex);
+	void setNewMapOrientationIndex(int orientationIndex);
+	void setNewMapRenderOrderIndex(int renderOrderIndex);
 	void setNewMapSize(const QSize& size);
 	void setNewMapTileSize(const QSize& tileSize);
 
 	void setMapEditorState(const QByteArray& state);
 	void setMapEditorSize(const QSize& size);
+
+	void setTilesetEditorState(const QByteArray& state);
+	void setTilesetEditorSize(const QSize& size);
 
 	void setNewpropertyType(const QString& type);
 
@@ -114,13 +120,16 @@ signals:
 	void newTilesetSpacingChanged(int spacing);
 	void newTilesetMarginChanged(int margin);
 
-	void newMapOrientationIndexChanged(int OrientationIndex);
-	void newMapRenderOrderIndexChanged(int RenderOrderIndex);
+	void newMapOrientationIndexChanged(int orientationIndex);
+	void newMapRenderOrderIndexChanged(int renderOrderIndex);
 	void newMapSizeChanged(const QSize& size);
 	void newMapTileSizeChanged(const QSize& tileSize);
 
 	void mapEditorStateChanged(const QByteArray& state);
 	void mapEditorSizeChanged(const QSize& size);
+
+	void tilesetEditorStateChanged(const QByteArray& state);
+	void tilesetEditorSizeChanged(const QSize& size);
 
 	void newPropertyTypeChanged(const QString& type);
 
@@ -172,6 +181,9 @@ private:
 
 	QByteArray mMapEditorState;
 	QSize mMapEditorSize;
+
+	QByteArray mTilesetEditorState;
+	QSize mTilesetEditorSize;
 
 	QString mNewpropertyType;
 };

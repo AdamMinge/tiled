@@ -8,7 +8,7 @@ class FrameListModel;
 class TilesetTableModel;
 class Tile;
 class Tileset;
-class MapDocument;
+class TilesetDocument;
 class QToolBar;
 /*-----------------------------------------------------------------------------------------------------------*/
 class AnimationCreatorDialog final : public DialogWithToggleView
@@ -25,7 +25,7 @@ public:
 	AnimationCreatorDialog& operator=(AnimationCreatorDialog&&) = delete;
 	AnimationCreatorDialog& operator=(const AnimationCreatorDialog&) = delete;
 
-	void setMapDocument(MapDocument* mapDocument);
+	void setTilesetDocument(TilesetDocument* tilesetDocument);
 
 protected:
 	void changeEvent(QEvent* event) override;
@@ -53,7 +53,7 @@ private:
 	QAction* mFrameRemove;
 	
 	Tile* mTile;
-	MapDocument* mMapDocument;
+	TilesetDocument* mTilesetDocument;
 	FrameListModel* mFrameListModel;
 	TilesetTableModel* mTilesetModel;
 };

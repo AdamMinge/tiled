@@ -2,7 +2,7 @@
 #include <QMimeData>
 #include "changetileproperty.h"
 #include "framelistmodel.h"
-#include "mapdocument.h"
+#include "tilesetdocument.h"
 #include "tiledutils.h"
 #include "tileset.h"
 #include "frame.h"
@@ -11,19 +11,19 @@
 /*-----------------------------------------------------------------------------------------------------------*/
 int FrameListModel::mDefaultFrameTime = 100;
 /*-----------------------------------------------------------------------------------------------------------*/
-static bool contain(const MapDocument* mapDocument, const Tile* tile)
+static bool contain(const TilesetDocument* tilesetDocument, const Tile* tile)
 {
 	if (!tile) return true;
-	return mapDocument->map()->tilesets().contains(tile->tileset());
+	return tilesetDocument->tileset() == tile->tileset();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-FrameListModel::FrameListModel(MapDocument* mapDocument, Tile* tile, QObject* parent) :
+FrameListModel::FrameListModel(TilesetDocument* tilesetDocument, Tile* tile, QObject* parent) :
 	QAbstractItemModel(parent),
-	mMapDocument(nullptr),
+	mTilesetDocument(nullptr),
 	mTile(nullptr),
 	mUpdate(false)
 {
-	setMapDocument(mapDocument);
+	setTilesetDocument(tilesetDocument);
 	setTile(tile);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -102,7 +102,7 @@ QVariant FrameListModel::data(const QModelIndex& index, int role) const
 bool FrameListModel::setData(const QModelIndex& index, const QVariant& value, int role)
 {
 	Q_ASSERT(mTile);
-	Q_ASSERT(mMapDocument);
+	Q_ASSERT(mTilesetDocument);
 
 	if(index.column() == 1 && role == Qt::EditRole)
 	{
@@ -114,8 +114,8 @@ bool FrameListModel::setData(const QModelIndex& index, const QVariant& value, in
 			tileFrames[index.row()].setDuration(duration);
 			
 			mUpdate = true;
-			auto undoStack = mMapDocument->undoStack();
-			undoStack->push(new ChangeTileProperty(mMapDocument, mTile, tileFrames));
+			auto undoStack = mTilesetDocument->undoStack();
+			undoStack->push(new ChangeTileProperty(mTilesetDocument, mTile, tileFrames));
 			mUpdate = false;
 
 			emit dataChanged(index, index);
@@ -140,7 +140,7 @@ Qt::ItemFlags FrameListModel::flags(const QModelIndex& index) const
 bool FrameListModel::removeRows(int row, int count, const QModelIndex& parent)
 {
 	Q_ASSERT(mTile);
-	Q_ASSERT(mMapDocument);
+	Q_ASSERT(mTilesetDocument);
 
 	if(!parent.isValid())
 	{
@@ -152,8 +152,8 @@ bool FrameListModel::removeRows(int row, int count, const QModelIndex& parent)
 			tileFrames.remove(row, count);
 
 			mUpdate = true;
-			auto undoStack = mMapDocument->undoStack();
-			undoStack->push(new ChangeTileProperty(mMapDocument, mTile, tileFrames));
+			auto undoStack = mTilesetDocument->undoStack();
+			undoStack->push(new ChangeTileProperty(mTilesetDocument, mTile, tileFrames));
 			mUpdate = false;
 
 			endRemoveRows();
@@ -169,7 +169,7 @@ bool FrameListModel::moveRows(const QModelIndex& sourceParent, int sourceRow, in
 	const QModelIndex& destinationParent, int destinationChild)
 {
 	Q_ASSERT(mTile);
-	Q_ASSERT(mMapDocument);
+	Q_ASSERT(mTilesetDocument);
 
 	if (!sourceParent.isValid() && !destinationParent.isValid())
 	{
@@ -184,8 +184,8 @@ bool FrameListModel::moveRows(const QModelIndex& sourceParent, int sourceRow, in
 				tileFrames.move(sourceRow + i, destinationChild);
 
 			mUpdate = true;
-			auto undoStack = mMapDocument->undoStack();
-			undoStack->push(new ChangeTileProperty(mMapDocument, mTile, tileFrames));
+			auto undoStack = mTilesetDocument->undoStack();
+			undoStack->push(new ChangeTileProperty(mTilesetDocument, mTile, tileFrames));
 			mUpdate = false;
 
 			endMoveRows();
@@ -197,30 +197,30 @@ bool FrameListModel::moveRows(const QModelIndex& sourceParent, int sourceRow, in
 	return false;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void FrameListModel::setMapDocument(MapDocument* mapDocument)
+void FrameListModel::setTilesetDocument(TilesetDocument* tilesetDocument)
 {
-	if (mMapDocument == mapDocument) return;
+	if (mTilesetDocument == tilesetDocument) return;
 
-	if(mMapDocument)
+	if(mTilesetDocument)
 	{
-		mMapDocument->disconnect(this);
+		mTilesetDocument->disconnect(this);
 	}
 
 	beginResetModel();
-	mMapDocument = mapDocument;
+	mTilesetDocument = tilesetDocument;
 	mTile = nullptr;
 	endResetModel();
 
-	if(mMapDocument)
+	if(mTilesetDocument)
 	{
-		connect(mMapDocument, &MapDocument::tileChanged, 
+		connect(mTilesetDocument, &TilesetDocument::tileChanged, 
 			this, &FrameListModel::tileChanged);
 	}
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-MapDocument* FrameListModel::mapDocument() const
+TilesetDocument* FrameListModel::tilesetDocument() const
 {
-	return mMapDocument;
+	return mTilesetDocument;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void FrameListModel::setTile(Tile* tile)
@@ -229,7 +229,7 @@ void FrameListModel::setTile(Tile* tile)
 
 	beginResetModel();
 	mTile = tile;
-	Q_ASSERT(contain(mMapDocument, mTile));
+	Q_ASSERT(contain(mTilesetDocument, mTile));
 	endResetModel();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -241,7 +241,7 @@ Tile* FrameListModel::tile() const
 void FrameListModel::addFrame(const Frame& frame)
 {
 	Q_ASSERT(mTile);
-	Q_ASSERT(mMapDocument);
+	Q_ASSERT(mTilesetDocument);
 
 	auto newFrame = frame;
 	newFrame.setDuration(newFrame.duration() > 0 ? newFrame.duration() : mDefaultFrameTime);
@@ -252,8 +252,8 @@ void FrameListModel::addFrame(const Frame& frame)
 	tileFrames.append(std::move(newFrame));
 
 	mUpdate = true;
-	auto undoStack = mMapDocument->undoStack();
-	undoStack->push(new ChangeTileProperty(mMapDocument, mTile, tileFrames));
+	auto undoStack = mTilesetDocument->undoStack();
+	undoStack->push(new ChangeTileProperty(mTilesetDocument, mTile, tileFrames));
 	mUpdate = false;
 
 	endInsertRows();
@@ -313,7 +313,7 @@ bool FrameListModel::dropMimeData(const QMimeData* data, Qt::DropAction action,
 	Q_UNUSED(column);
 
 	Q_ASSERT(mTile);
-	Q_ASSERT(mMapDocument);
+	Q_ASSERT(mTilesetDocument);
 
 	int beginRow;
 	QVector<Frame> frames;
@@ -374,8 +374,8 @@ bool FrameListModel::dropMimeData(const QMimeData* data, Qt::DropAction action,
 		tileFrames[i + beginRow] = frames[i];
 
 	mUpdate = true;
-	auto undoStack = mMapDocument->undoStack();
-	undoStack->push(new ChangeTileProperty(mMapDocument, mTile, tileFrames));
+	auto undoStack = mTilesetDocument->undoStack();
+	undoStack->push(new ChangeTileProperty(mTilesetDocument, mTile, tileFrames));
 	mUpdate = false;
 
 	endInsertRows();
@@ -398,7 +398,7 @@ void FrameListModel::tileChanged(Tile* tile, int changedPropertyId)
 {
 	if (mTile != tile) return;
 	if (mUpdate) return;
-	if (changedPropertyId != MapDocument::ChangedPropertyId::AnimationChangedId) return;
+	if (changedPropertyId != TilesetDocument::ChangedPropertyId::AnimationChangedId) return;
 
 	resetModel();
 }

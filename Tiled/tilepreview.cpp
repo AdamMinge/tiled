@@ -1,6 +1,7 @@
 ﻿/*-----------------------------------------------------------------------------------------------------------*/
 #include "tilepreview.h"
 #include "tileanimationdriver.h"
+#include "tilesetdocument.h"
 #include "mapdocument.h"
 #include "tileset.h"
 #include "frame.h"
@@ -12,7 +13,7 @@ TilePreview::TilePreview(QWidget* parent) :
 	mPreviewFrameIndex(0),
 	mPreviewUnusedTime(0),
 	mTile(nullptr),
-	mMapDocument(nullptr)
+	mDocument(nullptr)
 {
 	connect(mAnimationDriver, &TileAnimationDriver::update, 
 		this, &TilePreview::advancePreviewAnimation);
@@ -20,22 +21,45 @@ TilePreview::TilePreview(QWidget* parent) :
 /*-----------------------------------------------------------------------------------------------------------*/
 void TilePreview::setMapDocument(MapDocument* mapDocument)
 {
-	if (mMapDocument)
+	if (mDocument)
 	{
-		mMapDocument->disconnect(this);
+		mDocument->disconnect(this);
 	}
 
-	mMapDocument = mapDocument;
+	mDocument = mapDocument;
 
-	if (mMapDocument)
+	if (mDocument)
 	{
-		connect(mMapDocument, &MapDocument::tileChanged,
-			this, &TilePreview::tileChanged);
-		connect(mMapDocument, &MapDocument::currentTileChanged,
+		connect(mapDocument, &MapDocument::currentTileChanged,
 			this, &TilePreview::setTile);
 	}
 
-	setTile(mMapDocument ? mMapDocument->currentTile() : nullptr);
+	setTile(mDocument ? qobject_cast<MapDocument*>(mDocument)->currentTile() : nullptr);
+}
+/*-----------------------------------------------------------------------------------------------------------*/
+void TilePreview::setTilesetDocument(TilesetDocument* tilesetDocument)
+{
+	if (mDocument)
+	{
+		mDocument->disconnect(this);
+	}
+
+	mDocument = tilesetDocument;
+
+	if (mDocument)
+	{
+		connect(tilesetDocument, &TilesetDocument::tileChanged,
+			this, &TilePreview::tileChanged);
+		connect(tilesetDocument, &TilesetDocument::currentTileChanged,
+			this, &TilePreview::setTile);
+	}
+
+	setTile(mDocument ? qobject_cast<TilesetDocument*>(mDocument)->currentTile() : nullptr);
+}
+/*-----------------------------------------------------------------------------------------------------------*/
+Document* TilePreview::document() const
+{
+	return mDocument;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void TilePreview::showEvent(QShowEvent* event)
@@ -111,7 +135,7 @@ void TilePreview::setTile(Tile* tile)
 void TilePreview::tileChanged(Tile* tile, int changedPropertyId)
 {
 	if (mTile != tile) return;
-	if (changedPropertyId != MapDocument::ChangedPropertyId::AnimationChangedId) return;
+	if (changedPropertyId != Document::ChangedPropertyId::AnimationChangedId) return;
 
 	resetPreview();
 }

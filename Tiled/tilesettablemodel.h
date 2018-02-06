@@ -3,7 +3,9 @@
 /*-----------------------------------------------------------------------------------------------------------*/
 #include <QAbstractListModel>
 /*-----------------------------------------------------------------------------------------------------------*/
+class TilesetDocument;
 class MapDocument;
+class Document;
 class Tileset;
 class Tile;
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -12,7 +14,9 @@ class TilesetTableModel final : public QAbstractListModel
 	Q_OBJECT
 
 public:
+
 	explicit TilesetTableModel(MapDocument* mapDocument, Tileset* tileset, QObject* parent = nullptr);
+	explicit TilesetTableModel(TilesetDocument* tilesetDocument, Tileset* tileset, QObject* parent = nullptr);
 	~TilesetTableModel() override = default;
 
 	TilesetTableModel(TilesetTableModel&&) = delete;
@@ -34,7 +38,8 @@ public:
 	QModelIndex index(Tile* tile) const;
 
 	void setMapDocument(MapDocument* mapDocument);
-	MapDocument* mapDocument() const;
+	void setTilesetDocument(TilesetDocument* tilesetDocument);
+	Document* document() const;
 
 	void setTileset(Tileset* tileset);
 	Tileset* tileset() const;
@@ -45,7 +50,8 @@ private slots:
 	void tileChanged(Tile *tile, int changedPropertyId);
 
 private:
-	MapDocument* mMapDocument;
+	Document* mDocument;
 	Tileset* mTileset;
 };
 /*-----------------------------------------------------------------------------------------------------------*/
+

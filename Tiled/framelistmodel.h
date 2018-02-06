@@ -5,14 +5,14 @@
 /*-----------------------------------------------------------------------------------------------------------*/
 class Tile;
 class Frame;
-class MapDocument;
+class TilesetDocument;
 /*-----------------------------------------------------------------------------------------------------------*/
 class FrameListModel final : public QAbstractItemModel
 {
 	Q_OBJECT
 
 public:
-	explicit FrameListModel(MapDocument* mapDocument, Tile* tile, QObject* parent = nullptr);
+	explicit FrameListModel(TilesetDocument* tilesetDocument, Tile* tile, QObject* parent = nullptr);
 	~FrameListModel() override = default;
 
 	FrameListModel(const FrameListModel&) = delete;
@@ -37,8 +37,8 @@ public:
 	bool moveRows(const QModelIndex &sourceParent, int sourceRow, int count, 
 		const QModelIndex &destinationParent, int destinationChild) override;
 
-	void setMapDocument(MapDocument* mapDocument);
-	MapDocument* mapDocument() const;
+	void setTilesetDocument(TilesetDocument* tilesetDocument);
+	TilesetDocument* tilesetDocument() const;
 
 	void setTile(Tile* tile);
 	Tile* tile() const;
@@ -59,7 +59,7 @@ private slots:
 	void tileChanged(Tile *tile, int changedPropertyId);
 
 private:
-	MapDocument* mMapDocument;
+	TilesetDocument* mTilesetDocument;
 	Tile* mTile;
 	bool mUpdate;
 

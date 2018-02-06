@@ -1,18 +1,18 @@
 ﻿/*-----------------------------------------------------------------------------------------------------------*/
 #include <QCoreApplication>
 #include "changetileproperty.h"
-#include "mapdocument.h"
+#include "tilesetdocument.h"
 #include "frame.h"
 #include "tile.h"
 /*-----------------------------------------------------------------------------------------------------------*/
 Q_DECLARE_METATYPE(QVector<Frame>)
 /*-----------------------------------------------------------------------------------------------------------*/
-ChangeTileProperty::ChangeTileProperty(MapDocument* mapDocument, Tile* tile,
+ChangeTileProperty::ChangeTileProperty(TilesetDocument* tilesetDocument, Tile* tile,
 	const QVector<Frame>& frames, Command* parent) :
 	Command(parent),
-	mMapDocument(mapDocument),
+	mTilesetDocument(tilesetDocument),
 	mTile(tile),
-	mProperty(MapDocument::ChangedPropertyId::AnimationChangedId),
+	mProperty(TilesetDocument::ChangedPropertyId::AnimationChangedId),
 	mNewValue(QVariant::fromValue(frames)),
 	mPreviousValue(QVariant::fromValue(tile->frames()))
 {
@@ -22,20 +22,20 @@ ChangeTileProperty::ChangeTileProperty(MapDocument* mapDocument, Tile* tile,
 void ChangeTileProperty::undo()
 {
 	mTile->setFrames(mPreviousValue.value<QVector<Frame>>());
-	emit mMapDocument->tileChanged(mTile, mProperty);
+	emit mTilesetDocument->tileChanged(mTile, mProperty);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void ChangeTileProperty::redo()
 {
 	mTile->setFrames(mNewValue.value<QVector<Frame>>());
-	emit mMapDocument->tileChanged(mTile, mProperty);
+	emit mTilesetDocument->tileChanged(mTile, mProperty);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 bool ChangeTileProperty::canMergeWith(const Command* other) const
 {
 	const auto changeTileProperty = static_cast<const ChangeTileProperty*>(other);
 
-	if (changeTileProperty->mMapDocument == mMapDocument &&
+	if (changeTileProperty->mTilesetDocument == mTilesetDocument &&
 		changeTileProperty->mTile == mTile) return true;
 	
 	return false;

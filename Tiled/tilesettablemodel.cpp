@@ -3,22 +3,47 @@
 #include "tilesettablemodel.h"
 #include "tiledutils.h"
 #include "mapdocument.h"
+#include "tilesetdocument.h"
 #include "tileset.h"
 #include "tile.h"
 #include "map.h"
 /*-----------------------------------------------------------------------------------------------------------*/
-static bool contain(const MapDocument* mapDocument, const Tileset* tileset)
+static bool contain(const Document* document, const Tileset* tileset)
 {
-	if (!tileset) return true;
-	return mapDocument->map()->tilesets().contains(const_cast<Tileset*>(tileset));
+	const auto tilesetDocument = qobject_cast<const TilesetDocument*>(document);
+	const auto mapDocument = qobject_cast<const MapDocument*>(document);
+
+	if(mapDocument)
+	{
+		Q_ASSERT(mapDocument);
+
+		if (!tileset) return true;
+		return mapDocument->map()->tilesets().contains(const_cast<Tileset*>(tileset));
+	}
+	else
+	{
+		Q_ASSERT(tilesetDocument);
+
+		if (!tileset) return true;
+		return tilesetDocument->tileset() == tileset;
+	}
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 TilesetTableModel::TilesetTableModel(MapDocument* mapDocument, Tileset* tileset, QObject* parent) :
 	QAbstractListModel(parent),
-	mMapDocument(nullptr),
+	mDocument(nullptr),
 	mTileset(nullptr)
 {
 	setMapDocument(mapDocument);
+	setTileset(tileset);
+}
+/*-----------------------------------------------------------------------------------------------------------*/
+TilesetTableModel::TilesetTableModel(TilesetDocument* tilesetDocument, Tileset* tileset, QObject* parent) :
+	QAbstractListModel(parent),
+	mDocument(nullptr),
+	mTileset(nullptr)
+{
+	setTilesetDocument(tilesetDocument);
 	setTileset(tileset);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -123,28 +148,43 @@ QModelIndex TilesetTableModel::index(Tile* tile) const
 /*-----------------------------------------------------------------------------------------------------------*/
 void TilesetTableModel::setMapDocument(MapDocument* mapDocument)
 {
-	if (mMapDocument == mapDocument) return;
+	if (mDocument == mapDocument) return;
 
-	if(mMapDocument)
+	if (mDocument)
 	{
-		mMapDocument->disconnect(this);
+		mDocument->disconnect(this);
 	}
 
 	beginResetModel();
-	mMapDocument = mapDocument;
+	mDocument = mapDocument;
+	mTileset = nullptr;
+	endResetModel();
+}
+/*-----------------------------------------------------------------------------------------------------------*/
+void TilesetTableModel::setTilesetDocument(TilesetDocument* tilesetDocument)
+{
+	if (mDocument == tilesetDocument) return;
+
+	if (mDocument)
+	{
+		mDocument->disconnect(this);
+	}
+
+	beginResetModel();
+	mDocument = tilesetDocument;
 	mTileset = nullptr;
 	endResetModel();
 
-	if(mMapDocument)
+	if (mDocument)
 	{
-		connect(mMapDocument, &MapDocument::tileChanged,
+		connect(tilesetDocument, &TilesetDocument::tileChanged,
 			this, &TilesetTableModel::tileChanged);
 	}
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-MapDocument* TilesetTableModel::mapDocument() const
+Document* TilesetTableModel::document() const
 {
-	return mMapDocument;
+	return mDocument;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void TilesetTableModel::setTileset(Tileset* tileset)
@@ -153,7 +193,7 @@ void TilesetTableModel::setTileset(Tileset* tileset)
 
 	beginResetModel();
 	mTileset = tileset;
-	Q_ASSERT(contain(mMapDocument, mTileset));
+	Q_ASSERT(contain(mDocument, mTileset));
 	endResetModel();
 }
 /*-----------------------------------------------------------------------------------------------------------*/

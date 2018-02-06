@@ -1,15 +1,15 @@
 ﻿/*-----------------------------------------------------------------------------------------------------------*/
 #include <QCoreApplication>
 #include "changetilesetproperty.h"
-#include "mapdocument.h"
+#include "tilesetdocument.h"
 #include "tileset.h"
 /*-----------------------------------------------------------------------------------------------------------*/
-ChangedTilesetProperty::ChangedTilesetProperty(MapDocument* mapDocument, Tileset* tileset, 
+ChangedTilesetProperty::ChangedTilesetProperty(TilesetDocument* tilesetDocument, Tileset* tileset,
 	const QString& newName, Command* parent) :
 	Command(parent),
-	mMapDocument(mapDocument),
+	mTilesetDocument(tilesetDocument),
 	mTileset(tileset),
-	mProperty(MapDocument::ChangedPropertyId::NameChangedId),
+	mProperty(TilesetDocument::ChangedPropertyId::NameChangedId),
 	mNewValue(newName),
 	mPreviousValue(mTileset->name())
 {
@@ -19,20 +19,20 @@ ChangedTilesetProperty::ChangedTilesetProperty(MapDocument* mapDocument, Tileset
 void ChangedTilesetProperty::undo()
 {
 	setValue(mPreviousValue);
-	emit mMapDocument->tilesetChanged(mTileset, mProperty);
+	emit mTilesetDocument->tilesetChanged(mTileset, mProperty);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void ChangedTilesetProperty::redo()
 {
 	setValue(mNewValue);
-	emit mMapDocument->tilesetChanged(mTileset, mProperty);
+	emit mTilesetDocument->tilesetChanged(mTileset, mProperty);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 bool ChangedTilesetProperty::canMergeWith(const Command* other) const
 {
 	const auto changeTilesetProperty = static_cast<const ChangedTilesetProperty*>(other);
 
-	if (mMapDocument != changeTilesetProperty->mMapDocument ||
+	if (mTilesetDocument != changeTilesetProperty->mTilesetDocument ||
 		mTileset != changeTilesetProperty->mTileset ||
 		mProperty != changeTilesetProperty->mProperty) return false;
 	
@@ -54,7 +54,7 @@ void ChangedTilesetProperty::setValue(const QVariant& value)
 {
 	switch (mProperty)
 	{
-	case MapDocument::ChangedPropertyId::NameChangedId:
+	case TilesetDocument::ChangedPropertyId::NameChangedId:
 		mTileset->setName(value.toString());
 		break;
 	default:

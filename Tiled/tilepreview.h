@@ -4,7 +4,9 @@
 #include <QLabel>
 /*-----------------------------------------------------------------------------------------------------------*/
 class TileAnimationDriver;
+class TilesetDocument;
 class MapDocument;
+class Document;
 class Tile;
 /*-----------------------------------------------------------------------------------------------------------*/
 class TilePreview final : public QLabel
@@ -22,6 +24,8 @@ public:
 	TilePreview& operator=(TilePreview&&) = delete;
 
 	void setMapDocument(MapDocument* mapDocument);
+	void setTilesetDocument(TilesetDocument* mapDocument);
+	Document* document() const;
 
 	void showEvent(QShowEvent* event) override;
 	void hideEvent(QHideEvent* event) override;
@@ -39,6 +43,6 @@ private:
 	int mPreviewUnusedTime;
 
 	Tile* mTile;
-	MapDocument* mMapDocument;
+	Document* mDocument;
 };
 /*-----------------------------------------------------------------------------------------------------------*/

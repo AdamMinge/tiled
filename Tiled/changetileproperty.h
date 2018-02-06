@@ -4,14 +4,14 @@
 #include <QVariant>
 #include "command.h"
 /*-----------------------------------------------------------------------------------------------------------*/
-class MapDocument;
+class TilesetDocument;
 class Tile;
 class Frame;
 /*-----------------------------------------------------------------------------------------------------------*/
 class ChangeTileProperty final : public Command
 {
 public:
-	explicit ChangeTileProperty(MapDocument* mapDocument, Tile* tile,
+	explicit ChangeTileProperty(TilesetDocument* tilesetDocument, Tile* tile,
 		const QVector<Frame>& frames, Command* parent = nullptr);
 	~ChangeTileProperty() override = default;
 
@@ -30,7 +30,7 @@ public:
 	void mergeWith(const Command* other) override;
 
 private:
-	MapDocument* mMapDocument;
+	TilesetDocument * mTilesetDocument;
 	Tile* mTile;
 	int mProperty;
 	QVariant mNewValue;

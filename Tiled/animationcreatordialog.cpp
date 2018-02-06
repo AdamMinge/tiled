@@ -5,7 +5,7 @@
 #include "spinboxdelegate.h"
 #include "framelistmodel.h"
 #include "tilesettablemodel.h"
-#include "mapdocument.h"
+#include "tilesetdocument.h"
 #include "frame.h"
 #include "tile.h"
 #include "utils.h"
@@ -19,9 +19,9 @@ AnimationCreatorDialog::AnimationCreatorDialog(QWidget* parent) :
 	mFrameDown(nullptr),
 	mFrameRemove(nullptr),
 	mTile(nullptr),
-	mMapDocument(nullptr),
+	mTilesetDocument(nullptr),
 	mFrameListModel(new FrameListModel(nullptr, nullptr, this)),
-	mTilesetModel(new TilesetTableModel(nullptr, nullptr, this))
+	mTilesetModel(new TilesetTableModel(static_cast<TilesetDocument*>(nullptr), nullptr, this))
 {
 	mUi->setupUi(this);
 	setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
@@ -62,25 +62,25 @@ AnimationCreatorDialog::~AnimationCreatorDialog()
 	delete mUi; 
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void AnimationCreatorDialog::setMapDocument(MapDocument* mapDocument)
+void AnimationCreatorDialog::setTilesetDocument(TilesetDocument* tilesetDocument)
 {
-	if(mMapDocument)
+	if(tilesetDocument)
 	{
-		mMapDocument->disconnect(this);
+		mTilesetDocument->disconnect(this);
 	}
 
-	mMapDocument = mapDocument;
-	mUi->preview->setMapDocument(mMapDocument);
-	mFrameListModel->setMapDocument(mMapDocument);
-	mTilesetModel->setMapDocument(mMapDocument);
+	mTilesetDocument = tilesetDocument;
+	mUi->preview->setTilesetDocument(mTilesetDocument);
+	mFrameListModel->setTilesetDocument(mTilesetDocument);
+	mTilesetModel->setTilesetDocument(mTilesetDocument);
 
-	if(mMapDocument)
+	if(mTilesetDocument)
 	{
-		connect(mMapDocument, &MapDocument::currentTileChanged,
+		connect(mTilesetDocument, &TilesetDocument::currentTileChanged,
 			this, &AnimationCreatorDialog::setTile);
 	}
 
-	setTile(mMapDocument ? mMapDocument->currentTile() : nullptr);
+	setTile(mTilesetDocument ? mTilesetDocument->currentTile() : nullptr);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void AnimationCreatorDialog::changeEvent(QEvent* event)

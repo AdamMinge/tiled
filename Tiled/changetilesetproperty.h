@@ -4,13 +4,13 @@
 #include <QVariant>
 #include "command.h"
 /*-----------------------------------------------------------------------------------------------------------*/
-class MapDocument;
+class TilesetDocument;
 class Tileset;
 /*-----------------------------------------------------------------------------------------------------------*/
 class ChangedTilesetProperty final : public Command
 {
 public:
-	explicit ChangedTilesetProperty(MapDocument* mapDocument, Tileset* tileset, 
+	explicit ChangedTilesetProperty(TilesetDocument* tilesetDocument, Tileset* tileset,
 		const QString& newName, Command* parent = nullptr);
 
 	~ChangedTilesetProperty() override = default;
@@ -33,7 +33,7 @@ private:
 	void setValue(const QVariant& value);
 
 private:
-	MapDocument* mMapDocument;
+	TilesetDocument * mTilesetDocument;
 	Tileset* mTileset;
 	int mProperty;
 	QVariant mNewValue;

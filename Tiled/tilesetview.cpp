@@ -146,12 +146,7 @@ void TilesetView::adjustScale()
 void TilesetView::resetModel(TilesetTableModel* model)
 {
 	Q_ASSERT(model);
-
-	auto indexes = selectionModel()->selectedIndexes();
 	model->resetModel();
-
-	for (decltype(auto) index : indexes)
-		selectionModel()->select(index, QItemSelectionModel::Select);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 

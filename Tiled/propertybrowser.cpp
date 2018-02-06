@@ -9,6 +9,7 @@
 #include "variantpropertymanager.h"
 #include "varianteditorfactory.h"
 #include "mapdocument.h"
+#include "tilesetdocument.h"
 #include "changeproperties.h"
 #include "changetilesetproperty.h"
 #include "changemapproperty.h"
@@ -26,6 +27,7 @@ PropertyBrowser::PropertyBrowser(QWidget* parent) :
 	QtTreePropertyBrowser(parent),
 	mDocument(nullptr),
 	mMapDocument(nullptr),
+	mTilesetDocument(nullptr),
 	mObject(nullptr),
 	mVariantManager(new VariantPropertyManager(this)),
 	mGroupManager(new QtGroupPropertyManager(this)),
@@ -56,13 +58,18 @@ void PropertyBrowser::setDocument(Document* document)
 
 	mDocument = document;
 	mMapDocument = qobject_cast<MapDocument*>(document);
+	mTilesetDocument = qobject_cast<TilesetDocument*>(document);
 
 	if (mMapDocument)
 	{
 		connect(mMapDocument, &MapDocument::mapChanged, this, &PropertyBrowser::objectChanged);
-		connect(mMapDocument, &MapDocument::tileChanged, this, &PropertyBrowser::objectChanged);
-		connect(mMapDocument, &MapDocument::tilesetChanged, this, &PropertyBrowser::objectChanged);
 		connect(mMapDocument, &MapDocument::layerChanged, this, &PropertyBrowser::objectChanged);
+	}
+
+	if(mTilesetDocument)
+	{
+		connect(mTilesetDocument, &TilesetDocument::tileChanged, this, &PropertyBrowser::objectChanged);
+		connect(mTilesetDocument, &TilesetDocument::tilesetChanged, this, &PropertyBrowser::objectChanged);
 	}
 
 	if (mDocument)
@@ -511,10 +518,10 @@ void PropertyBrowser::applyTilesetValue(const QString& id, const QVariant& value
 		auto undoStack = mDocument->undoStack();
 		auto tileset = dynamic_cast<Tileset*>(mObject);
 
-		Q_ASSERT(mMapDocument);
+		Q_ASSERT(mTilesetDocument);
 		Q_ASSERT(tileset);
 
-		undoStack->push(new ChangedTilesetProperty(mMapDocument, tileset, value.toString()));
+		undoStack->push(new ChangedTilesetProperty(mTilesetDocument, tileset, value.toString()));
 	}
 }
 /*-----------------------------------------------------------------------------------------------------------*/

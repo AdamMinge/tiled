@@ -12,6 +12,7 @@ class Map;
 class Tile;
 class Tileset;
 class MapDocument;
+class TilesetDocument;
 /*-----------------------------------------------------------------------------------------------------------*/
 class PropertyBrowser final : public QtTreePropertyBrowser
 {
@@ -80,6 +81,7 @@ private:
 private:
 	Document* mDocument;
 	MapDocument* mMapDocument;
+	TilesetDocument* mTilesetDocument;
 	Object *mObject;
 
 	QtVariantPropertyManager *mVariantManager;

@@ -12,8 +12,10 @@
 #include "actionmanager.h"
 #include "stylemanager.h"
 #include "mapeditor.h"
+#include "tileseteditor.h"
 #include "utils.h"
 #include "mapdocument.h"
+#include "tilesetdocument.h"
 #include "newmapdialog.h"
 #include "dialogwithtoggleview.h"
 #include "preferencesdialog.h"
@@ -48,6 +50,8 @@ MainWindow::MainWindow(QWidget *parent) :
 	menuBar()->addMenu(buildLayerMenu());
 
 	mDocumentManager->addEditor(Document::DocumentType::MapDocumentType, new MapEditor);
+	mDocumentManager->addEditor(Document::DocumentType::TilesetDocumentType, new TilesetEditor);
+
 	setCentralWidget(mDocumentManager->widget());
 
 	connect(mDocumentManager, &DocumentManager::documentCloseRequested, this, &MainWindow::closeDocument);
@@ -83,8 +87,8 @@ MainWindow::MainWindow(QWidget *parent) :
 /*-----------------------------------------------------------------------------------------------------------*/
 MainWindow::~MainWindow()
 {
-	mDocumentManager->removeAllEditors();
 	mDocumentManager->removeAllDocuments();
+	mDocumentManager->removeAllEditors();
 
 	MapDocumentActionHandler::deleteInstance();
 	ActionManager::deleteInstance();
@@ -278,6 +282,7 @@ void MainWindow::updateActions()
 {
 	const auto isDocument = static_cast<bool>(mCurrentDocument);
 	const auto isMapDocument = static_cast<bool>(qobject_cast<MapDocument*>(mCurrentDocument));
+	const auto isTilesetDocument = static_cast<bool>(qobject_cast<TilesetDocument*>(mCurrentDocument));
 
 	mSaveDocument->setEnabled(isDocument);
 	mSaveDocumentAs->setEnabled(isDocument);
@@ -287,7 +292,7 @@ void MainWindow::updateActions()
 	mViewsAndToolbarsMenu->setEnabled(isDocument);
 
 	mMapMenu->menuAction()->setVisible(isMapDocument);
-	mTilesetMenu->menuAction()->setVisible(isMapDocument);
+	mTilesetMenu->menuAction()->setVisible(isTilesetDocument);
 	mLayerMenu->menuAction()->setVisible(isMapDocument);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -402,14 +407,14 @@ QMenu* MainWindow::buildEditMenu()
 	mEditMenu->addAction(mUndo);
 	mEditMenu->addAction(mRedo);
 	mEditMenu->addSeparator();
-	mEditMenu->addAction(mMapDocumentActionHandler->actionCut());
-	mEditMenu->addAction(mMapDocumentActionHandler->actionCut());
-	mEditMenu->addAction(mMapDocumentActionHandler->actionPaste());
-	mEditMenu->addAction(mMapDocumentActionHandler->actionDelete());
+	//mEditMenu->addAction(mMapDocumentActionHandler->actionCut());
+	//mEditMenu->addAction(mMapDocumentActionHandler->actionCut());
+	//mEditMenu->addAction(mMapDocumentActionHandler->actionPaste());
+	//mEditMenu->addAction(mMapDocumentActionHandler->actionDelete());
 	mEditMenu->addSeparator();
-	mEditMenu->addAction(mMapDocumentActionHandler->actionSelectAll());
-	mEditMenu->addAction(mMapDocumentActionHandler->actionInvertSelection());
-	mEditMenu->addAction(mMapDocumentActionHandler->actionSelectNone());
+	//mEditMenu->addAction(mMapDocumentActionHandler->actionSelectAll());
+	//mEditMenu->addAction(mMapDocumentActionHandler->actionInvertSelection());
+	//mEditMenu->addAction(mMapDocumentActionHandler->actionSelectNone());
 	mEditMenu->addSeparator();
 	mEditMenu->addAction(mPreferences);
 
@@ -505,11 +510,6 @@ QMenu* MainWindow::buildTilesetMenu()
 	Q_ASSERT(!mTilesetMenu);
 
 	mTilesetMenu = new QMenu(this);
-
-	mTilesetMenu->addAction(mMapDocumentActionHandler->actionNewTileset());
-	mTilesetMenu->addAction(mMapDocumentActionHandler->actionRemoveTileset());
-	mTilesetMenu->addSeparator();
-	mTilesetMenu->addAction(mMapDocumentActionHandler->actionTilesetProperties());
 
 	return mTilesetMenu;
 }

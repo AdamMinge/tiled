@@ -135,12 +135,6 @@
     <ClCompile Include="tilesetlistmodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="tilesetsdock.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="tilesetsview.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="tilesettablemodel.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -222,16 +216,7 @@
     <ClCompile Include="GeneratedFiles\Debug\moc_tilepreview.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetdock.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_tilesetlistmodel.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetsdock.cpp">
-      <Filter>Generated Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetsview.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_tilesettablemodel.cpp">
@@ -247,6 +232,30 @@
       <Filter>Generated Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_variantpropertymanager.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tilesetdocument.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tileseteditor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetlistdock.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetlistview.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tilesetlistview.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="tilesetlistdock.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetdocument.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_tilesetdock.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -344,12 +353,6 @@
     <CustomBuild Include="tilesetlistmodel.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
-    <CustomBuild Include="tilesetsdock.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
-    <CustomBuild Include="tilesetsview.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="tilesettablemodel.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
@@ -363,6 +366,15 @@
       <Filter>Header Files</Filter>
     </CustomBuild>
     <CustomBuild Include="variantpropertymanager.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="tilesetlistdock.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="tilesetlistview.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="tilesetdocument.h">
       <Filter>Header Files</Filter>
     </CustomBuild>
   </ItemGroup>
@@ -420,6 +432,9 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_preferencesdialog.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="tileseteditor.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

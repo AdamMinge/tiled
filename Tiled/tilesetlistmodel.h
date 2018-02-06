@@ -33,7 +33,6 @@ public:
 	QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
 
 	QVariant data(const QModelIndex &index, int role) const override;
-	bool setData(const QModelIndex &index, const QVariant &value, int role) override;
 
 	void addTileset(int index, Tileset* tileset);
 	Tileset* takeTileset(int index);
@@ -48,9 +47,6 @@ public:
 signals:
 	void tilesetAdded(Tileset* tileset);
 	void tilesetRemoved(Tileset* tileset);
-
-private slots:
-	void tilesetChanged(Tileset *tileset, int changedPropertyId);
 
 private:
 	MapDocument* mMapDocument;

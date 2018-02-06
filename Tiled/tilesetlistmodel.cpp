@@ -1,6 +1,4 @@
 ﻿/*-----------------------------------------------------------------------------------------------------------*/
-#include "changetilesetproperty.h"
-#include "addremovetileset.h"
 #include "tilesetlistmodel.h"
 #include "mapdocument.h"
 #include "tileset.h"
@@ -89,31 +87,6 @@ QVariant TilesetListModel::data(const QModelIndex& index, int role) const
 	return QVariant();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-bool TilesetListModel::setData(const QModelIndex& index, const QVariant& value, int role)
-{
-	const auto tileset = this->tileset(index);
-	if (!tileset) return false;
-
-	switch (role)
-	{
-	case Qt::EditRole:
-		if (index.column() == 0)
-		{
-			if (tileset->name() == value.toString()) return true;
-
-			auto undoStack = mMapDocument->undoStack();
-			undoStack->push(new ChangedTilesetProperty(mMapDocument, tileset, value.toString()));
-
-			return true;
-		}
-		break;
-	default:
-		return false;
-	}
-
-	return false;
-}
-/*-----------------------------------------------------------------------------------------------------------*/
 void TilesetListModel::addTileset(int index, Tileset* tileset)
 {
 	beginInsertRows(QModelIndex(), index, index);
@@ -155,12 +128,6 @@ void TilesetListModel::setMapDocument(MapDocument* mapDocument)
 	mMapDocument = mapDocument;
 	mMap = mMapDocument->map();
 	endResetModel();
-
-	if (mMapDocument)
-	{
-		connect(mMapDocument, &MapDocument::tilesetChanged,
-			this, &TilesetListModel::tilesetChanged);
-	}
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 MapDocument* TilesetListModel::mapDocument() const
@@ -172,13 +139,5 @@ void TilesetListModel::resetModel()
 {
 	beginResetModel();
 	endResetModel();
-}
-/*-----------------------------------------------------------------------------------------------------------*/
-void TilesetListModel::tilesetChanged(Tileset* tileset, int changedPropertyId)
-{
-	if (mMap->tilesets().isEmpty() || !mMap->tilesets().contains(tileset)) return;
-	if (changedPropertyId != MapDocument::ChangedPropertyId::NameChangedId) return;
-
-	emit dataChanged(index(tileset, 0), index(tileset, columnCount() - 1));
 }
 /*-----------------------------------------------------------------------------------------------------------*/

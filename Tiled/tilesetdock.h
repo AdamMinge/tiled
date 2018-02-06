@@ -31,7 +31,6 @@ protected:
 	void changeEvent(QEvent* event) override;
 
 private slots:
-	void tilesetChanged(Tileset* tileset);
 	void currentTabChanged();
 	void currentTilesetChanged(Tileset* tileset);
 
@@ -59,5 +58,7 @@ private:
 	QTabBar* mTabBar;
 	QToolBar* mToolBar;
 	QStackedWidget* mViewStack;
+
+	bool mUpdating;
 };
 /*-----------------------------------------------------------------------------------------------------------*/

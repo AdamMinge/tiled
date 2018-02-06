@@ -18,7 +18,8 @@ TilesetDock::TilesetDock(QWidget* parent) :
 	mMapDocument(nullptr),
 	mTabBar(new QTabBar),
 	mToolBar(new QToolBar),
-	mViewStack(new QStackedWidget)
+	mViewStack(new QStackedWidget),
+	mUpdating(false)
 {
 	setObjectName(QLatin1String("Tileset"));
 
@@ -57,8 +58,11 @@ void TilesetDock::setMapDocument(MapDocument* document)
 	if (mMapDocument)
 	{
 		const auto tilesetsModel = mMapDocument->tilesetsModel();
+
+		mUpdating = true;
 		for (auto i = 0; i < tilesetsModel->rowCount(); i++)
 			tilesetRemoved(tilesetsModel->tileset(tilesetsModel->index(i)));
+		mUpdating = false;
 
 		mMapDocument->disconnect(this);
 	}
@@ -70,13 +74,17 @@ void TilesetDock::setMapDocument(MapDocument* document)
 	if (mMapDocument)
 	{
 		const auto tilesetsModel = mMapDocument->tilesetsModel();
+			
+		mUpdating = true;
 		for (auto i = 0; i < tilesetsModel->rowCount(); i++)
 			tilesetAdded(tilesetsModel->tileset(tilesetsModel->index(i)));
+		mUpdating = false;
+
+		currentTilesetChanged(mMapDocument->currentTileset());
 
 		connect(mMapDocument, &MapDocument::tilesetAdded, this, &TilesetDock::tilesetAdded);
 		connect(mMapDocument, &MapDocument::tilesetRemoved, this, &TilesetDock::tilesetRemoved);
 
-		connect(mMapDocument, &MapDocument::tilesetChanged, this, &TilesetDock::tilesetChanged);
 		connect(mMapDocument, &MapDocument::currentTilesetChanged, this, &TilesetDock::currentTilesetChanged);
 	}
 }
@@ -95,32 +103,18 @@ void TilesetDock::changeEvent(QEvent* event)
 	}
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TilesetDock::tilesetChanged(Tileset* tileset)
-{
-	auto index = mTilesets.indexOf(tileset);
-	Q_ASSERT(index >= 0);
-
-	if (mTabBar->tabText(index) != tileset->name())
-		mTabBar->setTabText(index, tileset->name());
-}
-/*-----------------------------------------------------------------------------------------------------------*/
 void TilesetDock::currentTabChanged()
 {
 	const auto index = mTabBar->currentIndex();
+	const auto view = currentTilesetView();
 
 	if (index > -1)
 	{
-		const auto view = tilesetView(index);
-		const auto tileset = mTilesets.at(index);
-
-		if (view)
-		{
-			if (!view->model()) setupTilesetModel(view, tileset);
+		if (tilesetView(index))
 			mViewStack->setCurrentIndex(index);
-		}
 	}
 
-	if (const auto view = currentTilesetView())
+	if (view && !mUpdating)
 	{
 		if (const auto selectionModel = view->selectionModel())
 			currentTileChanged(selectionModel->currentIndex());
@@ -165,7 +159,7 @@ void TilesetDock::buildToolBar()
 	Q_ASSERT(mToolBar);
 
 	mToolBar->addActions({ MapDocumentActionHandler::instance()->actionNewTileset(), 
-		MapDocumentActionHandler::instance()->actionTilesetProperties() , 
+		MapDocumentActionHandler::instance()->actionTilesetProperties() ,
 		MapDocumentActionHandler::instance()->actionRemoveTileset() });
 
 	mToolBar->setIconSize(iconSize(IconSize::Small));
@@ -185,6 +179,8 @@ void TilesetDock::tilesetAdded(Tileset* tileset)
 
 	mViewStack->insertWidget(index, view);
 	mTabBar->insertTab(index, tileset->name());
+
+	setupTilesetModel(view, tileset);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void TilesetDock::tilesetRemoved(Tileset* tileset)
@@ -211,9 +207,9 @@ void TilesetDock::setupTilesetModel(TilesetView* view, Tileset* tileset)
 Tileset* TilesetDock::currentTileset() const
 {
 	const auto index = mTabBar->currentIndex();
-	Q_ASSERT(index >= 0);
 
-	return mTilesets.at(index);
+	if (index < 0) return nullptr;
+	else return mTilesets.at(index);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 TilesetView* TilesetDock::currentTilesetView() const

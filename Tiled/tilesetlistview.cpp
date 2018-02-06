@@ -3,25 +3,25 @@
 #include <QMenu>
 #include "tileset.h"
 #include "mapdocument.h"
-#include "tilesetsview.h"
+#include "tilesetlistview.h"
 #include "tilesetlistmodel.h"
 #include "reversingproxymodel.h"
 #include "commitonchangeddelegate.h"
 #include "mapdocumentactionhandler.h"
 /*-----------------------------------------------------------------------------------------------------------*/
-TilesetsView::TilesetsView(QWidget* parent) :
+TilesetListView::TilesetListView(QWidget* parent) :
 	QTreeView(parent),
 	mProxyModel(new ReversingProxyModel(this)),
 	mMapDocument(nullptr)
 {
 	QTreeView::setModel(mProxyModel);
 
-	connect(this, &QTreeView::pressed, this, &TilesetsView::indexPressed);
+	connect(this, &QTreeView::pressed, this, &TilesetListView::indexPressed);
 
 	setItemDelegateForColumn(0, new CommitOnChangedDelegate(this));
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TilesetsView::setMapDocument(MapDocument* mapDocument)
+void TilesetListView::setMapDocument(MapDocument* mapDocument)
 {
 	if (mMapDocument == mapDocument) return;
 
@@ -38,9 +38,9 @@ void TilesetsView::setMapDocument(MapDocument* mapDocument)
 		mProxyModel->setSourceModel(mMapDocument->tilesetsModel());
 
 		connect(mMapDocument, &MapDocument::currentTilesetChanged,
-			this, &TilesetsView::currentTilesetChanged);
+			this, &TilesetListView::currentTilesetChanged);
 		connect(selectionModel(), &QItemSelectionModel::currentChanged,
-			this, &TilesetsView::currentChanged);
+			this, &TilesetListView::currentChanged);
 
 		currentTilesetChanged(mMapDocument->currentTileset());
 	}
@@ -50,7 +50,7 @@ void TilesetsView::setMapDocument(MapDocument* mapDocument)
 	}
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TilesetsView::contextMenuEvent(QContextMenuEvent* event)
+void TilesetListView::contextMenuEvent(QContextMenuEvent* event)
 {
 	if (!model()) return;
 
@@ -70,7 +70,7 @@ void TilesetsView::contextMenuEvent(QContextMenuEvent* event)
 	menu.exec(event->globalPos());
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TilesetsView::currentTilesetChanged(Tileset* tileset)
+void TilesetListView::currentTilesetChanged(Tileset* tileset)
 {
 	Q_ASSERT(mMapDocument);
 
@@ -80,7 +80,7 @@ void TilesetsView::currentTilesetChanged(Tileset* tileset)
 	selectionModel()->setCurrentIndex(index, QItemSelectionModel::ClearAndSelect);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TilesetsView::indexPressed(const QModelIndex& index)
+void TilesetListView::indexPressed(const QModelIndex& index)
 {
 	const auto sourceIndex = mProxyModel->mapToSource(index);
 
@@ -88,7 +88,7 @@ void TilesetsView::indexPressed(const QModelIndex& index)
 		mMapDocument->setCurrentObject(tileset);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TilesetsView::currentChanged()
+void TilesetListView::currentChanged()
 {
 	Q_ASSERT(mMapDocument);
 

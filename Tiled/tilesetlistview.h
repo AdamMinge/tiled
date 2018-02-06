@@ -7,19 +7,19 @@ class ReversingProxyModel;
 class MapDocument;
 class Tileset;
 /*-----------------------------------------------------------------------------------------------------------*/
-class TilesetsView final : public QTreeView
+class TilesetListView final : public QTreeView
 {
 	Q_OBJECT
 
 public:
-	explicit TilesetsView(QWidget* parent = nullptr);
-	~TilesetsView() = default;
+	explicit TilesetListView(QWidget* parent = nullptr);
+	~TilesetListView() = default;
 
-	TilesetsView(const TilesetsView&) = delete;
-	TilesetsView(TilesetsView&&) = delete;
+	TilesetListView(const TilesetListView&) = delete;
+	TilesetListView(TilesetListView&&) = delete;
 
-	TilesetsView& operator=(const TilesetsView&) = delete;
-	TilesetsView& operator=(TilesetsView&&) = delete;
+	TilesetListView& operator=(const TilesetListView&) = delete;
+	TilesetListView& operator=(TilesetListView&&) = delete;
 
 	void setMapDocument(MapDocument* mapDocument);
 

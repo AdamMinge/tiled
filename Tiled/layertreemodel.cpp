@@ -289,13 +289,13 @@ Layer* LayerTreeModel::takeLayer(GroupLayer* parentLayer, int index)
 Qt::ItemFlags LayerTreeModel::flags(const QModelIndex& index) const
 {
 	auto defaultFlags = QAbstractItemModel::flags(index);
+	const auto layer = this->layer(index);
+	const auto isRootLayer = layer == mMap->rootLayer();
 
 	if (index.column() == 1 || index.column() == 2)
 		defaultFlags |= Qt::ItemIsUserCheckable;
-	if (index.column() == 0)
+	if (index.column() == 0 && !isRootLayer)
 		defaultFlags |= Qt::ItemIsEditable;
-
-	const auto layer = this->layer(index);
 
 	if (layer)
 		defaultFlags |= Qt::ItemIsDragEnabled;

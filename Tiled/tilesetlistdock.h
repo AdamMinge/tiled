@@ -6,22 +6,22 @@
 class QTreeView;
 class QToolBar;
 class MapDocument;
-class TilesetsView;
+class TilesetListView;
 class Tileset;
 /*-----------------------------------------------------------------------------------------------------------*/
-class TilesetsDock final : public QDockWidget
+class TilesetListDock final : public QDockWidget
 {
 	Q_OBJECT
 
 public:
-	explicit TilesetsDock(QWidget* parent = nullptr);
-	~TilesetsDock() override = default;
+	explicit TilesetListDock(QWidget* parent = nullptr);
+	~TilesetListDock() override = default;
 
-	TilesetsDock(TilesetsDock&&) = delete;
-	TilesetsDock(const TilesetsDock&) = delete;
+	TilesetListDock(TilesetListDock&&) = delete;
+	TilesetListDock(const TilesetListDock&) = delete;
 
-	TilesetsDock& operator=(TilesetsDock&&) = delete;
-	TilesetsDock& operator=(const TilesetsDock&) = delete;
+	TilesetListDock& operator=(TilesetListDock&&) = delete;
+	TilesetListDock& operator=(const TilesetListDock&) = delete;
 
 	void setMapDocument(MapDocument* document);
 
@@ -35,7 +35,7 @@ private:
 private:
 	MapDocument* mMapDocument;
 
-	TilesetsView* mTilesetsView;
+	TilesetListView* mTilesetsView;
 	QToolBar* mToolBar;
 };
 /*-----------------------------------------------------------------------------------------------------------*/

@@ -3,17 +3,17 @@
 #include <QToolBar>
 #include <QHBoxLayout>
 #include "utils.h"
-#include "tilesetsdock.h"
-#include "tilesetsview.h"
+#include "tilesetlistdock.h"
+#include "tilesetlistview.h"
 #include "mapdocumentactionhandler.h"
 /*-----------------------------------------------------------------------------------------------------------*/
-TilesetsDock::TilesetsDock(QWidget* parent) :
+TilesetListDock::TilesetListDock(QWidget* parent) :
 	QDockWidget(parent),
 	mMapDocument(nullptr),
-	mTilesetsView(new TilesetsView(this)),
+	mTilesetsView(new TilesetListView(this)),
 	mToolBar(new QToolBar)
 {
-	setObjectName(QLatin1String("Tilesets"));
+	setObjectName(QLatin1String("Tileset List"));
 
 	auto widget = new QWidget(this);
 
@@ -29,7 +29,7 @@ TilesetsDock::TilesetsDock(QWidget* parent) :
 	retranslateUi();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TilesetsDock::setMapDocument(MapDocument* document)
+void TilesetListDock::setMapDocument(MapDocument* document)
 {
 	if (mMapDocument == document) return;
 
@@ -37,7 +37,7 @@ void TilesetsDock::setMapDocument(MapDocument* document)
 	mTilesetsView->setMapDocument(mMapDocument);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TilesetsDock::changeEvent(QEvent* event)
+void TilesetListDock::changeEvent(QEvent* event)
 {
 	QDockWidget::changeEvent(event);
 
@@ -51,7 +51,7 @@ void TilesetsDock::changeEvent(QEvent* event)
 	}
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TilesetsDock::buildToolBar()
+void TilesetListDock::buildToolBar()
 {
 	Q_ASSERT(mToolBar);
 
@@ -64,7 +64,7 @@ void TilesetsDock::buildToolBar()
 	mToolBar->setIconSize(iconSize(IconSize::Small));
 }
 /*-----------------------------------------------------------------------------------------------------------*/
-void TilesetsDock::retranslateUi()
+void TilesetListDock::retranslateUi()
 {
 	setWindowTitle(tr("Tilesets"));
 }

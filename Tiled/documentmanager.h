@@ -10,6 +10,8 @@
 class QUndoGroup;
 class QTabBar;
 class QStackedLayout;
+class TilesetDocument;
+class Tileset;
 /*-----------------------------------------------------------------------------------------------------------*/
 class DocumentManager final : public QObject
 {
@@ -49,6 +51,8 @@ public:
 	void saveState();
 	void restoreState();
 
+	void openTilesetDocument(Tileset* tileset);
+
 signals:
 	void currentDocumentChanged(Document* document);
 	void documentCloseRequested(int index);
@@ -57,9 +61,13 @@ private:
 	explicit DocumentManager();
 	~DocumentManager() override;
 
+	TilesetDocument* findTilesetDocument(const Tileset* tileset);
+
 private slots:
 	void currentIndexChanged();
 	void documentTabMoved(int from, int to);
+
+	void tilesetRemoved(Tileset* tileset);
 
 private:
 	static DocumentManager* mInstance;

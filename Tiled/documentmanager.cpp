@@ -4,6 +4,10 @@
 #include <QTabBar>
 #include "documentmanager.h"
 #include "noeditorwidget.h"
+#include "tilesetdocument.h"
+#include "mapdocument.h"
+#include "tileset.h"
+#include "map.h"
 /*-----------------------------------------------------------------------------------------------------------*/
 DocumentManager* DocumentManager::mInstance = nullptr;
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -71,6 +75,15 @@ void DocumentManager::addDocument(Document* document)
 	const auto documentIndex = mTabBar->addTab(document->displayName());
 	mTabBar->setTabToolTip(documentIndex, document->fileName());
 
+	if(const auto mapDocument = qobject_cast<MapDocument*>(document))
+	{
+		connect(mapDocument, &MapDocument::tilesetRemoved, this, &DocumentManager::tilesetRemoved);
+	}
+	else if(auto tilesetDocument = qobject_cast<TilesetDocument*>(document))
+	{
+		
+	}
+
 	switchToDocument(documentIndex);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -83,6 +96,18 @@ void DocumentManager::removeDocument(int index)
 	mUndoGroup->removeStack(documentToRemove->undoStack());
 
 	mTabBar->removeTab(index);
+
+	if(const auto mapDocument = qobject_cast<MapDocument*>(documentToRemove))
+	{
+		for(auto tileset : mapDocument->map()->tilesets())
+			tilesetRemoved(tileset);
+	}
+
+	auto editor = mEditorForType[documentToRemove->type()];
+	Q_ASSERT(editor);
+
+	editor->setCurrentDocument(nullptr);
+
 	delete documentToRemove;
 }
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -138,6 +163,17 @@ void DocumentManager::restoreState()
 	while (iterator.hasNext()) iterator.next().value()->restoreState();
 }
 /*-----------------------------------------------------------------------------------------------------------*/
+void DocumentManager::openTilesetDocument(Tileset* tileset)
+{
+	auto tilesetDocument = findTilesetDocument(tileset);
+
+	if (!tilesetDocument)
+		tilesetDocument = new TilesetDocument(tileset);
+
+	if (!switchToDocument(tilesetDocument))
+		addDocument(tilesetDocument);
+}
+/*-----------------------------------------------------------------------------------------------------------*/
 DocumentManager::DocumentManager() :
 	mWidget(new QWidget),
 	mNoEditorWidget(new NoEditorWidget(mWidget.data())),
@@ -172,13 +208,23 @@ DocumentManager::~DocumentManager()
 	Q_ASSERT(mDocuments.isEmpty());
 }
 /*-----------------------------------------------------------------------------------------------------------*/
+TilesetDocument* DocumentManager::findTilesetDocument(const Tileset* tileset)
+{
+	for(auto document : mDocuments)
+	{
+		const auto tilesetDocument = qobject_cast<TilesetDocument*>(document);
+
+		if (tilesetDocument && tilesetDocument->tileset() == tileset)
+			return tilesetDocument;
+	}
+
+	return nullptr;
+}
+/*-----------------------------------------------------------------------------------------------------------*/
 void DocumentManager::currentIndexChanged()
 {
 	const auto document = currentDocument();
 	auto editor = currentEditor();
-
-	for(decltype(auto) iter : mEditorForType)
-		iter->setCurrentDocument(nullptr);
 
 	if(document)
 	{
@@ -201,5 +247,13 @@ void DocumentManager::currentIndexChanged()
 void DocumentManager::documentTabMoved(int from, int to)
 {
 	mDocuments.move(from, to);
+}
+/*-----------------------------------------------------------------------------------------------------------*/
+void DocumentManager::tilesetRemoved(Tileset* tileset)
+{
+	const auto tilesetDocument = findTilesetDocument(tileset);
+
+	if (tilesetDocument)
+		removeDocument(mDocuments.indexOf(tilesetDocument));
 }
 /*-----------------------------------------------------------------------------------------------------------*/

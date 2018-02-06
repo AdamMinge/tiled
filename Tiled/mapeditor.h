@@ -8,7 +8,6 @@ class MapDocument;
 class UndoDock;
 class LayerDock;
 class TilesetDock;
-class TilesetsDock;
 class PropertiesDock;
 class AnimationCreatorDialog;
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -37,10 +36,7 @@ private:
 
 	UndoDock* mUndoDock;
 	TilesetDock* mTilesetDock;
-	TilesetsDock* mTilesetsDock;
 	PropertiesDock* mPropertiesDock;
 	LayerDock* mLayerDock;
-
-	AnimationCreatorDialog* mAnimationCreator;
 };
 /*-----------------------------------------------------------------------------------------------------------*/

@@ -7,19 +7,15 @@
 #include "undodock.h"
 #include "layerdock.h"
 #include "tilesetdock.h"
-#include "tilesetsdock.h"
 #include "propertiesdock.h"
-#include "animationcreatordialog.h"
 /*-----------------------------------------------------------------------------------------------------------*/
 MapEditor::MapEditor() :
 	mCurrentMapDocument(nullptr),
 	mMainWindow(new QMainWindow),
 	mUndoDock(new UndoDock(mMainWindow.data())),
 	mTilesetDock(new TilesetDock(mMainWindow.data())),
-	mTilesetsDock(new TilesetsDock(mMainWindow.data())),
 	mPropertiesDock(new PropertiesDock(mMainWindow.data())),
-	mLayerDock(new LayerDock(mMainWindow.data())),
-	mAnimationCreator(new AnimationCreatorDialog(mMainWindow.data()))
+	mLayerDock(new LayerDock(mMainWindow.data()))
 {
 	mMainWindow->setDockOptions(mMainWindow->dockOptions() | QMainWindow::GroupedDragging);
 	mMainWindow->setDockNestingEnabled(true);
@@ -28,9 +24,6 @@ MapEditor::MapEditor() :
 	mMainWindow->addDockWidget(Qt::LeftDockWidgetArea, mPropertiesDock);
 	mMainWindow->addDockWidget(Qt::RightDockWidgetArea, mLayerDock);
 	mMainWindow->addDockWidget(Qt::RightDockWidgetArea, mTilesetDock);
-	mMainWindow->addDockWidget(Qt::RightDockWidgetArea, mTilesetsDock);
-
-	mMainWindow->tabifyDockWidget(mTilesetDock, mTilesetsDock);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void MapEditor::setCurrentDocument(Document* document)
@@ -44,11 +37,8 @@ void MapEditor::setCurrentDocument(Document* document)
 
 	mUndoDock->setStack(document ? document->undoStack() : nullptr);
 	mTilesetDock->setMapDocument(mCurrentMapDocument);
-	mTilesetsDock->setMapDocument(mCurrentMapDocument);
 	mPropertiesDock->setDocument(document);
 	mLayerDock->setMapDocument(mCurrentMapDocument);
-
-	mAnimationCreator->setMapDocument(mCurrentMapDocument);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 Document* MapEditor::currentDocument() const
@@ -79,11 +69,11 @@ void MapEditor::restoreState()
 /*-----------------------------------------------------------------------------------------------------------*/
 QList<QDockWidget*> MapEditor::dockWidgets() const
 {
-	return QList<QDockWidget*>{mUndoDock, mTilesetDock, mTilesetsDock, mPropertiesDock, mLayerDock};
+	return QList<QDockWidget*>{mUndoDock, mTilesetDock, mPropertiesDock, mLayerDock};
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 QList<DialogWithToggleView*> MapEditor::dialogWidgets() const
 {
-	return QList<DialogWithToggleView*>{mAnimationCreator};
+	return QList<DialogWithToggleView*>{};
 }
 /*-----------------------------------------------------------------------------------------------------------*/

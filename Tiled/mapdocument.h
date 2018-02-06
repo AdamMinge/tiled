@@ -16,19 +16,6 @@ class MapDocument final : public Document
 	Q_OBJECT
 
 public:
-	enum ChangedPropertyId
-	{
-		OrientationChangedId = 1 << 0,
-		RenderOrderChangedId = 1 << 1,
-		TileSizeChangedId = 1 << 2,
-		AnimationChangedId = 1 << 3,
-		NameChangedId = 1 << 4,
-		VisibleChangedId = 1 << 5,
-		LockedChangedId = 1 << 6,
-		OpacityChangedId = 1 << 7
-	};
-
-public:
 	explicit MapDocument(Map* map, const QString &fileName = QString());
 	~MapDocument() override;
 
@@ -58,8 +45,6 @@ signals:
 	void currentLayerChanged(Layer* layer);
 
 	void mapChanged(Map* map, int changedPropertyId);
-	void tileChanged(Tile* tile, int changedPropertyId);
-	void tilesetChanged(Tileset* tileset, int changedPropertyId);
 	void layerChanged(Layer* layer, int changedPropertyId);
 
 private slots:

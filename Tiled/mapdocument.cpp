@@ -91,8 +91,6 @@ void MapDocument::onLayerAdded(Layer* layer)
 /*-----------------------------------------------------------------------------------------------------------*/
 void MapDocument::onLayerRemoved(Layer* layer)
 {
-	emit layerRemoved(layer);
-
 	const auto objectAsLayer = dynamic_cast<Layer*>(currentObject());
 	const auto cLayer = currentLayer();
 
@@ -101,6 +99,8 @@ void MapDocument::onLayerRemoved(Layer* layer)
 
 	if (cLayer && cLayer == layer)
 		setCurrentTileset(nullptr);
+
+	emit layerRemoved(layer);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void MapDocument::onTilesetAdded(Tileset* tileset)
@@ -111,8 +111,6 @@ void MapDocument::onTilesetAdded(Tileset* tileset)
 /*-----------------------------------------------------------------------------------------------------------*/
 void MapDocument::onTilesetRemoved(Tileset* tileset)
 {
-	emit tilesetRemoved(tileset);
-
 	const auto objectAsTileset = dynamic_cast<Tileset*>(currentObject());
 	const auto objectAsTile = dynamic_cast<Tile*>(currentObject());
 
@@ -127,6 +125,8 @@ void MapDocument::onTilesetRemoved(Tileset* tileset)
 
 	if (cTileset && cTileset == tileset)
 		setCurrentTileset(nullptr);
+
+	emit tilesetRemoved(tileset);
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 QString MapDocument::createDisplayName(const QString& fileName)

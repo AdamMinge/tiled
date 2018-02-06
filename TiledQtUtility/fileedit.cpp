@@ -37,7 +37,7 @@ FileEdit::FileEdit(QWidget* parent) :
 /*-----------------------------------------------------------------------------------------------------------*/
 void FileEdit::setFileUrl(const QUrl& url)
 {
-	const auto path = url.toLocalFile();
+	const auto path = url.toString(QUrl::PreferLocalFile);
 	if (mLineEdit->text() != path)
 		mLineEdit->setText(path);	
 }

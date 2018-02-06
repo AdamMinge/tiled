@@ -17,6 +17,7 @@
 #include "map.h"
 #include "reparentlayer.h"
 #include "ChangeLayerProperty.h"
+#include "documentmanager.h"
 /*-----------------------------------------------------------------------------------------------------------*/
 MapDocumentActionHandler* MapDocumentActionHandler::mInstance = nullptr;
 /*-----------------------------------------------------------------------------------------------------------*/
@@ -276,7 +277,9 @@ void MapDocumentActionHandler::removeTileset()
 void MapDocumentActionHandler::tilesetProperties()
 {
 	Q_ASSERT(mMapDocument);
-	mMapDocument->setCurrentObject(mMapDocument->currentTileset());
+
+	auto documentManager = DocumentManager::instance();
+	documentManager->openTilesetDocument(mMapDocument->currentTileset());
 }
 /*-----------------------------------------------------------------------------------------------------------*/
 void MapDocumentActionHandler::selectNextTileset()
